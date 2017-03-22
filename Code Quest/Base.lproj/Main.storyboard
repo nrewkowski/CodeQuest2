@@ -13,7 +13,7 @@
         <!--Level-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Level" id="BYZ-38-t0r" customClass="ViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Level" id="BYZ-38-t0r" customClass="LevelViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -233,7 +233,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bPX-xp-XIE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QAR-B4-aqd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QAR-B4-aqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
