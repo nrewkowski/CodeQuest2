@@ -57,19 +57,19 @@ class LevelTableViewController: UITableViewController {
 		let data2 = [[1,1,1,1,1],
 		             [2,2,2,2,1],
 		             [2,2,2,2,1]]
-		let level2 = Level(name: "Level 1-2", data: data2, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Oh no! There seems to be obstacles in your path this time. They cannot be walked through. Find the shortest path back to the ship!")
+		let level2 = Level(name: "Level 1-2", data: data2, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Walls cannot be walked through. Find a way around the walls to reach the ship!")
 		
 		let data3 = [[1,1,1,1,1],
 		             [2,2,1,2,2],
 		             [2,2,1,2,2]]
-		let level3 = Level(name: "Level 1-3", data: data3, startingLoc: (0, 0), goalLoc: (2, 2), tutorial: "Sometimes there might be branching paths. Make sure you chose the right one to make it back to the ship in the shortest amount of moves!")
+		let level3 = Level(name: "Level 1-3", data: data3, startingLoc: (0, 0), goalLoc: (2, 2), tutorial: "Make sure you take the correct path to get to the ship!")
 		
 		//Planet 2
 		
 		let data4 = [[1,2,2,2,2,2],
 		             [1,2,2,1,2,2],
 		             [1,1,4,1,1,1]]
-		let level4 = Level(name: "Level 2-1", data: data4, startingLoc:(0,0), goalLoc:(3,1), tutorial:"Oh no! It seems we are out of fuel! While I do not have fuel we cannot leave this place! Make sure you pick up the fuel before returning to the ship or we cannot leave!")
+		let level4 = Level(name: "Level 2-1", data: data4, startingLoc:(0,0), goalLoc:(3,1), tutorial:"Fuel levels low! We cannot leave while we don't have fuel! Make sure you pick some up!")
 		
 		let data5 = [[1,1,2,2],
 		             [1,1,1,1],
