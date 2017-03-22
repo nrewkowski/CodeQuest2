@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+let imageNames = ["left", "up", "down", "right", "blast_button"]
+let commandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
+
 /// Renders level select screen
 class LevelTableViewController: UITableViewController {
 	
@@ -252,12 +256,12 @@ class LevelTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStage" {
-            let LevelViewController = segue.destination as! ViewController
+            let levelViewController = segue.destination as! LevelViewController
             if let selectedLevelCell = sender as? LevelTableViewCell {
                 let indexPath = tableView.indexPath(for: selectedLevelCell)!
                 let selectedLevel = levels[indexPath.row]
-                LevelViewController.level = selectedLevel
-				LevelViewController.parentLevelTableViewController = self
+                levelViewController.level = selectedLevel
+				levelViewController.parentLevelTableViewController = self
             }
         }
     }

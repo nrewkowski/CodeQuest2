@@ -1,16 +1,16 @@
 //
-//  GameScene.swift
+//  DevGameScene.swift
 //  Code Quest
 //
-//  Created by OSX on 11/3/16.
-//  Copyright © 2016 Spookle. All rights reserved.
+//  Created by Nicholas Rewkowski on 3/22/17.
+//  Copyright © 2017 Spookle. All rights reserved.
 //
 
-import Foundation
+
 import SpriteKit
 
 ///The SpriteKit overlay that handles player movement
-class GameScene : SKScene {
+class DevGameScene : SKScene {
 	///The player sprite
 	let player = SKSpriteNode(texture: SKTexture(imageNamed: "pt"))
 	///The player position in level coordinates
@@ -75,7 +75,7 @@ class GameScene : SKScene {
 		player.xScale = 1
 	}
 	
-	///Moves the player towards the specified level coordinates, playing the bonk animation instead. 
+	///Moves the player towards the specified level coordinates, playing the bonk animation instead.
 	func tryToMoveTo(newPos: (Int, Int)) {
 		let beSad = SKAction.setTexture(SKTexture(imageNamed: "ps"))
 		let beHappy = SKAction.setTexture(SKTexture(imageNamed: "pt"))
@@ -114,11 +114,11 @@ class GameScene : SKScene {
 			SKAction.animate(with: boomFrames, timePerFrame: 0.0625),
 			SKAction.wait(forDuration: 1),
 			SKAction.removeFromParent()
-		]))
+			]))
 		boomSound.run(SKAction.sequence([
-				SKAction.wait(forDuration: 0.15),
-				SKAction.play()
-		]))
+			SKAction.wait(forDuration: 0.15),
+			SKAction.play()
+			]))
 		
 	}
 	
@@ -132,7 +132,7 @@ class GameScene : SKScene {
 			SKAction.animate(with:pewFrames, timePerFrame:0.09),
 			SKAction.wait(forDuration: 1),
 			SKAction.removeFromParent()
-		]))
+			]))
 		
 		
 	}

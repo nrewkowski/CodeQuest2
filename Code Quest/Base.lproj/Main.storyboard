@@ -13,7 +13,7 @@
         <!--Level-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Level" id="BYZ-38-t0r" customClass="ViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Level" id="BYZ-38-t0r" customClass="LevelViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

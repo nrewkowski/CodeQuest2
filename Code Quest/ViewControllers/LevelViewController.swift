@@ -11,11 +11,9 @@ import AVFoundation
 import SpriteKit
 import Darwin
 
-let imageNames = ["left", "up", "down", "right", "blast_button"]
-let commandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
-class ViewController: UIViewController, UICollectionViewDelegate {
+class LevelViewController: UIViewController, UICollectionViewDelegate {
 	
 	/// Child view that contains command butotns
     @IBOutlet var ButtonView: CommandView!
@@ -118,7 +116,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
                         default:
 							cell = floorCell(isWall: false, isFuel: false)
                     }
-					cell.frame = CGRect(x: ViewController.scaleDims(input: ViewController.moveInc*x, x: true), y: ViewController.scaleDims(input: 64+ViewController.moveInc*y, x: false), width: ViewController.scaleDims(input: ViewController.moveInc, x: true), height: ViewController.scaleDims(input: ViewController.moveInc, x: false))
+					cell.frame = CGRect(x: LevelViewController.scaleDims(input: LevelViewController.moveInc*x, x: true), y: LevelViewController.scaleDims(input: 64+LevelViewController.moveInc*y, x: false), width: LevelViewController.scaleDims(input: LevelViewController.moveInc, x: true), height: LevelViewController.scaleDims(input: LevelViewController.moveInc, x: false))
                     self.view.addSubview(cell)
 					self.tileArray[y].append(cell)  //Store gameCells in array for accessing
                 }
@@ -213,7 +211,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 				
 				//queues up this command, adds accessibility, etc.
                 let tempCell = UIImageView(image: UIImage(named:imageNames[type.rawValue] + ".png"))
-				tempCell.frame = CGRect(x: ViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: ViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: ViewController.scaleDims(input:64, x: true), height: ViewController.scaleDims(input: 64, x: false))
+				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
                 tempCell.isAccessibilityElement = true
                 tempCell.accessibilityTraits = UIAccessibilityTraitImage
                 tempCell.accessibilityLabel = imageNames[type.rawValue]
@@ -254,7 +252,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 					takeInput = false
 					currentStep = 0
 					tickTimer = Timer.scheduledTimer(timeInterval: 0.25, target:self,
-						selector:#selector(ViewController.runQueueSounds),
+						selector:#selector(LevelViewController.runQueueSounds),
 						userInfo:nil, repeats: true)
 				}
             }
@@ -275,7 +273,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 //			won = false
 			
 			//i believe that this limits the time for the player to do 1 action
-            tickTimer = Timer.scheduledTimer(timeInterval: 0.4054, target:self, selector:#selector(ViewController.runCommands), userInfo:nil, repeats: true)
+            tickTimer = Timer.scheduledTimer(timeInterval: 0.4054, target:self, selector:#selector(LevelViewController.runCommands), userInfo:nil, repeats: true)
         }
     }
 	
@@ -401,7 +399,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 		let height = (UIScreen.main.bounds.height)
 		let width = (UIScreen.main.bounds.width)
 		let finput : CGFloat = CGFloat(input)
-		return (x) ? Int(finput / ViewController.origW * width) : Int(finput / ViewController.origH * height)
+		return (x) ? Int(finput / LevelViewController.origW * width) : Int(finput / LevelViewController.origH * height)
 	}
 }
 

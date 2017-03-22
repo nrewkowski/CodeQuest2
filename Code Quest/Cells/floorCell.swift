@@ -34,6 +34,7 @@ class floorCell: gameCell {
 		} else if (isFuel) {
 			super.init(image: UIImage(named:"fuel_grid.png"))
 			self.accessibilityLabel = "Fuel"
+			self.contentMode = .scaleAspectFit
 		} else {
 			super.init(image: UIImage(named:"grid.png"))
 			self.accessibilityLabel = "Empty"
@@ -83,6 +84,7 @@ class floorCell: gameCell {
 		self.isFuel = true
 		self.image = UIImage(named:"fuel_grid.png")
 		self.accessibilityLabel = "Fuel"
+		self.contentMode = .scaleAspectFit
 	}
 	
     required init?(coder aDecoder: NSCoder) {
