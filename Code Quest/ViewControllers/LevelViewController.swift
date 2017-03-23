@@ -67,8 +67,8 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	/// Controls game logic
     override func viewDidLoad() {
 		
-        self.view.backgroundColor = UIColor(red: 27.0/256.0, green: 40.0/256.0, blue: 54.0/256.0, alpha: 1.0)
-        
+        self.view.backgroundColor = UIColor(red: 27.0/256.0, green: 40.0/256.0, blue: 54.0/256.0, alpha: 1.0) //dark blue from CQ1
+        //self.view.backgroundColor = UIColor(red: 121.0/256.0, green: 30.0/256.0, blue: 29.0/256.0, alpha: 1.0) //mahogany
         super.viewDidLoad()
 		
 		//add audio players
