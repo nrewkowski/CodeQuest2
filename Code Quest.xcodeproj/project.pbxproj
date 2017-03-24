@@ -12,6 +12,7 @@
 		10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B20FD91D909BD200142CAE /* Assets.xcassets */; };
 		10B20FDD1D909BD200142CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B20FDB1D909BD200142CAE /* LaunchScreen.storyboard */; };
 		10B20FE81D909BD200142CAE /* Code_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B20FE71D909BD200142CAE /* Code_QuestTests.swift */; };
+		3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D3086C11E85C22A005CB8B0 /* Demo.aiff */; };
 		3D34AC971E822F9500CEB706 /* DevGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34AC961E822F9500CEB706 /* DevGameScene.swift */; };
 		3D34AC9B1E82349600CEB706 /* DevLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */; };
 		3D75C3851E859F60008EF6AE /* DevLevelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */; };
@@ -69,6 +70,7 @@
 		10B20FE31D909BD200142CAE /* Code QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Code QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B20FE71D909BD200142CAE /* Code_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code_QuestTests.swift; sourceTree = "<group>"; };
 		10B20FE91D909BD200142CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D3086C11E85C22A005CB8B0 /* Demo.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Demo.aiff; sourceTree = "<group>"; };
 		3D34AC961E822F9500CEB706 /* DevGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevGameScene.swift; sourceTree = "<group>"; };
 		3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelViewController.swift; sourceTree = "<group>"; };
 		3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTableViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */,
 				3DB6D24F1E6D1E2900E069B2 /* cheer.wav */,
 				3DB6D2501E6D1E2900E069B2 /* down.wav */,
+				3D3086C11E85C22A005CB8B0 /* Demo.aiff */,
 				3DB6D2511E6D1E2900E069B2 /* drum.aif */,
 				3DB6D2521E6D1E2900E069B2 /* drum.wav */,
 				3DB6D2531E6D1E2900E069B2 /* kaboom.wav */,
@@ -337,6 +340,7 @@
 				3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */,
 				3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */,
 				10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */,
+				3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */,
 				3DB6D2641E6D1E2900E069B2 /* right.wav in Resources */,
 				10B20FD81D909BD200142CAE /* Main.storyboard in Resources */,
 				3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */,
