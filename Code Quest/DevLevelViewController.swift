@@ -26,7 +26,8 @@ class DevLevelViewController: LevelViewController {
 		
 		self.view.backgroundColor = UIColor(red: 27.0/256.0, green: 40.0/256.0, blue: 54.0/256.0, alpha: 1.0)
 		
-		super.viewDidLoad()
+		//super.viewDidLoad() //this breaks it for some reason
+		
 		
 		//add audio players
 		do {
@@ -50,7 +51,7 @@ class DevLevelViewController: LevelViewController {
 		//allows for tap input
 		let touchOnResetRecognizer = UITapGestureRecognizer(target: self, action: #selector (self.tapReset (_:)))
 		self.view.addGestureRecognizer(touchOnResetRecognizer)
-		
+		//print(level?.data)
 		//i don't know why this is called testgrid...it seems to be the initial grid
 		if let testGrid = (level?.data)! as [[Int]]? {
 			playerLoc = level!.startingLoc
@@ -115,12 +116,13 @@ class DevLevelViewController: LevelViewController {
 		skView.isUserInteractionEnabled = false
 		skView.allowsTransparency = true
 		self.view.addSubview(skView)
-		self.scene = GameScene(size: view.bounds.size)
+		self.scene = DevGameScene(size: view.bounds.size)
 		scene?.playerPosition = playerLoc
 		skView.presentScene(scene)
 		
 		self.cmdHandler = CommandHandler(level: &tileArray, playerLoc: &playerLoc, goalLoc: &goalLoc, myGameScene: self.scene!)
-		
+
+		//super.viewDidLoad()
 	}
 	
 	override func didReceiveMemoryWarning() {

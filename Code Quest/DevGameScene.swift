@@ -10,15 +10,8 @@
 import SpriteKit
 
 ///The SpriteKit overlay that handles player movement
-class DevGameScene : SKScene {
-	///The player sprite
-	let player = SKSpriteNode(texture: SKTexture(imageNamed: "pt"))
-	///The player position in level coordinates
-	var playerPosition : (Int, Int) = (0,0)
-	var boomFrames = [SKTexture]()
-	var pewFrames = [SKTexture]()
-	var boomSound = SKAudioNode(fileNamed: "kaboom.wav")
-	var pewSound = SKAudioNode(fileNamed: "lazar.wav")
+class DevGameScene : GameScene {
+	
 	
 	override func didMove(to view: SKView) {
 		boomSound.autoplayLooped = false
@@ -44,17 +37,17 @@ class DevGameScene : SKScene {
 	}
 	
 	///Returns the player's screen coordinates based on their level coordinates
-	func getPlayerCoordinates() -> CGPoint {
+	override func getPlayerCoordinates() -> CGPoint {
 		return mapToScreenCoordinates(newPos: playerPosition)
 	}
 	
 	///Maps level coordinates to screen coordinates
-	func mapToScreenCoordinates(newPos : (Int, Int)) -> CGPoint {
+	override func mapToScreenCoordinates(newPos : (Int, Int)) -> CGPoint {
 		return CGPoint(x: LevelViewController.moveInc * newPos.0 + 45, y: Int(self.size.height) - (45 + 64 + LevelViewController.moveInc * newPos.1))
 	}
 	
 	///Updates the player's location in level coordinates
-	func movePlayer(newPos : (Int, Int)) {
+	override func movePlayer(newPos : (Int, Int)) {
 		if newPos.0 < playerPosition.0 {
 			player.xScale = -1
 		} else if newPos.0 > playerPosition.0 {
@@ -69,14 +62,14 @@ class DevGameScene : SKScene {
 	}
 	
 	///Updates the player's level coordinates without animating
-	func setPlayerPos(newPos: (Int, Int)) {
+	override func setPlayerPos(newPos: (Int, Int)) {
 		playerPosition = newPos
 		player.position = getPlayerCoordinates()
 		player.xScale = 1
 	}
 	
 	///Moves the player towards the specified level coordinates, playing the bonk animation instead.
-	func tryToMoveTo(newPos: (Int, Int)) {
+	override func tryToMoveTo(newPos: (Int, Int)) {
 		let beSad = SKAction.setTexture(SKTexture(imageNamed: "ps"))
 		let beHappy = SKAction.setTexture(SKTexture(imageNamed: "pt"))
 		var scalo = SKAction.wait(forDuration: 0)
@@ -101,7 +94,7 @@ class DevGameScene : SKScene {
 		
 	}
 	
-	func kaboom (pos: (Int, Int)) {
+	override func kaboom (pos: (Int, Int)) {
 		let kaboomo = SKSpriteNode(imageNamed: "break_wall.png")
 		kaboomo.xScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.width
 		kaboomo.yScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.height
@@ -122,7 +115,7 @@ class DevGameScene : SKScene {
 		
 	}
 	
-	func pewpew (pos: (Int, Int)) {
+	override func pewpew (pos: (Int, Int)) {
 		let pew = SKSpriteNode(imageNamed: "blast-2.png")
 		addChild(pew)
 		pew.position = mapToScreenCoordinates(newPos: pos)
