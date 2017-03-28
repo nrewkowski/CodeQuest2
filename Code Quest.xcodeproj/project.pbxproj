@@ -12,8 +12,11 @@
 		10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B20FD91D909BD200142CAE /* Assets.xcassets */; };
 		10B20FDD1D909BD200142CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B20FDB1D909BD200142CAE /* LaunchScreen.storyboard */; };
 		10B20FE81D909BD200142CAE /* Code_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B20FE71D909BD200142CAE /* Code_QuestTests.swift */; };
+		3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D3086C11E85C22A005CB8B0 /* Demo.aiff */; };
 		3D34AC971E822F9500CEB706 /* DevGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34AC961E822F9500CEB706 /* DevGameScene.swift */; };
 		3D34AC9B1E82349600CEB706 /* DevLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */; };
+		3D75C3851E859F60008EF6AE /* DevLevelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */; };
+		3D75C3871E859FD2008EF6AE /* DevLevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75C3861E859FD2008EF6AE /* DevLevelTableViewCell.swift */; };
 		3DB6D22C1E6D1D7A00E069B2 /* LevelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */; };
 		3DB6D22D1E6D1D7A00E069B2 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22B1E6D1D7A00E069B2 /* LevelViewController.swift */; };
 		3DB6D2301E6D1D8600E069B2 /* LevelTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */; };
@@ -67,8 +70,11 @@
 		10B20FE31D909BD200142CAE /* Code QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Code QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B20FE71D909BD200142CAE /* Code_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code_QuestTests.swift; sourceTree = "<group>"; };
 		10B20FE91D909BD200142CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D3086C11E85C22A005CB8B0 /* Demo.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Demo.aiff; sourceTree = "<group>"; };
 		3D34AC961E822F9500CEB706 /* DevGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevGameScene.swift; sourceTree = "<group>"; };
 		3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelViewController.swift; sourceTree = "<group>"; };
+		3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTableViewController.swift; sourceTree = "<group>"; };
+		3D75C3861E859FD2008EF6AE /* DevLevelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTableViewCell.swift; sourceTree = "<group>"; };
 		3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelTableViewController.swift; path = ViewControllers/LevelTableViewController.swift; sourceTree = "<group>"; };
 		3DB6D22B1E6D1D7A00E069B2 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelViewController.swift; path = ViewControllers/LevelViewController.swift; sourceTree = "<group>"; };
 		3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelTutorialViewController.swift; path = ViewControllers/LevelTutorialViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 				3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */,
 				3DB6D24F1E6D1E2900E069B2 /* cheer.wav */,
 				3DB6D2501E6D1E2900E069B2 /* down.wav */,
+				3D3086C11E85C22A005CB8B0 /* Demo.aiff */,
 				3DB6D2511E6D1E2900E069B2 /* drum.aif */,
 				3DB6D2521E6D1E2900E069B2 /* drum.wav */,
 				3DB6D2531E6D1E2900E069B2 /* kaboom.wav */,
@@ -202,6 +209,7 @@
 				3DB6D2431E6D1E1500E069B2 /* LevelTableViewCell.swift */,
 				3DB6D2441E6D1E1500E069B2 /* playerCell.swift */,
 				3DB6D2451E6D1E1500E069B2 /* wallCell.swift */,
+				3D75C3861E859FD2008EF6AE /* DevLevelTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */,
 				3DB6D22B1E6D1D7A00E069B2 /* LevelViewController.swift */,
 				3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */,
+				3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -331,6 +340,7 @@
 				3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */,
 				3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */,
 				10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */,
+				3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */,
 				3DB6D2641E6D1E2900E069B2 /* right.wav in Resources */,
 				10B20FD81D909BD200142CAE /* Main.storyboard in Resources */,
 				3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */,
@@ -358,6 +368,7 @@
 				3DB6D22D1E6D1D7A00E069B2 /* LevelViewController.swift in Sources */,
 				3DB6D2311E6D1D8600E069B2 /* settingsTableViewController.swift in Sources */,
 				3DB6D23F1E6D1DE400E069B2 /* SoundPlayer.swift in Sources */,
+				3D75C3851E859F60008EF6AE /* DevLevelTableViewController.swift in Sources */,
 				10B20FD31D909BD200142CAE /* AppDelegate.swift in Sources */,
 				3D34AC971E822F9500CEB706 /* DevGameScene.swift in Sources */,
 				3DB6D2471E6D1E1500E069B2 /* gameCell.swift in Sources */,
@@ -370,6 +381,7 @@
 				3DB6D23B1E6D1DE400E069B2 /* GameScene.swift in Sources */,
 				3DB6D2481E6D1E1500E069B2 /* goalCell.swift in Sources */,
 				3DB6D2491E6D1E1500E069B2 /* LevelTableViewCell.swift in Sources */,
+				3D75C3871E859FD2008EF6AE /* DevLevelTableViewCell.swift in Sources */,
 				3DB6D23D1E6D1DE400E069B2 /* Level.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

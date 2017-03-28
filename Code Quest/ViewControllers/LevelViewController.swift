@@ -57,7 +57,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	var onShip : Bool = false
 	var aboutToWin : Bool = false
 	
-	let music: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "song", ofType:"aif")!);
+	let music: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "Demo", ofType:"aiff")!);
 	var musicPlayer = AVAudioPlayer()
 	let drum = URL(fileURLWithPath: Bundle.main.path(forResource: "drum", ofType:"aif")!);
 	var drumPlayer = AVAudioPlayer()
@@ -84,7 +84,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 			let sdelay : TimeInterval = 0.1
 			let now = musicPlayer.deviceCurrentTime
 			musicPlayer.play(atTime: now+sdelay)
-			drumPlayer.play(atTime: now+sdelay)
+			//drumPlayer.play(atTime: now+sdelay)
 		} catch {
 			print ("music failed")
 		}
