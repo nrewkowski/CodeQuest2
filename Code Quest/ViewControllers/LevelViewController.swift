@@ -67,7 +67,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	/// Controls game logic
     override func viewDidLoad() {
 		
-        self.view.backgroundColor = UIColor(red: 27.0/256.0, green: 40.0/256.0, blue: 54.0/256.0, alpha: 1.0) //dark blue from CQ1
+        self.view.backgroundColor = UIColor(red: 238.0/256.0, green: 238.0/256.0, blue: 224.0/256.0, alpha: 1.0) //Cream from CQ2
         //self.view.backgroundColor = UIColor(red: 121.0/256.0, green: 30.0/256.0, blue: 29.0/256.0, alpha: 1.0) //mahogany
         super.viewDidLoad()
 		
@@ -383,7 +383,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	// Plays the sound associated with the command in commandQueue[currentStep]
 	// Note that commands and queue sounds will never be running at the same time, so it
 	// should be safe to reuse tickTimer and currentStep here
-	func runQueueSounds() {
+	func runQueueSounds() { // This is what you need
 		if (currentStep < commandQueue.count) {
 			playSound(sound: commandSounds[commandQueue[currentStep]])
 			currentStep += 1
