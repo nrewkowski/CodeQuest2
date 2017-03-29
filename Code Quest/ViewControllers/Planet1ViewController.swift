@@ -16,7 +16,7 @@ class Planet1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		
+		self.navigationItem.title="Planet 1"
 
 		//let MrMaze = Maze(width:11, height:7)
 		//levels.append(LevelFromMaze(maze: MrMaze, name: "Mr Maze's Level", tutorial:"This is Mr Maze's level"))
