@@ -13,6 +13,13 @@ class Planet1ViewController: UIViewController {
 	///Array of level objects
 	var levels = [Level]()
 	var defaults = UserDefaults.standard
+    
+    
+    @IBOutlet weak var level1HighScore: UILabel!
+    @IBOutlet weak var level2HighScore: UILabel!
+    @IBOutlet weak var level3HighScore: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -27,6 +34,30 @@ class Planet1ViewController: UIViewController {
 		}
 		if defaults.object(forKey: "musicVolume") != nil {
 			musicVolume = defaults.float(forKey: "musicVolume")
+		}
+        
+		if levels[0].cleared {
+			level1HighScore.text = "Best: \(levels[0].highscore) moves"
+            level1HighScore.accessibilityLabel="Best: \(levels[0].highscore) moves"
+		} else {
+			level1HighScore.text = "Not Yet Cleared"
+            level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+		}
+		
+		if levels[1].cleared {
+			level2HighScore.text = "Best: \(levels[1].highscore) moves"
+            level2HighScore.accessibilityLabel="Best: \(levels[1].highscore) moves"
+		} else {
+			level2HighScore.text = "Not Yet Cleared"
+            level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+		}
+		
+		if levels[2].cleared {
+			level3HighScore.text = "Best: \(levels[2].highscore) moves"
+            level3HighScore.accessibilityLabel="Best: \(levels[2].highscore) moves"
+		} else {
+			level3HighScore.text = "Not Yet Cleared"
+            level3HighScore.accessibilityLabel="Level 3 not yet cleared"
 		}
     }
 

@@ -41,9 +41,11 @@ class DevLevelTutorialViewController: UIViewController {
 		let button = UIButton(type:.system)
 		button.frame = CGRect(x: LevelViewController.scaleDims(input: 750, x: true), y: LevelViewController.scaleDims(input: 450, x: false), width: LevelViewController.scaleDims(input: 200, x: true), height: LevelViewController.scaleDims(input: 100, x: false))
 		button.setTitle("Start Level", for: UIControlState.normal)
+		
 		button.titleLabel!.font = button.titleLabel!.font.withSize(30)
-		button.addTarget(self, action: #selector(LevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
+		button.addTarget(self, action: #selector(DevLevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
 		self.view.addSubview(button)
+		button.accessibilityTraits = UIAccessibilityTraitNone
 		let label = UILabel(frame:CGRect(x: LevelViewController.scaleDims(input: 300, x: true),y: LevelViewController.scaleDims(input: 30, x: false),width: LevelViewController.scaleDims(input: 550, x: true), height: LevelViewController.scaleDims(input: 400, x: false)))
 		//label.center = CGPoint(x:160, y:284)
 		label.backgroundColor = .clear
