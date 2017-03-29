@@ -24,7 +24,7 @@ class DevLevelViewController: LevelViewController {
 	/// Controls game logic
 	override func viewDidLoad() {
 		
-		self.view.backgroundColor = UIColor(red: 27.0/256.0, green: 40.0/256.0, blue: 54.0/256.0, alpha: 1.0)
+		self.view.backgroundColor = UIColor(red: 256.0/256.0, green: 40.0/256.0, blue: 54.0/256.0, alpha: 1.0)
 		
 		//super.viewDidLoad() //this breaks it for some reason
 		

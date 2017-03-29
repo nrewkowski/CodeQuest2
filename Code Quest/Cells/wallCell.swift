@@ -14,6 +14,7 @@ class wallCell: gameCell {
     init() {
         super.init(image: UIImage(named:"wall.png"))
         self.accessibilityLabel = "Wall"
+		self.accessibilityTraits = UIAccessibilityTraitNone
     }
     
     required init?(coder aDecoder: NSCoder) {

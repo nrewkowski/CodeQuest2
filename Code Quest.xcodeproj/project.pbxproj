@@ -48,6 +48,11 @@
 		3DB6D2651E6D1E2900E069B2 /* song.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2571E6D1E2900E069B2 /* song.aif */; };
 		3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2581E6D1E2900E069B2 /* song.wav */; };
 		3DB6D2671E6D1E2900E069B2 /* up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2591E6D1E2900E069B2 /* up.wav */; };
+		3DB723AD1E8B2A1800921D62 /* Planet1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */; };
+		3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */; };
+		3DB723B11E8B2CB800921D62 /* DevLevelTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */; };
+		3DB723B31E8B2D2E00921D62 /* DevCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B21E8B2D2E00921D62 /* DevCommandView.swift */; };
+		3DB723B51E8B368700921D62 /* DevCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B41E8B368700921D62 /* DevCommandHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +111,11 @@
 		3DB6D2571E6D1E2900E069B2 /* song.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = song.aif; path = audio/song.aif; sourceTree = "<group>"; };
 		3DB6D2581E6D1E2900E069B2 /* song.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = song.wav; path = audio/song.wav; sourceTree = "<group>"; };
 		3DB6D2591E6D1E2900E069B2 /* up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = up.wav; path = audio/up.wav; sourceTree = "<group>"; };
+		3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet1ViewController.swift; path = ViewControllers/Planet1ViewController.swift; sourceTree = "<group>"; };
+		3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetLevelViewController.swift; sourceTree = "<group>"; };
+		3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTutorialViewController.swift; sourceTree = "<group>"; };
+		3DB723B21E8B2D2E00921D62 /* DevCommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevCommandView.swift; sourceTree = "<group>"; };
+		3DB723B41E8B368700921D62 /* DevCommandHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevCommandHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +233,9 @@
 				3DB6D22B1E6D1D7A00E069B2 /* LevelViewController.swift */,
 				3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */,
 				3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */,
+				3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */,
+				3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */,
+				3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -231,7 +244,9 @@
 			isa = PBXGroup;
 			children = (
 				3DB6D2321E6D1DE400E069B2 /* CommandHandler.swift */,
+				3DB723B41E8B368700921D62 /* DevCommandHandler.swift */,
 				3DB6D2331E6D1DE400E069B2 /* CommandView.swift */,
+				3DB723B21E8B2D2E00921D62 /* DevCommandView.swift */,
 				3DB6D2341E6D1DE400E069B2 /* GameScene.swift */,
 				3DB6D2351E6D1DE400E069B2 /* Input.swift */,
 				3DB6D2361E6D1DE400E069B2 /* Level.swift */,
@@ -365,8 +380,10 @@
 				3DB6D23C1E6D1DE400E069B2 /* Input.swift in Sources */,
 				3DB6D2391E6D1DE400E069B2 /* CommandHandler.swift in Sources */,
 				3DB6D2461E6D1E1500E069B2 /* floorCell.swift in Sources */,
+				3DB723B51E8B368700921D62 /* DevCommandHandler.swift in Sources */,
 				3DB6D22D1E6D1D7A00E069B2 /* LevelViewController.swift in Sources */,
 				3DB6D2311E6D1D8600E069B2 /* settingsTableViewController.swift in Sources */,
+				3DB723AD1E8B2A1800921D62 /* Planet1ViewController.swift in Sources */,
 				3DB6D23F1E6D1DE400E069B2 /* SoundPlayer.swift in Sources */,
 				3D75C3851E859F60008EF6AE /* DevLevelTableViewController.swift in Sources */,
 				10B20FD31D909BD200142CAE /* AppDelegate.swift in Sources */,
@@ -374,13 +391,16 @@
 				3DB6D2471E6D1E1500E069B2 /* gameCell.swift in Sources */,
 				3DB6D24B1E6D1E1500E069B2 /* wallCell.swift in Sources */,
 				3DB6D2301E6D1D8600E069B2 /* LevelTutorialViewController.swift in Sources */,
+				3DB723B31E8B2D2E00921D62 /* DevCommandView.swift in Sources */,
 				3DB6D23E1E6D1DE400E069B2 /* Maze.swift in Sources */,
 				3D34AC9B1E82349600CEB706 /* DevLevelViewController.swift in Sources */,
 				3DB6D22C1E6D1D7A00E069B2 /* LevelTableViewController.swift in Sources */,
 				3DB6D23A1E6D1DE400E069B2 /* CommandView.swift in Sources */,
 				3DB6D23B1E6D1DE400E069B2 /* GameScene.swift in Sources */,
 				3DB6D2481E6D1E1500E069B2 /* goalCell.swift in Sources */,
+				3DB723B11E8B2CB800921D62 /* DevLevelTutorialViewController.swift in Sources */,
 				3DB6D2491E6D1E1500E069B2 /* LevelTableViewCell.swift in Sources */,
+				3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */,
 				3D75C3871E859FD2008EF6AE /* DevLevelTableViewCell.swift in Sources */,
 				3DB6D23D1E6D1DE400E069B2 /* Level.swift in Sources */,
 			);
