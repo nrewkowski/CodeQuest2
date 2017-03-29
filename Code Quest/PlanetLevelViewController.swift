@@ -13,6 +13,8 @@ import AVFoundation
 import SpriteKit
 import Darwin
 
+let testImageNames = ["left", "up", "down", "right", "blast_button"]
+let testCommandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
 class PlanetLevelViewController: DevLevelViewController {
@@ -21,6 +23,10 @@ class PlanetLevelViewController: DevLevelViewController {
 	var devCmdHandler: DevCommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
+    
+    var planetNumber = 0
+    var levelNumber:Int = 0
+    var bestScore=0;
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -29,7 +35,11 @@ class PlanetLevelViewController: DevLevelViewController {
 		
 		//super.viewDidLoad() //this breaks it for some reason
 		
-		
+		self.navigationItem.title = "Level "+String(planetNumber)+"-"+String(levelNumber)
+        self.navigationItem.accessibilityLabel="Level "+String(planetNumber)+"-"+String(levelNumber)
+        self.navigationItem.rightBarButtonItem=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+        self.navigationItem.rightBarButtonItem?.isEnabled=false
 		//add audio players
 		do {
 			try musicPlayer = AVAudioPlayer(contentsOf: music)
@@ -170,12 +180,12 @@ class PlanetLevelViewController: DevLevelViewController {
 				
 				
 				//queues up this command, adds accessibility, etc.
-				let tempCell = UIImageView(image: UIImage(named:imageNames[type.rawValue] + ".png"))
+				let tempCell = UIImageView(image: UIImage(named:testImageNames[type.rawValue] + ".png"))
 				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
 				tempCell.isAccessibilityElement = true
 				tempCell.accessibilityTraits = UIAccessibilityTraitImage
 				tempCell.accessibilityTraits = UIAccessibilityTraitNone
-				tempCell.accessibilityLabel = imageNames[type.rawValue]
+				tempCell.accessibilityLabel = testImageNames[type.rawValue]
 				
 				if (type.rawValue == 4) {
 					tempCell.accessibilityLabel = "blast"
@@ -187,7 +197,7 @@ class PlanetLevelViewController: DevLevelViewController {
 				
 				commandQueue.append(type.rawValue)
 				commandQueueViews.append(tempCell)
-				playSound(sound: commandSounds[type.rawValue])
+				playSound(sound: testCommandSounds[type.rawValue])
 			} else if(type.rawValue < 5 && commandQueue.count >= 28) { //the queue is full
 				
 				playSound(sound: failSound);
@@ -347,7 +357,7 @@ class PlanetLevelViewController: DevLevelViewController {
 	// should be safe to reuse tickTimer and currentStep here
 	override func runQueueSounds() {
 		if (currentStep < commandQueue.count) {
-			playSound(sound: commandSounds[commandQueue[currentStep]])
+			playSound(sound: testCommandSounds[commandQueue[currentStep]])
 			currentStep += 1
 		} else {
 			tickTimer.invalidate()

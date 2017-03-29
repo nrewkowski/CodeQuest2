@@ -202,15 +202,20 @@ class Planet1ViewController: UIViewController {
 	
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let levelViewController = segue.destination as! PlanetLevelViewController
+        levelViewController.planetNumber=1
         var selectedLevel: Level;
         if segue.identifier=="p1l1" {
             selectedLevel = levels[0]
+            levelViewController.levelNumber=1
+            levelViewController.bestScore=levels[0].highscore
         }
         else if segue.identifier=="p1l2"{
             selectedLevel=levels[1]
+            levelViewController.bestScore=levels[1].highscore
         }
         else {
             selectedLevel=levels[2]
+            levelViewController.bestScore=levels[2].highscore
         }
 		levelViewController.level = selectedLevel
 		levelViewController.devParentLevelTableViewController = self

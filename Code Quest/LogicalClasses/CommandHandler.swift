@@ -155,6 +155,8 @@ class CommandHandler {
 		}
 	}
 	
+	//func moveLoop(input:Int)
+	
 	// Utility functions
 	
 	/**

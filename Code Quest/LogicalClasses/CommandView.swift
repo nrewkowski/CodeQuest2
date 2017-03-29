@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let num_command_buttons = 8
+let num_command_buttons = 9
 
 // The first num_queue_buttons buttons represent queueable commands that should come before the divider
 let num_queue_buttons = 5
@@ -25,8 +25,8 @@ class CommandView: UIView {
 		
 		for i in 0..<num_command_buttons {
 			// Separate the first num_queue_buttons from the others with some empty space
-			let xcoord = (i < num_queue_buttons) ? 100*i : 100*i + 50
-			let command = Input(type: ButtonType(rawValue : i)!, frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(96, LevelViewController.scaleDims(input: 96, x: true)), height: min(96, LevelViewController.scaleDims(input: 96, x: false))));
+			let xcoord = (i < num_queue_buttons) ? 84*i : 84*i + 50
+			let command = Input(type: ButtonType(rawValue : i)!, frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))));
 			//command.backgroundColor = UIColor.cyan
 			
 			//command.addTarget(self, action: #selector(CommandView.commandTapped(_:)), for: .Touchdown)
@@ -49,3 +49,5 @@ class CommandView: UIView {
 	}
 	
 }
+//let xcoord = (i < num_queue_buttons) ? 100*i : 100*i + 50
+//let command = Input(type: ButtonType(rawValue : i)!, frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(96, LevelViewController.scaleDims(input: 96, x: true)), height: min(96, LevelViewController.scaleDims(input: 96, x: false))));

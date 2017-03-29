@@ -18,6 +18,7 @@ enum ButtonType:Int {
 	case ERASE1 = 5
 	case ERASEALL = 6
 	case QUEUESOUND = 7
+	case LOOPCOMMAND = 8
 }
 
 class Input: UIButton {
@@ -61,6 +62,10 @@ class Input: UIButton {
 		case ButtonType.BLAST:
 			self.setImage(UIImage(named:"blast_button.png"), for: UIControlState.normal)
 			self.accessibilityLabel = "Blaster"
+			self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.LOOPCOMMAND:
+			self.setImage(UIImage(named:"loopsymbol.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Loop"
 			self.accessibilityTraits = UIAccessibilityTraitNone
 		}
 		
