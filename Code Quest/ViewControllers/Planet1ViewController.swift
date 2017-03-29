@@ -27,18 +27,7 @@ class Planet1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		do {
-			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
-			musicPlayer2.numberOfLoops = -1
-			musicPlayer2.volume = 1.0 * musicVolume
-			
-			
-			let sdelay : TimeInterval = 0.1
-			let now = musicPlayer2.deviceCurrentTime
-			musicPlayer2.play(atTime: now+sdelay)
-		} catch {
-			print ("music failed")
-		}
+		
 		
 		self.navigationItem.title="Planet 1"
 
@@ -77,6 +66,21 @@ class Planet1ViewController: UIViewController {
             level3HighScore.accessibilityLabel="Level 3 not yet cleared"
 		}
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		do {
+			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
+			musicPlayer2.numberOfLoops = -1
+			musicPlayer2.volume = 1.0 * musicVolume
+			
+			
+			let sdelay : TimeInterval = 0.1
+			let now = musicPlayer2.deviceCurrentTime
+			musicPlayer2.play(atTime: now+sdelay)
+		} catch {
+			print ("music failed")
+		}
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -238,8 +242,14 @@ class Planet1ViewController: UIViewController {
         }
 		levelViewController.level = selectedLevel
 		levelViewController.devParentLevelTableViewController = self
-		musicPlayer2.stop()
+		//musicPlayer2.stop()
     }
+	
+	override func viewWillDisappear(_ animated : Bool) {
+		//super.viewWillDisappear(animated)
+		musicPlayer2.stop()
+		//drumPlayer.stop()
+	}
 	
 	
 }

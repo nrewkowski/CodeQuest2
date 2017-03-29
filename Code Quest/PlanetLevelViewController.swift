@@ -35,6 +35,7 @@ class PlanetLevelViewController: DevLevelViewController {
 	var currentIndexCorrected=0
 	var currentLoopRange=0
 	var totalNumOfLoops=0
+	var loopLabels:[UILabel]=[]
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -270,6 +271,7 @@ class PlanetLevelViewController: DevLevelViewController {
 						loopLabel.font = loopLabel.font.withSize(60)
 						loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
 						self.view.addSubview(loopLabel)
+						loopLabels.append(loopLabel)
 						
 						commandQueue.append(type.rawValue)
 						//realCommandQueue.append(type.rawValue)
@@ -291,16 +293,58 @@ class PlanetLevelViewController: DevLevelViewController {
 			
 			else { // Command is to be executed immediately, deals with buttons that are not commands for the player (erase, queue, etc)
 				if (type == ButtonType.ERASE1) {
+					printStatus()
 					commandQueueViews.popLast()?.removeFromSuperview()
 					commandQueue.popLast()
+					
+					//IMPORTANT NOTE: loopRanges is based on realCommandQueue, not commandQueue
+					if (loopRanges.count != 0){
+						//print("there's a loop")
+						//print("command queue size="+String(realCommandQueue.count))
+						//print("last loopRange index last="+String(loopRanges[loopRanges.count-1].1))
+						
+						if (realCommandQueue.count-1 == loopRanges[loopRanges.count-1].1){
+							print("removing a loop")
+							let numOfLoopsForLastCommand=numOfLoopsPerLoop[numOfLoopsPerLoop.count-1]
+							//print("before erase"+String(describing: realCommandQueue))
+							for i in 0...numOfLoopsForLastCommand-1 {
+								realCommandQueue.popLast()
+							}
+							loopRanges.popLast()
+							loopLabels[loopLabels.count-1].removeFromSuperview()
+							loopLabels.popLast()
+							numOfLoopsPerLoop.popLast()
+							//print("after erase"+String(describing: realCommandQueue))
+							loopCommands.popLast()
+							totalNumOfLoops -= 1
+							printStatus()
+						}
+						else{
+							realCommandQueue.popLast()
+						}
+					}
+					else{
+						realCommandQueue.popLast()
+					}
+					
+					
+					
 				} else if (type == ButtonType.ERASEALL) {
 					resetLevelState()
 					for view in commandQueueViews {
 						view.removeFromSuperview()
 					}
+					for view in loopLabels{
+						view.removeFromSuperview()
+					}
 					commandQueueViews.removeAll()
 					commandQueue.removeAll()
 					realCommandQueue.removeAll()
+					loopRanges.removeAll()
+					loopLabels.removeAll()
+					numOfLoopsPerLoop.removeAll()
+					loopCommands.removeAll()
+					
 				} else if (type == ButtonType.QUEUESOUND) {
 					takeInput = false
 					currentStep = 0
@@ -348,13 +392,55 @@ class PlanetLevelViewController: DevLevelViewController {
 		if (currentIndexCorrected != 0 && !aboutToWin) {
 			//+y is downwards, so this moves the previous tile back down
 			//BUG: we need to borrow the below loop-detection logic to make sure we don't move the same block multiple times
-			commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+			print("1")
+			printStatus()
+			print("2")
+			if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+				print("3")
+				if (currentStep==loopRanges[currentLoopRange].0){
+					print("beginning of loop. move up")
+					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+					loopLabels[currentLoopRange-1].frame.origin.y += 10
+				}
+				
+			}
+			else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
+				//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
+				print("previous tile is loop")
+				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+				loopLabels[loopLabels.count-1].frame.origin.y += 10
+			}
+			else{
+				//there are no loops at all
+				print("no loops")
+				//currentIndexCorrected += 1
+				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+				//loopLabels[currentLoopRange].frame.origin.y += 10
+			}
+			
+			//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 		}
 		
 		//handles a basic command
 		if currentStep < realCommandQueue.count && !aboutToWin {
-			if (currentIndexCorrected < (realCommandQueue.count - 1)) {
-				commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+			if (currentIndexCorrected < (commandQueue.count - 1)) {
+				//if (currentStep < (commandQueue.count - 1)) {
+				if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+					if (currentStep==loopRanges[currentLoopRange].0){
+						print("beginning of loop. move up")
+						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+						loopLabels[currentLoopRange].frame.origin.y -= 10
+					}
+					
+				}
+				else{
+					//there are no loops at all
+					print("no loops")
+					//currentIndexCorrected += 1
+					commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+				}
+				
+				//commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 			}
 			//			var maybewon: Bool
 			//			(moved, maybewon) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
@@ -364,6 +450,8 @@ class PlanetLevelViewController: DevLevelViewController {
 				//(moved, onShip) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
 			}
 			else{
+				//DEPRACATED...too many visual artifacts
+				print("this should not happen")
 				print("starting loop")
 				let commandToPlay=loopCommands[loopCommands.count-loopIndex-1]
 				let numOfLoopsToPlay=numOfLoopsPerLoop[numOfLoopsPerLoop.count-loopIndex-1]
@@ -390,8 +478,10 @@ class PlanetLevelViewController: DevLevelViewController {
 		}
 		
 		if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+			print("4")
 			if (currentStep>=loopRanges[currentLoopRange].0 && currentStep<loopRanges[currentLoopRange].1){
 				//don't update currentIndexCorrected...we're in a loop
+				print("5")
 			}
 			else if (currentStep==loopRanges[currentLoopRange].1){
 				//ended the loop. time to move on
@@ -401,6 +491,7 @@ class PlanetLevelViewController: DevLevelViewController {
 			}
 			else {
 				//not in a loop
+				print("7")
 				currentIndexCorrected += 1
 			}
 		}
@@ -409,7 +500,7 @@ class PlanetLevelViewController: DevLevelViewController {
 			print("no loops")
 			currentIndexCorrected += 1
 		}
-		
+		print("6")
 		currentStep += 1
 		
 		//handles the last command in the sequence if it is not a winning command
@@ -418,7 +509,7 @@ class PlanetLevelViewController: DevLevelViewController {
 			
 			// All commands run, ready to take input again
 			
-			
+			print("checkWin")
 			let won = checkWin()
 			
 			if (won) {
@@ -498,6 +589,18 @@ class PlanetLevelViewController: DevLevelViewController {
 			tickTimer.invalidate()
 			takeInput = true
 		}
+	}
+	
+	func printStatus(){
+		print("__________________________START__________________________")
+		print("command queue views: "+String(describing: commandQueueViews))
+		print("command queue: "+String(describing: commandQueue))
+		print("real command queue: "+String(describing: realCommandQueue))
+		print("loop ranges: "+String(describing: loopRanges))
+		print("loop labels: "+String(describing: loopLabels))
+		print("numofloopsperloop: "+String(describing: numOfLoopsPerLoop))
+		print("loopcommands: "+String(describing: loopCommands))
+		print("__________________________END____________________________")
 	}
 	
 }
