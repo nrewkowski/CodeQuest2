@@ -22,6 +22,7 @@ class CommandHandler {
 	var commandCount: Int = 0
 	var myGameScene : GameScene
 	var onGoal : Bool = false
+	var audioPlayer2 = AVAudioPlayer()
 
 	init(level : inout [[gameCell]], playerLoc : inout (Int, Int), goalLoc : inout (Int, Int), myGameScene: GameScene) {
 		//TODO: Fix gamescene bodge
@@ -52,6 +53,30 @@ class CommandHandler {
 			return (false, onGoal)
 		} else {
 			print("Unrecognized command index: \(input)")
+			return (false, onGoal)
+		}
+	}
+	
+	func handleLoop(commandToLoop: Int, numOfLoops: Int) -> (Bool, Bool) {
+		var returnValue1=false
+		if (commandToLoop == 0 || commandToLoop == 1 || commandToLoop == 2 || commandToLoop == 3) {
+			DispatchQueue.main.sync{
+				for i in 0...numOfLoops-1 {
+					returnValue1 = self.moveCmd(input: commandToLoop)
+				}
+			}
+			
+			
+			return (returnValue1, onGoal)
+		}
+		else if(commandToLoop == 4) {
+			for i in 0...numOfLoops-1 {
+				blastCommand()
+			}
+			
+			return (false, onGoal)
+		} else {
+			print("Unrecognized command index: \(commandToLoop)")
 			return (false, onGoal)
 		}
 	}
@@ -177,6 +202,24 @@ class CommandHandler {
 				if (newLoc.isWall) {
 					return false
 				}
+				
+				if newLoc.isFuel {
+					print("was fuel")
+					//playSound(sound: URL(fileURLWithPath: Bundle.main.path(forResource: "AlienSound", ofType:"wav")!))
+					
+					do {
+						try audioPlayer2 = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "AlienSound", ofType:"wav")!))
+						
+						audioPlayer2.volume = 1.0
+						//audioPlayer.play
+						audioPlayer2.prepareToPlay()
+						audioPlayer2.play()
+						
+					} catch{
+						print ("Failed to play sound:")
+					}
+				}
+				//print("make not player")
 				
 				oldLoc.makeNotPlayer()
 				playerLoc = newCoords

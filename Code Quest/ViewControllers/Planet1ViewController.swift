@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
+import SpriteKit
+import Darwin
 
 class Planet1ViewController: UIViewController {
 
@@ -19,9 +22,23 @@ class Planet1ViewController: UIViewController {
     @IBOutlet weak var level2HighScore: UILabel!
     @IBOutlet weak var level3HighScore: UILabel!
     
-    
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
+	var musicPlayer2 = AVAudioPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		do {
+			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
+			musicPlayer2.numberOfLoops = -1
+			musicPlayer2.volume = 1.0 * musicVolume
+			
+			
+			let sdelay : TimeInterval = 0.1
+			let now = musicPlayer2.deviceCurrentTime
+			musicPlayer2.play(atTime: now+sdelay)
+		} catch {
+			print ("music failed")
+		}
 		
 		self.navigationItem.title="Planet 1"
 
@@ -211,15 +228,18 @@ class Planet1ViewController: UIViewController {
         }
         else if segue.identifier=="p1l2"{
             selectedLevel=levels[1]
+			levelViewController.levelNumber=2
             levelViewController.bestScore=levels[1].highscore
         }
         else {
-            selectedLevel=levels[2]
+            selectedLevel=levels[3]
+			levelViewController.levelNumber=3
             levelViewController.bestScore=levels[2].highscore
         }
 		levelViewController.level = selectedLevel
 		levelViewController.devParentLevelTableViewController = self
+		musicPlayer2.stop()
     }
 	
-
+	
 }

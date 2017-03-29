@@ -27,6 +27,14 @@ class PlanetLevelViewController: DevLevelViewController {
     var planetNumber = 0
     var levelNumber:Int = 0
     var bestScore=0;
+	var numOfLoopsPerLoop : [Int] = []
+	var loopCommands : [Int] = []
+	var loopIndex=0
+	var realCommandQueue: [Int] = []
+	var loopRanges:[(Int,Int)]=[]
+	var currentIndexCorrected=0
+	var currentLoopRange=0
+	var totalNumOfLoops=0
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -53,7 +61,7 @@ class PlanetLevelViewController: DevLevelViewController {
 			let sdelay : TimeInterval = 0.1
 			let now = musicPlayer.deviceCurrentTime
 			musicPlayer.play(atTime: now+sdelay)
-			drumPlayer.play(atTime: now+sdelay)
+			//drumPlayer.play(atTime: now+sdelay)
 		} catch {
 			print ("music failed")
 		}
@@ -197,6 +205,7 @@ class PlanetLevelViewController: DevLevelViewController {
 				
 				commandQueue.append(type.rawValue)
 				commandQueueViews.append(tempCell)
+				realCommandQueue.append(type.rawValue)
 				playSound(sound: testCommandSounds[type.rawValue])
 			} else if(type.rawValue < 5 && commandQueue.count >= 28) { //the queue is full
 				
@@ -208,7 +217,79 @@ class PlanetLevelViewController: DevLevelViewController {
 				
 				
 				
-			} else { // Command is to be executed immediately, deals with buttons that are not commands for the player (erase, queue, etc)
+			} else if type.rawValue == 8 {
+				print("loop pressed")
+				print("real queue before="+String(realCommandQueue.count))
+				if (commandQueue.count > 0) {
+					if (commandQueue[commandQueue.count-1] != 8){
+						let commandToLoop = commandQueue[commandQueue.count-1]
+						print("loop "+testImageNames[commandToLoop])
+						
+						var doneCountingLoops=false
+						var index = commandQueue.count-2
+						var numOfLoops=1
+						
+						while (!doneCountingLoops){
+							if index >= 0{
+								if (commandQueue[index] == commandToLoop){
+									numOfLoops += 1
+								}
+								else{
+									doneCountingLoops=true
+								}
+								index -= 1
+							}
+							else{
+								doneCountingLoops=true
+							}
+						}
+						print("num of loops="+String(numOfLoops))
+						
+						var i = 0
+						print("real queue before="+String(realCommandQueue.count))
+						for i in 0...numOfLoops-1 {
+							print("pop view")
+							commandQueueViews.popLast()?.removeFromSuperview()
+							commandQueue.popLast()
+							//realCommandQueue.append(commandToLoop)
+						}
+						print("real queue after="+String(realCommandQueue.count))
+						let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
+						tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+						tempCell.isAccessibilityElement = true
+						tempCell.accessibilityTraits = UIAccessibilityTraitImage
+						tempCell.accessibilityTraits = UIAccessibilityTraitNone
+						tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+						
+						self.view.addSubview(tempCell)
+						
+						
+						var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+						loopLabel.textAlignment = .center
+						loopLabel.text=String(numOfLoops)
+						loopLabel.font = loopLabel.font.withSize(60)
+						loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+						self.view.addSubview(loopLabel)
+						
+						commandQueue.append(type.rawValue)
+						//realCommandQueue.append(type.rawValue)
+						commandQueueViews.append(tempCell)
+						playSound(sound: testCommandSounds[commandToLoop])
+						numOfLoopsPerLoop.append(numOfLoops)
+						loopCommands.append(commandToLoop)
+						loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
+						totalNumOfLoops += 1
+						print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
+						print(loopCommands[loopCommands.count-1])
+						print(loopRanges)
+					}
+				}
+				else{
+					print("nothing to loop")
+				}
+			}
+			
+			else { // Command is to be executed immediately, deals with buttons that are not commands for the player (erase, queue, etc)
 				if (type == ButtonType.ERASE1) {
 					commandQueueViews.popLast()?.removeFromSuperview()
 					commandQueue.popLast()
@@ -219,6 +300,7 @@ class PlanetLevelViewController: DevLevelViewController {
 					}
 					commandQueueViews.removeAll()
 					commandQueue.removeAll()
+					realCommandQueue.removeAll()
 				} else if (type == ButtonType.QUEUESOUND) {
 					takeInput = false
 					currentStep = 0
@@ -241,9 +323,14 @@ class PlanetLevelViewController: DevLevelViewController {
 			resetLevelState()
 			
 			currentStep = 0
+			loopIndex=0
+			currentIndexCorrected=0
+			currentLoopRange=0
 			//			won = false
 			
 			//i believe that this limits the time for the player to do 1 action
+			//interval was 0.4054
+			print("real count="+String(realCommandQueue.count))
 			tickTimer = Timer.scheduledTimer(timeInterval: 0.4054, target:self, selector:#selector(LevelViewController.runCommands), userInfo:nil, repeats: true)
 		}
 	}
@@ -251,36 +338,83 @@ class PlanetLevelViewController: DevLevelViewController {
 	/// Executes one step of the game loop
 	override func runCommands() {
 		musicPlayer.volume = 0.1 * musicVolume
-		
+		print("current step="+String(currentStep))
+		print("correctedIndex="+String(currentIndexCorrected))
+		print(realCommandQueue)
 		var moved = false
+		//var loopIndex=0
 		
 		//i guess that this animates the button that represents the current action?
-		if (currentStep != 0 && !aboutToWin) {
-			commandQueueViews[currentStep-1].frame.origin.y += 10
+		if (currentIndexCorrected != 0 && !aboutToWin) {
+			//+y is downwards, so this moves the previous tile back down
+			//BUG: we need to borrow the below loop-detection logic to make sure we don't move the same block multiple times
+			commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 		}
 		
 		//handles a basic command
-		if currentStep < commandQueue.count && !aboutToWin {
-			if (currentStep < (commandQueue.count - 1)) {
-				commandQueueViews[currentStep].frame.origin.y -= 10
+		if currentStep < realCommandQueue.count && !aboutToWin {
+			if (currentIndexCorrected < (realCommandQueue.count - 1)) {
+				commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 			}
 			//			var maybewon: Bool
 			//			(moved, maybewon) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
-			(moved, onShip) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
+			
+			if (realCommandQueue[currentStep] != 8){
+				(moved, onShip) = (cmdHandler?.handleCmd(input: realCommandQueue[currentStep]))!
+				//(moved, onShip) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
+			}
+			else{
+				print("starting loop")
+				let commandToPlay=loopCommands[loopCommands.count-loopIndex-1]
+				let numOfLoopsToPlay=numOfLoopsPerLoop[numOfLoopsPerLoop.count-loopIndex-1]
+				print("process loop "+String(commandToPlay) + "___" + String(numOfLoopsToPlay))
+				
+				(moved, onShip) = (cmdHandler?.handleLoop(commandToLoop: commandToPlay, numOfLoops: numOfLoopsToPlay))!
+				loopIndex += 1
+				print("done")
+			}
+			
 			//			won = won || maybewon
 			if (moved) {
 				scene?.movePlayer(newPos: (cmdHandler?.playerLoc)!)
-			} else if commandQueue[currentStep] < 4{
+			} else if realCommandQueue[currentStep] < 4{
 				//not really sure what this does...
-				scene?.tryToMoveTo(newPos: (cmdHandler?.newCoordsFromCommand(input: commandQueue[currentStep]))!)
+				if (realCommandQueue[currentStep] != 8){
+				scene?.tryToMoveTo(newPos: (cmdHandler?.newCoordsFromCommand(input: realCommandQueue[currentStep]))!)
+				}
+				else{
+					print("trying to move")
+				}
 			}
 			
+		}
+		
+		if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+			if (currentStep>=loopRanges[currentLoopRange].0 && currentStep<loopRanges[currentLoopRange].1){
+				//don't update currentIndexCorrected...we're in a loop
+			}
+			else if (currentStep==loopRanges[currentLoopRange].1){
+				//ended the loop. time to move on
+				print("ended loop")
+				currentLoopRange += 1
+				currentIndexCorrected += 1
+			}
+			else {
+				//not in a loop
+				currentIndexCorrected += 1
+			}
+		}
+		else{
+			//there are no loops at all
+			print("no loops")
+			currentIndexCorrected += 1
 		}
 		
 		currentStep += 1
 		
 		//handles the last command in the sequence if it is not a winning command
-		if currentStep >= commandQueue.count && !aboutToWin{
+		//note that the player can move past the ship without winning
+		if currentStep >= realCommandQueue.count && !aboutToWin{
 			
 			// All commands run, ready to take input again
 			
@@ -315,13 +449,14 @@ class PlanetLevelViewController: DevLevelViewController {
 			alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.musicPlayer.volume = 1.0 * musicVolume}))
 			self.present(alert, animated: true, completion: nil)
 			
-			/*
+			
 			//updates the level selection screen, since the viewcontrollers are currently in a pop/push queue
-			if let selectedIndexPath = parentLevelTableViewController?.tableView.indexPathForSelectedRow{
-				parentLevelTableViewController?.levels[selectedIndexPath.row] = level!
-				parentLevelTableViewController?.saveLevels()
-				parentLevelTableViewController?.tableView.reloadRows(at: [selectedIndexPath], with:.none)
-			}*/
+			//if let selectedIndexPath = parentLevelTableViewController?.tableView.indexPathForSelectedRow{
+				//devParentLevelTableViewController?.levels[selectedIndexPath.row] = level!
+			//BUG: update parent controller's labels
+				devParentLevelTableViewController?.saveLevels()
+				//parentLevelTableViewController?.tableView.reloadRows(at: [selectedIndexPath], with:.none)
+			//}
 			aboutToWin = false
 			tickTimer.invalidate()
 			takeInput = true

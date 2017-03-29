@@ -256,7 +256,7 @@ class LevelTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowStage" {
-            let levelViewController = segue.destination as! DevLevelViewController
+            let levelViewController = segue.destination as! LevelViewController
             if let selectedLevelCell = sender as? LevelTableViewCell {
                 let indexPath = tableView.indexPath(for: selectedLevelCell)!
                 let selectedLevel = levels[indexPath.row]
