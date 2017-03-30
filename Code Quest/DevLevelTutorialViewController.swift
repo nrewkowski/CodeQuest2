@@ -20,6 +20,8 @@ class DevLevelTutorialViewController: UIViewController {
 	///The parent view controller
 	var myParent : PlanetLevelViewController?
 	
+	var layoutText : String = "layout"
+	
 	
 	//init(tutorialText : String) {
 	//	self.tutorialText = tutorialText
@@ -38,6 +40,10 @@ class DevLevelTutorialViewController: UIViewController {
 		let backgroundImage = UIImageView(frame:CGRect(x: LevelViewController.scaleDims(input: 0, x: true), y: LevelViewController.scaleDims(input: 0, x: false), width: LevelViewController.scaleDims(input: 1000, x: true), height: LevelViewController.scaleDims(input: 600, x: false)))
 		backgroundImage.image = UIImage(named: background)
 		self.view.insertSubview(backgroundImage, at: 0)
+		
+		
+		
+		
 		let button = UIButton(type:.system)
 		button.frame = CGRect(x: LevelViewController.scaleDims(input: 750, x: true), y: LevelViewController.scaleDims(input: 450, x: false), width: LevelViewController.scaleDims(input: 200, x: true), height: LevelViewController.scaleDims(input: 100, x: false))
 		button.setTitle("Start Level", for: UIControlState.normal)
@@ -45,7 +51,7 @@ class DevLevelTutorialViewController: UIViewController {
 		button.titleLabel!.font = button.titleLabel!.font.withSize(30)
 		button.addTarget(self, action: #selector(DevLevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
 		self.view.addSubview(button)
-		button.accessibilityTraits = UIAccessibilityTraitNone
+		//button.accessibilityTraits = UIAccessibilityTraitNone
 		let label = UILabel(frame:CGRect(x: LevelViewController.scaleDims(input: 300, x: true),y: LevelViewController.scaleDims(input: 30, x: false),width: LevelViewController.scaleDims(input: 550, x: true), height: LevelViewController.scaleDims(input: 400, x: false)))
 		//label.center = CGPoint(x:160, y:284)
 		label.backgroundColor = .clear
@@ -56,6 +62,19 @@ class DevLevelTutorialViewController: UIViewController {
 		label.text = tutorialText
 		label.textColor = UIColor.white
 		self.view.addSubview(label)
+		
+		let layoutButton = UIButton(type:.system)
+		layoutButton.frame = CGRect(x: LevelViewController.scaleDims(input: 50, x: true), y: LevelViewController.scaleDims(input: 50, x: false), width: LevelViewController.scaleDims(input: 200, x: true), height: LevelViewController.scaleDims(input: 100, x: false))
+		layoutButton.setTitle("LayoutButton", for: UIControlState.normal)
+		
+		layoutButton.titleLabel!.font = layoutButton.titleLabel!.font.withSize(30)
+		layoutButton.addTarget(self, action: #selector(DevLevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
+		layoutButton.accessibilityLabel=layoutText
+		layoutButton.isEnabled=false
+		self.view.addSubview(layoutButton)
+		//layoutButton.accessibilityTraits = UIAccessibilityTraitNone
+		//layoutButton.element
+		view.accessibilityElements=[layoutButton,label,button]
 		
 	}
 	

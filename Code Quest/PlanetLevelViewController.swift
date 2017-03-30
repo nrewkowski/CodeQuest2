@@ -36,6 +36,7 @@ class PlanetLevelViewController: DevLevelViewController {
 	var currentLoopRange=0
 	var totalNumOfLoops=0
 	var loopLabels:[UILabel]=[]
+	var layoutText:String = ""
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -113,8 +114,9 @@ class PlanetLevelViewController: DevLevelViewController {
 			//let alert = UIAlertController(title: level?.name, message: tutorialString, preferredStyle: UIAlertControllerStyle.alert)
 			//alert.addAction(UIAlertAction(title: "Start level", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.drumPlayer.volume = 1}))
 			//self.present(alert, animated: true, completion: nil)
-			let tText = LevelTutorialViewController()
+			let tText = DevLevelTutorialViewController()
 			tText.tutorialText = tutorialString
+			tText.layoutText=layoutText
 			tText.modalPresentationStyle = .formSheet
 			tText.modalTransitionStyle = .coverVertical
 			tText.myParent = self
@@ -193,7 +195,7 @@ class PlanetLevelViewController: DevLevelViewController {
 				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
 				tempCell.isAccessibilityElement = true
 				tempCell.accessibilityTraits = UIAccessibilityTraitImage
-				tempCell.accessibilityTraits = UIAccessibilityTraitNone
+				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
 				tempCell.accessibilityLabel = testImageNames[type.rawValue]
 				
 				if (type.rawValue == 4) {
@@ -259,7 +261,7 @@ class PlanetLevelViewController: DevLevelViewController {
 						tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
 						tempCell.isAccessibilityElement = true
 						tempCell.accessibilityTraits = UIAccessibilityTraitImage
-						tempCell.accessibilityTraits = UIAccessibilityTraitNone
+						//tempCell.accessibilityTraits = UIAccessibilityTraitNone
 						tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
 						
 						self.view.addSubview(tempCell)

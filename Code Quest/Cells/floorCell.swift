@@ -48,7 +48,7 @@ class floorCell: gameCell {
 		isFuel = false
 		self.image = UIImage(named:"player.png")
 		self.accessibilityLabel = "Player"
-		self.accessibilityTraits = UIAccessibilityTraitNone
+		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}
 	
 	///Changes image and VoiceOver label to floor
@@ -59,7 +59,7 @@ class floorCell: gameCell {
 		} else {
 			self.image = UIImage(named:"grid.png")
 			self.accessibilityLabel = "Empty"
-			self.accessibilityTraits = UIAccessibilityTraitNone
+			//self.accessibilityTraits = UIAccessibilityTraitNone
 		}
 	}
 	
@@ -69,28 +69,28 @@ class floorCell: gameCell {
 		wasGoal = true
 		self.image = UIImage(named:"ship_grid.png")
 		self.accessibilityLabel = "Ship"
-		self.accessibilityTraits = UIAccessibilityTraitNone
+		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}
 	
 	func makeNotWall() {
 		self.isWall = false
 		self.image = UIImage(named:"grid.png")
 		self.accessibilityLabel = "Empty"
-		self.accessibilityTraits = UIAccessibilityTraitNone
+		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}
 	
 	func makeWall() {
 		self.isWall = true
 		self.image = UIImage(named:"break_wall.png")
 		self.accessibilityLabel = "Cracked wall"
-		self.accessibilityTraits = UIAccessibilityTraitNone
+		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}
 	
 	func makeFuel() {
 		self.isFuel = true
 		self.image = UIImage(named:"fuel_grid.png")
 		self.accessibilityLabel = "Fuel"
-		self.accessibilityTraits = UIAccessibilityTraitNone
+		//self.accessibilityTraits = UIAccessibilityTraitNone
 		self.contentMode = .scaleAspectFit
 	}
 	

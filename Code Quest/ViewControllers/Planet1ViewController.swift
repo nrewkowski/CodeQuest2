@@ -242,6 +242,43 @@ class Planet1ViewController: UIViewController {
         }
 		levelViewController.level = selectedLevel
 		levelViewController.devParentLevelTableViewController = self
+		
+		var layoutText = ""
+		let levelHeight = selectedLevel.data.count
+		let levelWidth = selectedLevel.data[0].count
+		let gridString = "The level is "+String(levelHeight)+" rows tall and "+String(levelWidth)+" columns wide."
+		print(gridString)
+		let playerString = "The player is located at row 1 and column 1. "
+		let goalRow = selectedLevel.goalLoc.1 + 1
+		let goalColumn = selectedLevel.goalLoc.0 + 1
+		let goalString = "The rocket ship is located at row " + String(goalRow) + ", column " + String(goalColumn) + ". "
+		print(goalString)
+		
+		var alienLocation : (Int,Int) = (-1,-1)
+		
+		//DispatchQueue.main.sync{
+			var i = 0
+			for row in selectedLevel.data {
+				if (row.contains(4)) {
+					alienLocation = ( Int(i) + 1,Int(row.index(of: 4)!) + 1)
+				}
+				i += 1
+			}
+		//}
+		
+		var alienString = ""
+		
+		if (alienLocation == (-1,-1)){
+			alienString = "There is no alien in this level."
+		}
+		else{
+			alienString = "The alien is located at row "+String(alienLocation.0)+", column "+String(alienLocation.1)+"."
+		}
+		
+		print(alienString)
+		layoutText = gridString+playerString+goalString+alienString
+		print(layoutText)
+		levelViewController.layoutText=layoutText
 		//musicPlayer2.stop()
     }
 	
