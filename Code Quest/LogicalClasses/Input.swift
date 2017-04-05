@@ -19,6 +19,7 @@ enum ButtonType:Int {
 	case ERASEALL = 6
 	case QUEUESOUND = 7
 	case LOOPCOMMAND = 8
+	case HELP = 9
 }
 
 class Input: UIButton {
@@ -29,7 +30,9 @@ class Input: UIButton {
 	
 	init(type: ButtonType, frame: CGRect) {
 		self.type = type
+		
 		super.init(frame: frame)
+		self.backgroundColor = UIColor.clear
 		switch type {
 		case ButtonType.LEFT:
 			self.setImage(UIImage(named:"left.png"), for: UIControlState.normal)
@@ -67,6 +70,9 @@ class Input: UIButton {
 			self.setImage(UIImage(named:"loopsymbol.png"), for: UIControlState.normal)
 			self.accessibilityLabel = "Loop"
 			//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.HELP:
+			self.setImage(UIImage(named:"helpsymbol.png"), for: .normal)
+			self.accessibilityLabel = "Help"
 		}
 		
 		
