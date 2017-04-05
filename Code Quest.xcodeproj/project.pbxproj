@@ -19,6 +19,8 @@
 		3D34AC9B1E82349600CEB706 /* DevLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */; };
 		3D75C3851E859F60008EF6AE /* DevLevelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */; };
 		3D75C3871E859FD2008EF6AE /* DevLevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D75C3861E859FD2008EF6AE /* DevLevelTableViewCell.swift */; };
+		3D7B00AD1E953C510051F674 /* Planet2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B00AC1E953C510051F674 /* Planet2ViewController.swift */; };
+		3D7B00AF1E953C970051F674 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B00AE1E953C970051F674 /* PlanetViewController.swift */; };
 		3DB6D22C1E6D1D7A00E069B2 /* LevelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */; };
 		3DB6D22D1E6D1D7A00E069B2 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22B1E6D1D7A00E069B2 /* LevelViewController.swift */; };
 		3DB6D2301E6D1D8600E069B2 /* LevelTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */; };
@@ -84,6 +86,8 @@
 		3D34AC9A1E82349600CEB706 /* DevLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelViewController.swift; sourceTree = "<group>"; };
 		3D75C3841E859F60008EF6AE /* DevLevelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTableViewController.swift; sourceTree = "<group>"; };
 		3D75C3861E859FD2008EF6AE /* DevLevelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTableViewCell.swift; sourceTree = "<group>"; };
+		3D7B00AC1E953C510051F674 /* Planet2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet2ViewController.swift; sourceTree = "<group>"; };
+		3D7B00AE1E953C970051F674 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
 		3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelTableViewController.swift; path = ViewControllers/LevelTableViewController.swift; sourceTree = "<group>"; };
 		3DB6D22B1E6D1D7A00E069B2 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelViewController.swift; path = ViewControllers/LevelViewController.swift; sourceTree = "<group>"; };
 		3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelTutorialViewController.swift; path = ViewControllers/LevelTutorialViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */,
 				3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */,
 				3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */,
+				3D7B00AC1E953C510051F674 /* Planet2ViewController.swift */,
+				3D7B00AE1E953C970051F674 /* PlanetViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				3DB723B51E8B368700921D62 /* DevCommandHandler.swift in Sources */,
 				3DB6D22D1E6D1D7A00E069B2 /* LevelViewController.swift in Sources */,
 				3DB6D2311E6D1D8600E069B2 /* settingsTableViewController.swift in Sources */,
+				3D7B00AD1E953C510051F674 /* Planet2ViewController.swift in Sources */,
 				3DB723AD1E8B2A1800921D62 /* Planet1ViewController.swift in Sources */,
 				3DB6D23F1E6D1DE400E069B2 /* SoundPlayer.swift in Sources */,
 				3D75C3851E859F60008EF6AE /* DevLevelTableViewController.swift in Sources */,
@@ -409,6 +416,7 @@
 				3DB723B11E8B2CB800921D62 /* DevLevelTutorialViewController.swift in Sources */,
 				3DB6D2491E6D1E1500E069B2 /* LevelTableViewCell.swift in Sources */,
 				3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */,
+				3D7B00AF1E953C970051F674 /* PlanetViewController.swift in Sources */,
 				3D75C3871E859FD2008EF6AE /* DevLevelTableViewCell.swift in Sources */,
 				3DB6D23D1E6D1DE400E069B2 /* Level.swift in Sources */,
 			);
