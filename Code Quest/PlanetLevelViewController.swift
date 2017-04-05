@@ -192,7 +192,7 @@ class PlanetLevelViewController: DevLevelViewController {
 				
 				//queues up this command, adds accessibility, etc.
 				let tempCell = UIImageView(image: UIImage(named:testImageNames[type.rawValue] + ".png"))
-				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+				//tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
 				tempCell.isAccessibilityElement = true
 				tempCell.accessibilityTraits = UIAccessibilityTraitImage
 				//tempCell.accessibilityTraits = UIAccessibilityTraitNone

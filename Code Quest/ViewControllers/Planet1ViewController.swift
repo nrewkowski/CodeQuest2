@@ -22,7 +22,7 @@ class Planet1ViewController: UIViewController {
     @IBOutlet weak var level2HighScore: UILabel!
     @IBOutlet weak var level3HighScore: UILabel!
     
-	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"mp3")!);
 	var musicPlayer2 = AVAudioPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
