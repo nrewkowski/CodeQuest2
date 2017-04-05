@@ -7,7 +7,7 @@
 //
 
 import UIKit
-let num_command_buttons = 9
+let num_command_buttons = 10
 
 // The first num_queue_buttons buttons represent queueable commands that should come before the divider
 let num_queue_buttons = 5
@@ -19,6 +19,8 @@ class CommandView: UIView {
 	var commandButtons = [Input]()
 	///The game controller that is this view's parent
 	var gameControllerView : LevelViewController?
+	
+	var pickerView:UIPickerView? = nil
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -33,6 +35,12 @@ class CommandView: UIView {
 			command.addTarget(self, action: #selector(CommandView.commandTapped(commandButton:)), for: .touchDown)
 			commandButtons += [command]
 			self.addSubview(command)
+			if i==8 {
+				pickerView=UIPickerView(frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))))
+				//pickerView.dataSource=self
+				//pickerView.delegate=self
+				self.addSubview(pickerView!)
+			}
 		}
 	}
 	

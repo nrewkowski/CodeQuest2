@@ -17,9 +17,14 @@ let testImageNames = ["left", "up", "down", "right", "blast_button"]
 let testCommandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
-class PlanetLevelViewController: DevLevelViewController {
+class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+	@available(iOS 2.0, *)
+	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+
 	
-	var devParentLevelTableViewController : Planet1ViewController? = nil
+	var devParentLevelTableViewController : PlanetViewController? = nil
 	var devCmdHandler: DevCommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
@@ -37,6 +42,7 @@ class PlanetLevelViewController: DevLevelViewController {
 	var totalNumOfLoops=0
 	var loopLabels:[UILabel]=[]
 	var layoutText:String = ""
+	var pickerData = ["1","2","3","4","5"]
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -134,6 +140,8 @@ class PlanetLevelViewController: DevLevelViewController {
 		//adding the grid to the gamescene in scenekit
 		ButtonView.gameControllerView = self
 		ButtonView.backgroundColor = sceneColor
+		ButtonView.pickerView?.delegate=self
+		ButtonView.pickerView?.dataSource=self
 		let skView = SKView(frame: view.bounds)
 		skView.isUserInteractionEnabled = false
 		skView.allowsTransparency = true
@@ -145,6 +153,113 @@ class PlanetLevelViewController: DevLevelViewController {
 		self.cmdHandler = CommandHandler(level: &tileArray, playerLoc: &playerLoc, goalLoc: &goalLoc, myGameScene: self.scene!)
 		
 		//super.viewDidLoad()
+	}
+	
+	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return pickerData.count
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		return pickerData[row]
+	}
+	
+ 
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		/*
+		let alertController = UIAlertController(title: "Error", message: pickerData[row], preferredStyle: UIAlertControllerStyle.alert)
+		alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+		self.present(alertController, animated: true, completion: nil)*/
+		//myLabel.text = pickerData[row]
+		
+		print("loop pressed")
+		print("real queue before="+String(realCommandQueue.count))
+		var numOfLoops:Int = Int(pickerData[row])!
+		if (commandQueue.count > 0) {
+			if (commandQueue[commandQueue.count-1] != 8){
+				let commandToLoop = commandQueue[commandQueue.count-1]
+				print("loop "+testImageNames[commandToLoop])
+				
+				var doneCountingLoops=false
+				var index = commandQueue.count-2
+				//var numOfLoops=1
+				
+				/*
+				while (!doneCountingLoops){
+					if index >= 0{
+						if (commandQueue[index] == commandToLoop){
+							numOfLoops += 1
+						}
+						else{
+							doneCountingLoops=true
+						}
+						index -= 1
+					}
+					else{
+						doneCountingLoops=true
+					}
+				}*/
+				print("num of loops="+String(numOfLoops))
+				
+				var i = 0
+				print("real queue before="+String(realCommandQueue.count))
+				commandQueueViews.popLast()?.removeFromSuperview()
+				commandQueue.popLast()
+				realCommandQueue.popLast()
+				for i in 0...numOfLoops-1 {
+					print("pop view")
+					//commandQueue.append(commandToLoop)
+					realCommandQueue.append(commandToLoop)
+				}
+				
+				/*
+
+commandQueue.append(type.rawValue)
+commandQueueViews.append(tempCell)
+realCommandQueue.append(type.rawValue)
+*/
+				print("real queue after="+String(realCommandQueue.count))
+				let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
+				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+				tempCell.isAccessibilityElement = true
+				tempCell.accessibilityTraits = UIAccessibilityTraitImage
+				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
+				tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+				
+				self.view.addSubview(tempCell)
+				
+				
+				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+				loopLabel.textAlignment = .center
+				loopLabel.text=String(numOfLoops)
+				loopLabel.font = loopLabel.font.withSize(60)
+				loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+				self.view.addSubview(loopLabel)
+				loopLabels.append(loopLabel)
+				
+				
+				commandQueue.append(8)
+				//realCommandQueue.append(type.rawValue)
+				commandQueueViews.append(tempCell)
+				playSound(sound: testCommandSounds[commandToLoop])
+				numOfLoopsPerLoop.append(numOfLoops)
+				loopCommands.append(commandToLoop)
+				loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
+				totalNumOfLoops += 1
+				
+				print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
+				print(loopCommands[loopCommands.count-1])
+				print(loopRanges)
+				print(totalNumOfLoops)
+			}
+		}
+		else{
+			print("nothing to loop")
+		}
+
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -346,6 +461,7 @@ class PlanetLevelViewController: DevLevelViewController {
 					loopLabels.removeAll()
 					numOfLoopsPerLoop.removeAll()
 					loopCommands.removeAll()
+					totalNumOfLoops = 0
 					
 				} else if (type == ButtonType.QUEUESOUND) {
 					takeInput = false
