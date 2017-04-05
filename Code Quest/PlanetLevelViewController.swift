@@ -515,10 +515,14 @@ realCommandQueue.append(type.rawValue)
 			print("2")
 			if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
 				print("3")
-				if (currentStep==loopRanges[currentLoopRange].0){
+				if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
 					print("beginning of loop. move up")
 					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 					loopLabels[currentLoopRange-1].frame.origin.y += 10
+				}
+				else if (currentStep==loopRanges[currentLoopRange].0){
+					print("beginning of loop. move up")
+					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 				}
 				
 			}
