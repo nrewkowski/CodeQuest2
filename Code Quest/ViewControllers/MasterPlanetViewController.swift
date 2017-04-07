@@ -1,48 +1,55 @@
 //
-//  Planet2ViewController.swift
+//  MasterPlanetViewController.swift
 //  Code Quest
 //
-//  Created by Nicholas Rewkowski on 4/5/17.
+//  Created by Nicholas Rewkowski on 4/7/17.
 //  Copyright © 2017 Spookle. All rights reserved.
 //
 
+import Foundation
 
+//
+//  Planet1ViewController.swift
+//  Code Quest
+//
+//  Created by Nicholas Rewkowski on 3/28/17.
+//  Copyright © 2017 Spookle. All rights reserved.
+//
 
 import UIKit
 import AVFoundation
 import SpriteKit
 import Darwin
 
-class Planet2ViewController: UIViewController, PlanetViewController {
+class MasterPlanetViewController: UIViewController, PlanetViewController {
 	
 	///Array of level objects
 	var levels = [Level]()
 	var defaults = UserDefaults.standard
 	
+	var levelsToUse:[Int] = []
+	
+	var planetNumber:Int = -1
+	
+	var levelNumber:Int = -1
+	
 	
 	@IBOutlet weak var level1HighScore: UILabel!
 	@IBOutlet weak var level2HighScore: UILabel!
 	@IBOutlet weak var level3HighScore: UILabel!
+    
+    @IBOutlet weak var planetImage: UIImageView!
+    
 	
-    @IBOutlet weak var level1button: UIButton!
-    @IBOutlet weak var level2button: UIButton!
-    @IBOutlet weak var level3button: UIButton!
-    
-    
 	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
 	var musicPlayer2 = AVAudioPlayer()
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		
+		planetImage.image=UIImage(named: "planet"+String(planetNumber))
+		self.navigationItem.title="Planet "+String(planetNumber)
 		
-		self.navigationItem.title="Planet 2"
-        
-        //level1button.setImage(UIImage(named: "fuel_grid")?.image, for: .normal)
-		
-        //level1button.currentImage?.maskWithColor(color: UIColor.red)
-        //level1button.imageView?.image?.renderingMode = UIImageRenderingMode.alwaysTemplate
-        level1button.imageView?.tintColor = UIColor.green
 		//let MrMaze = Maze(width:11, height:7)
 		//levels.append(LevelFromMaze(maze: MrMaze, name: "Mr Maze's Level", tutorial:"This is Mr Maze's level"))
 		if let savedLevels = loadLevels() {
@@ -54,25 +61,25 @@ class Planet2ViewController: UIViewController, PlanetViewController {
 			musicVolume = defaults.float(forKey: "musicVolume")
 		}
 		
-		if levels[3].cleared {
-			level1HighScore.text = "Best: \(levels[3].highscore) moves"
-			level1HighScore.accessibilityLabel="Best: \(levels[3].highscore) moves"
+		if levels[levelsToUse[0]].cleared {
+			level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+			level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
 		} else {
 			level1HighScore.text = "Not Yet Cleared"
 			level1HighScore.accessibilityLabel="Level 1 not yet cleared"
 		}
 		
-		if levels[3].cleared {
-			level2HighScore.text = "Best: \(levels[4].highscore) moves"
-			level2HighScore.accessibilityLabel="Best: \(levels[4].highscore) moves"
+		if levels[levelsToUse[1]].cleared {
+			level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+			level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
 		} else {
 			level2HighScore.text = "Not Yet Cleared"
 			level2HighScore.accessibilityLabel="Level 2 not yet cleared"
 		}
 		
-		if levels[3].cleared {
-			level3HighScore.text = "Best: \(levels[5].highscore) moves"
-			level3HighScore.accessibilityLabel="Best: \(levels[5].highscore) moves"
+		if levels[levelsToUse[2]].cleared {
+			level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+			level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
 		} else {
 			level3HighScore.text = "Not Yet Cleared"
 			level3HighScore.accessibilityLabel="Level 3 not yet cleared"
@@ -119,6 +126,7 @@ class Planet2ViewController: UIViewController, PlanetViewController {
 		//             [2,2,2,2,2,2]]
 		//let level1 = Level(name: "Level 1", data: data1, startingLoc: (1, 1), goalLoc: (4, 1), tutorial: "Bring the player to the goal!")
 		//Planet 1
+		
 		let data1 = [[1,1,1,1,1]]
 		let level1 = Level(name: "Level 1-1", data: data1, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This is your ship's computer, Glados. I need you to return to me so that we can fly back to our home. To reach me simply walk right until you reach the ship.")
 		
@@ -234,75 +242,84 @@ class Planet2ViewController: UIViewController, PlanetViewController {
 	
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let levelViewController = segue.destination as! PlanetLevelViewController
-		levelViewController.planetNumber=2
-		var selectedLevel: Level;
-		selectedLevel = levels[3]
-		var isALevel=true
-		if segue.identifier=="p2l1" {
-			selectedLevel = levels[3]
-			levelViewController.levelNumber=1
-			levelViewController.bestScore=levels[3].highscore
-		}
-		else if segue.identifier=="p2l2"{
-			selectedLevel=levels[4]
-			levelViewController.levelNumber=2
-			levelViewController.bestScore=levels[4].highscore
-		}
-		else if segue.identifier=="p2l3"{
-			selectedLevel=levels[5]
-			levelViewController.levelNumber=3
-			levelViewController.bestScore=levels[5].highscore
-		}
-        else if segue.identifier=="moon1"{
-            selectedLevel=levels[6]
-            levelViewController.levelNumber=4
-            levelViewController.bestScore=levels[6].highscore
-        }
-		else{
-			isALevel = false
-		}
-		if (isALevel) {
-			levelViewController.level = selectedLevel
-			levelViewController.devParentLevelTableViewController = self
+		if (segue.identifier == "toLevel"){ //this needs to be changed....reload this viewcontroller with new data instead (FOR TO NEXT PLANET)
+			let levelViewController = segue.destination as! PlanetLevelViewController
 			
-			var layoutText = ""
-			let levelHeight = selectedLevel.data.count
-			let levelWidth = selectedLevel.data[0].count
-			let gridString = "The level is "+String(levelHeight)+" rows tall and "+String(levelWidth)+" columns wide."
-			print(gridString)
-			let playerString = "The player is located at row 1 and column 1. "
-			let goalRow = selectedLevel.goalLoc.1 + 1
-			let goalColumn = selectedLevel.goalLoc.0 + 1
-			let goalString = "The rocket ship is located at row " + String(goalRow) + ", column " + String(goalColumn) + ". "
-			print(goalString)
 			
-			var alienLocation : (Int,Int) = (-1,-1)
+			levelViewController.planetNumber = planetNumber
+			var selectedLevel: Level;
+			selectedLevel = levels[levelsToUse[levelNumber]]
+			var isALevel=true;
+//			if segue.identifier=="p"+String(planetNumber)+"l"+String(levelNumber) {
+//				selectedLevel = levels[levelsToUse[0]]
+//				levelViewController.levelNumber=1
+//				levelViewController.bestScore=levels[levelsToUse[0]].highscore
+//			}
+//			else if segue.identifier=="p1l2"{
+//				selectedLevel=levels[levelsToUse[1]]
+//				levelViewController.levelNumber=2
+//				levelViewController.bestScore=levels[levelsToUse[1]].highscore
+//			}
+//			else if segue.identifier=="p1l3"{
+//				selectedLevel=levels[levelsToUse[2]]
+//				levelViewController.levelNumber=3
+//				levelViewController.bestScore=levels[levelsToUse[2]].highscore
+//			}
+//			else{
+//				isALevel=false
+//			}
 			
-			//DispatchQueue.main.sync{
-			var i = 0
-			for row in selectedLevel.data {
-				if (row.contains(4)) {
-					alienLocation = ( Int(i) + 1,Int(row.index(of: 4)!) + 1)
-				}
-				i += 1
-			}
-			//}
-			
-			var alienString = ""
-			
-			if (alienLocation == (-1,-1)){
-				alienString = "There is no alien in this level."
+			if (levelNumber == -1){
+				isALevel=false
 			}
 			else{
-				alienString = "The alien is located at row "+String(alienLocation.0)+", column "+String(alienLocation.1)+"."
+				selectedLevel = levels[levelsToUse[levelNumber]]
+				levelViewController.levelNumber=levelNumber
+				levelViewController.bestScore=levels[levelsToUse[levelNumber]].highscore
 			}
 			
-			print(alienString)
-			layoutText = gridString+playerString+goalString+alienString
-			print(layoutText)
-			levelViewController.layoutText=layoutText
-			//musicPlayer2.stop()
+			if (isALevel) {
+				levelViewController.level = selectedLevel
+				levelViewController.devParentLevelTableViewController = self
+				
+				var layoutText = ""
+				let levelHeight = selectedLevel.data.count
+				let levelWidth = selectedLevel.data[0].count
+				let gridString = "The level is "+String(levelHeight)+" rows tall and "+String(levelWidth)+" columns wide."
+				print(gridString)
+				let playerString = "The player is located at row 1 and column 1. "
+				let goalRow = selectedLevel.goalLoc.1 + 1
+				let goalColumn = selectedLevel.goalLoc.0 + 1
+				let goalString = "The rocket ship is located at row " + String(goalRow) + ", column " + String(goalColumn) + ". "
+				print(goalString)
+				
+				var alienLocation : (Int,Int) = (-1,-1)
+				
+				//DispatchQueue.main.sync{
+				var i = 0
+				for row in selectedLevel.data {
+					if (row.contains(4)) {
+						alienLocation = ( Int(i) + 1,Int(row.index(of: 4)!) + 1)
+					}
+					i += 1
+				}
+				//}
+				
+				var alienString = ""
+				
+				if (alienLocation == (-1,-1)){
+					alienString = "There is no alien in this level."
+				}
+				else{
+					alienString = "The alien is located at row "+String(alienLocation.0)+", column "+String(alienLocation.1)+"."
+				}
+				
+				print(alienString)
+				layoutText = gridString+playerString+goalString+alienString
+				print(layoutText)
+				levelViewController.layoutText=layoutText
+				//musicPlayer2.stop()
+			}
 		}
 	}
 	
@@ -312,32 +329,20 @@ class Planet2ViewController: UIViewController, PlanetViewController {
 		//drumPlayer.stop()
 	}
 	
-	
-}
-
-extension UIImage {
     
-    func maskWithColor(color: UIColor) -> UIImage? {
-        let maskImage = cgImage!
-        
-        let width = size.width
-        let height = size.height
-        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
-        
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
-        
-        context.clip(to: bounds, mask: maskImage)
-        context.setFillColor(color.cgColor)
-        context.fill(bounds)
-        
-        if let cgImage = context.makeImage() {
-            let coloredImage = UIImage(cgImage: cgImage)
-            return coloredImage
-        } else {
-            return nil
-        }
+    @IBAction func level1ButtonPressed(_ sender: Any) {
+        levelNumber=0
+        performSegue(withIdentifier: "toLevel", sender: nil)
     }
     
+    @IBAction func level2ButtonPressed(_ sender: Any) {
+        levelNumber=1
+        performSegue(withIdentifier: "toLevel", sender: nil)
+    }
+    
+    @IBAction func level3ButtonPressed(_ sender: Any) {
+        levelNumber=2
+        performSegue(withIdentifier: "toLevel", sender: nil)
+    }
+	
 }

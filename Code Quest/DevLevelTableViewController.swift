@@ -191,6 +191,7 @@ class DevLevelTableViewController: LevelTableViewController {
 	}
 	
 	@IBAction override func AddButton(_ sender: AnyObject) {
+		
 		let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 		let vc = storyboard.instantiateViewController(withIdentifier: "settings") as! settingsTableViewController
 		vc.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -198,7 +199,7 @@ class DevLevelTableViewController: LevelTableViewController {
 		let popover: UIPopoverPresentationController = vc.popoverPresentationController!
 		popover.barButtonItem = (sender as! UIBarButtonItem)
 		present(vc, animated: true, completion: nil)
-		
+
 		
 		
 	}
