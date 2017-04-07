@@ -148,7 +148,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         
         level2Button.accessibilityLabel = "Level 2, best score = " + String(levels[levelsToUse[1]].highscore) + "moves"
         
-        level3Button.accessibilityLabel = "Level 3, best score = " + String(levels[levelsToUse[3]].highscore) + "moves"
+        level3Button.accessibilityLabel = "Level 3, best score = " + String(levels[levelsToUse[2]].highscore) + "moves"
         
         view.accessibilityElements = [level1Button, level2Button, level3Button, moon1Button, nextPlanetArrow]
 	}
