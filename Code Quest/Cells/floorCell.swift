@@ -89,7 +89,7 @@ class floorCell: gameCell {
 	func makeFuel() {
 		self.isFuel = true
 		self.image = UIImage(named:"fuel_grid.png")
-		self.accessibilityLabel = "Fuel"
+		self.accessibilityLabel = "Alien"
 		//self.accessibilityTraits = UIAccessibilityTraitNone
 		self.contentMode = .scaleAspectFit
 	}

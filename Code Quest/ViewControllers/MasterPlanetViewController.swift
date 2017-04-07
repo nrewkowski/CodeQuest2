@@ -37,8 +37,14 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 	@IBOutlet weak var level1HighScore: UILabel!
 	@IBOutlet weak var level2HighScore: UILabel!
 	@IBOutlet weak var level3HighScore: UILabel!
-    
     @IBOutlet weak var planetImage: UIImageView!
+    @IBOutlet weak var nextPlanetLabel: UILabel!
+    @IBOutlet weak var nextPlanetArrow: UIButton!
+    @IBOutlet weak var moon1Button: UIButton!
+    @IBOutlet weak var level1Button: UIButton!
+    @IBOutlet weak var level2Button: UIButton!
+    @IBOutlet weak var level3Button: UIButton!
+    
     
 	
 	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
@@ -49,41 +55,46 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		
 		planetImage.image=UIImage(named: "planet"+String(planetNumber))
 		self.navigationItem.title="Planet "+String(planetNumber)
+        
+        nextPlanetLabel.text = "Planet "+String(planetNumber+1)
+        
+        nextPlanetArrow.accessibilityLabel = "Go to planet "+String(planetNumber+1)
+
 		
 		//let MrMaze = Maze(width:11, height:7)
 		//levels.append(LevelFromMaze(maze: MrMaze, name: "Mr Maze's Level", tutorial:"This is Mr Maze's level"))
-		if let savedLevels = loadLevels() {
-			levels += savedLevels
-		} else {
-			loadDefaultLevels()
-		}
-		if defaults.object(forKey: "musicVolume") != nil {
-			musicVolume = defaults.float(forKey: "musicVolume")
-		}
-		
-		if levels[levelsToUse[0]].cleared {
-			level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
-			level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
-		} else {
-			level1HighScore.text = "Not Yet Cleared"
-			level1HighScore.accessibilityLabel="Level 1 not yet cleared"
-		}
-		
-		if levels[levelsToUse[1]].cleared {
-			level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
-			level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
-		} else {
-			level2HighScore.text = "Not Yet Cleared"
-			level2HighScore.accessibilityLabel="Level 2 not yet cleared"
-		}
-		
-		if levels[levelsToUse[2]].cleared {
-			level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
-			level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
-		} else {
-			level3HighScore.text = "Not Yet Cleared"
-			level3HighScore.accessibilityLabel="Level 3 not yet cleared"
-		}
+//		if let savedLevels = loadLevels() {
+//			levels += savedLevels
+//		} else {
+//			loadDefaultLevels()
+//		}
+//		if defaults.object(forKey: "musicVolume") != nil {
+//			musicVolume = defaults.float(forKey: "musicVolume")
+//		}
+//		
+//		if levels[levelsToUse[0]].cleared {
+//			level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+//			level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+//		} else {
+//			level1HighScore.text = "Not Yet Cleared"
+//			level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+//		}
+//		
+//		if levels[levelsToUse[1]].cleared {
+//			level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+//			level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+//		} else {
+//			level2HighScore.text = "Not Yet Cleared"
+//			level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+//		}
+//		
+//		if levels[levelsToUse[2]].cleared {
+//			level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+//			level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+//		} else {
+//			level3HighScore.text = "Not Yet Cleared"
+//			level3HighScore.accessibilityLabel="Level 3 not yet cleared"
+//		}
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -99,6 +110,47 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		} catch {
 			print ("music failed")
 		}
+        
+        if let savedLevels = loadLevels() {
+            levels += savedLevels
+        } else {
+            loadDefaultLevels()
+        }
+        if defaults.object(forKey: "musicVolume") != nil {
+            musicVolume = defaults.float(forKey: "musicVolume")
+        }
+        
+        if levels[levelsToUse[0]].cleared {
+            level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+            level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+        } else {
+            level1HighScore.text = "Not Yet Cleared"
+            level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+        }
+        
+        if levels[levelsToUse[1]].cleared {
+            level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+            level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+        } else {
+            level2HighScore.text = "Not Yet Cleared"
+            level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+        }
+        
+        if levels[levelsToUse[2]].cleared {
+            level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+            level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+        } else {
+            level3HighScore.text = "Not Yet Cleared"
+            level3HighScore.accessibilityLabel="Level 3 not yet cleared"
+        }
+        
+        level1Button.accessibilityLabel = "Level 1, best score = " + String(levels[levelsToUse[0]].highscore) + "moves"
+        
+        level2Button.accessibilityLabel = "Level 2, best score = " + String(levels[levelsToUse[1]].highscore) + "moves"
+        
+        level3Button.accessibilityLabel = "Level 3, best score = " + String(levels[levelsToUse[3]].highscore) + "moves"
+        
+        view.accessibilityElements = [level1Button, level2Button, level3Button, moon1Button, nextPlanetArrow]
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -344,5 +396,11 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         levelNumber=2
         performSegue(withIdentifier: "toLevel", sender: nil)
     }
+    
+    @IBAction func moon1ButtonPressed(_ sender: Any) {
+    }
+    
+    
+    
 	
 }

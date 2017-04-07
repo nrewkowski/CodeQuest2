@@ -87,6 +87,7 @@ class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, U
 				tileArray.append([])
 				for x in 0..<testGrid[y].count {
 					var cell:gameCell
+					//NOTE: add more cases for more wall types
 					switch testGrid[y][x] {      //Instantiate gameCells based on input array
 					case 1:
 						cell = floorCell(isWall: false, isFuel: false)

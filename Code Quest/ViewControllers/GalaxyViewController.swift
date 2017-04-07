@@ -21,6 +21,39 @@ class GalaxyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        /*
+        if let savedLevels = loadLevels() {
+            levels += savedLevels
+        } else {
+            loadDefaultLevels()
+        }
+        if defaults.object(forKey: "musicVolume") != nil {
+            musicVolume = defaults.float(forKey: "musicVolume")
+        }
+        
+        if levels[levelsToUse[0]].cleared {
+            level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+            level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+        } else {
+            level1HighScore.text = "Not Yet Cleared"
+            level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+        }
+        
+        if levels[levelsToUse[1]].cleared {
+            level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+            level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+        } else {
+            level2HighScore.text = "Not Yet Cleared"
+            level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+        }
+        
+        if levels[levelsToUse[2]].cleared {
+            level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+            level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+        } else {
+            level3HighScore.text = "Not Yet Cleared"
+            level3HighScore.accessibilityLabel="Level 3 not yet cleared"
+        }*/
         //self.navigationController?.navigationBar.isTranslucent = false
     }
 
