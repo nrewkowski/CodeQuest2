@@ -281,7 +281,7 @@
                                     <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cgb-2Q-YZh" kind="show" id="re6-te-5L6"/>
+                                    <segue destination="cgb-2Q-YZh" kind="presentation" modalPresentationStyle="formSheet" id="re6-te-5L6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h04-sN-TrN">
@@ -850,7 +850,7 @@
         <!--settings-->
         <scene sceneID="tlH-At-9sI">
             <objects>
-                <tableViewController storyboardIdentifier="mainsettings" modalPresentationStyle="overCurrentContext" id="cgb-2Q-YZh" userLabel="settings" customClass="MainMenuSettingsViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainsettings" id="cgb-2Q-YZh" userLabel="settings" customClass="MainMenuSettingsViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uml-j2-2aG">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

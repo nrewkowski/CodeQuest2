@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class MainMenuViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
 		navigationController?.navigationBar.isHidden=false
+        self.view.window!.removeGestureRecognizer(tapBGGesture)
     }
 	
 
@@ -49,5 +50,32 @@ class MainMenuViewController: UIViewController {
 //        //popover = (sender as! UIButton)
 //        present(vc, animated: true, completion: nil)
 //    }
+	
+	func settingsBGTapped(recognizer: UITapGestureRecognizer){
+		print("tapped")
+		
+		if recognizer.state == UIGestureRecognizerState.ended{
+		guard let presentedView = presentedViewController?.view else {
+		return
+		}
+		if !presentedView.bounds.contains(recognizer.location(in: presentedView)) {
+		self.dismiss(animated: true, completion: { () -> Void in
+		})
+		}
+		}
+	}
+	
+    var tapBGGesture: UITapGestureRecognizer!
+    override func viewDidAppear(_ animated: Bool) {
+        tapBGGesture = UITapGestureRecognizer(target: self, action: #selector(self.settingsBGTapped(recognizer:)))
+        tapBGGesture.delegate = self
+        tapBGGesture.numberOfTapsRequired = 1
+        tapBGGesture.cancelsTouchesInView = false
+        self.view.window!.addGestureRecognizer(tapBGGesture)
+    }
+	
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
     
 }
