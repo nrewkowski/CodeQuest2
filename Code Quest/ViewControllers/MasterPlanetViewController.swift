@@ -1,4 +1,14 @@
 //
+//  MasterPlanetViewController.swift
+//  Code Quest
+//
+//  Created by Nicholas Rewkowski on 4/7/17.
+//  Copyright © 2017 Spookle. All rights reserved.
+//
+
+import Foundation
+
+//
 //  Planet1ViewController.swift
 //  Code Quest
 //
@@ -11,61 +21,81 @@ import AVFoundation
 import SpriteKit
 import Darwin
 
-class Planet1ViewController: UIViewController, PlanetViewController {
-
+class MasterPlanetViewController: UIViewController, PlanetViewController {
+	
 	///Array of level objects
 	var levels = [Level]()
 	var defaults = UserDefaults.standard
+	
+	var levelsToUse:[Int] = []
+	
+	var planetNumber:Int = -1
+	
+	var levelNumber:Int = -1
+	
+	
+	@IBOutlet weak var level1HighScore: UILabel!
+	@IBOutlet weak var level2HighScore: UILabel!
+	@IBOutlet weak var level3HighScore: UILabel!
+    @IBOutlet weak var planetImage: UIImageView!
+    @IBOutlet weak var nextPlanetLabel: UILabel!
+    @IBOutlet weak var nextPlanetArrow: UIButton!
+    @IBOutlet weak var moon1Button: UIButton!
+    @IBOutlet weak var level1Button: UIButton!
+    @IBOutlet weak var level2Button: UIButton!
+    @IBOutlet weak var level3Button: UIButton!
     
     
-    @IBOutlet weak var level1HighScore: UILabel!
-    @IBOutlet weak var level2HighScore: UILabel!
-    @IBOutlet weak var level3HighScore: UILabel!
-    
-	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"mp3")!);
+	
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
 	var musicPlayer2 = AVAudioPlayer()
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		
-		
-		self.navigationItem.title="Planet 1"
+		planetImage.image=UIImage(named: "planet"+String(planetNumber))
+		self.navigationItem.title="Planet "+String(planetNumber)
+        
+        nextPlanetLabel.text = "Planet "+String(planetNumber+1)
+        
+        nextPlanetArrow.accessibilityLabel = "Go to planet "+String(planetNumber+1)
 
+		
 		//let MrMaze = Maze(width:11, height:7)
 		//levels.append(LevelFromMaze(maze: MrMaze, name: "Mr Maze's Level", tutorial:"This is Mr Maze's level"))
-		if let savedLevels = loadLevels() {
-			levels += savedLevels
-		} else {
-			loadDefaultLevels()
-		}
-		if defaults.object(forKey: "musicVolume") != nil {
-			musicVolume = defaults.float(forKey: "musicVolume")
-		}
-        
-		if levels[0].cleared {
-			level1HighScore.text = "Best: \(levels[0].highscore) moves"
-            level1HighScore.accessibilityLabel="Best: \(levels[0].highscore) moves"
-		} else {
-			level1HighScore.text = "Not Yet Cleared"
-            level1HighScore.accessibilityLabel="Level 1 not yet cleared"
-		}
-		
-		if levels[1].cleared {
-			level2HighScore.text = "Best: \(levels[1].highscore) moves"
-            level2HighScore.accessibilityLabel="Best: \(levels[1].highscore) moves"
-		} else {
-			level2HighScore.text = "Not Yet Cleared"
-            level2HighScore.accessibilityLabel="Level 2 not yet cleared"
-		}
-		
-		if levels[2].cleared {
-			level3HighScore.text = "Best: \(levels[2].highscore) moves"
-            level3HighScore.accessibilityLabel="Best: \(levels[2].highscore) moves"
-		} else {
-			level3HighScore.text = "Not Yet Cleared"
-            level3HighScore.accessibilityLabel="Level 3 not yet cleared"
-		}
-    }
+//		if let savedLevels = loadLevels() {
+//			levels += savedLevels
+//		} else {
+//			loadDefaultLevels()
+//		}
+//		if defaults.object(forKey: "musicVolume") != nil {
+//			musicVolume = defaults.float(forKey: "musicVolume")
+//		}
+//		
+//		if levels[levelsToUse[0]].cleared {
+//			level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+//			level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+//		} else {
+//			level1HighScore.text = "Not Yet Cleared"
+//			level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+//		}
+//		
+//		if levels[levelsToUse[1]].cleared {
+//			level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+//			level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+//		} else {
+//			level2HighScore.text = "Not Yet Cleared"
+//			level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+//		}
+//		
+//		if levels[levelsToUse[2]].cleared {
+//			level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+//			level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+//		} else {
+//			level3HighScore.text = "Not Yet Cleared"
+//			level3HighScore.accessibilityLabel="Level 3 not yet cleared"
+//		}
+	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		do {
@@ -80,12 +110,53 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		} catch {
 			print ("music failed")
 		}
+        
+        if let savedLevels = loadLevels() {
+            levels += savedLevels
+        } else {
+            loadDefaultLevels()
+        }
+        if defaults.object(forKey: "musicVolume") != nil {
+            musicVolume = defaults.float(forKey: "musicVolume")
+        }
+        
+        if levels[levelsToUse[0]].cleared {
+            level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+            level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+        } else {
+            level1HighScore.text = "Not Yet Cleared"
+            level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+        }
+        
+        if levels[levelsToUse[1]].cleared {
+            level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+            level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+        } else {
+            level2HighScore.text = "Not Yet Cleared"
+            level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+        }
+        
+        if levels[levelsToUse[2]].cleared {
+            level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+            level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+        } else {
+            level3HighScore.text = "Not Yet Cleared"
+            level3HighScore.accessibilityLabel="Level 3 not yet cleared"
+        }
+        
+        level1Button.accessibilityLabel = "Level 1, best score = " + String(levels[levelsToUse[0]].highscore) + "moves"
+        
+        level2Button.accessibilityLabel = "Level 2, best score = " + String(levels[levelsToUse[1]].highscore) + "moves"
+        
+        level3Button.accessibilityLabel = "Level 3, best score = " + String(levels[levelsToUse[2]].highscore) + "moves"
+        
+        view.accessibilityElements = [level1Button, level2Button, level3Button, moon1Button, nextPlanetArrow]
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
 	
 	///Saves levels to storage
 	func saveLevels () {
@@ -107,6 +178,7 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		//             [2,2,2,2,2,2]]
 		//let level1 = Level(name: "Level 1", data: data1, startingLoc: (1, 1), goalLoc: (4, 1), tutorial: "Bring the player to the goal!")
 		//Planet 1
+		
 		let data1 = [[1,1,1,1,1]]
 		let level1 = Level(name: "Level 1-1", data: data1, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This is your ship's computer, Glados. I need you to return to me so that we can fly back to our home. To reach me simply walk right until you reach the ship.", starsGotten: 0, parNumMoves: 2, numOfMovesRequiredPerStar: [5,2,1])
 		
@@ -166,10 +238,11 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		              [2,2,2,2,1]]
 		
 		let level10 = Level(name: "Level 10", data: data10, startingLoc: (0, 0), goalLoc: (4, 3), tutorial: "We're almost home! Make sure you use everything you've learned so far to get back to the ship!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [6,4,3])
+		
 		levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10]
 		saveLevels()
 	}
-
+	
 	///Given a maze, returns a level
 	func LevelFromMaze(maze: Maze, name: String, tutorial: String) -> Level {
 		let levelY = maze.data.count
@@ -195,11 +268,11 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		}
 		print(levelData)
 		if fuelCount != 0 {
-			newtutorial = tutorial + " There are \(fuelCount) fuel cans to collect."
+			newtutorial = tutorial + " There are \(fuelCount) aliens to collect."
 		} else {
 			newtutorial = tutorial
 		}
-		return Level(name: name, data: levelData, startingLoc:(0,0), goalLoc: (levelX-5, levelY-5), tutorial: newtutorial, starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
+		return Level(name: name, data: levelData, startingLoc:(0,0), goalLoc: (levelX-5, levelY-5), tutorial: newtutorial, starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3]) //we won't be able to use par or numofmovesrequiredperstar for random levels (or they could be innacurate)
 	}
 	
 	///Generates a random level
@@ -209,7 +282,7 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		let mrMaze = Maze(width: levelX + 4, height: levelY + 4)
 		return LevelFromMaze(maze: mrMaze, name: name, tutorial: tutorial)
 	}
-
+	
 	func newMaze () {
 		let levelName = "Extra \(levels.count + 1)"
 		let tutorialText = "Solve Mr Maze's confounding maze!"
@@ -218,35 +291,45 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		//tableView.insertRows(at: [newIndexPath as IndexPath], with:.bottom)
 		saveLevels()
 	}
-
 	
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if (segue.identifier != "toP2"){
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if (segue.identifier == "toLevel"){ //this needs to be changed....reload this viewcontroller with new data instead (FOR TO NEXT PLANET)
 			let levelViewController = segue.destination as! PlanetLevelViewController
 			
 			
-			levelViewController.planetNumber=1
+			levelViewController.planetNumber = planetNumber
 			var selectedLevel: Level;
-			selectedLevel = levels[0]
+			selectedLevel = levels[levelsToUse[levelNumber]]
 			var isALevel=true;
-			if segue.identifier=="p1l1" {
-				selectedLevel = levels[0]
-				levelViewController.levelNumber=1
-				levelViewController.bestScore=levels[0].highscore
-			}
-			else if segue.identifier=="p1l2"{
-				selectedLevel=levels[1]
-				levelViewController.levelNumber=2
-				levelViewController.bestScore=levels[1].highscore
-			}
-			else if segue.identifier=="p1l3"{
-				selectedLevel=levels[2]
-				levelViewController.levelNumber=3
-				levelViewController.bestScore=levels[2].highscore
-			}
-			else{
+//			if segue.identifier=="p"+String(planetNumber)+"l"+String(levelNumber) {
+//				selectedLevel = levels[levelsToUse[0]]
+//				levelViewController.levelNumber=1
+//				levelViewController.bestScore=levels[levelsToUse[0]].highscore
+//			}
+//			else if segue.identifier=="p1l2"{
+//				selectedLevel=levels[levelsToUse[1]]
+//				levelViewController.levelNumber=2
+//				levelViewController.bestScore=levels[levelsToUse[1]].highscore
+//			}
+//			else if segue.identifier=="p1l3"{
+//				selectedLevel=levels[levelsToUse[2]]
+//				levelViewController.levelNumber=3
+//				levelViewController.bestScore=levels[levelsToUse[2]].highscore
+//			}
+//			else{
+//				isALevel=false
+//			}
+			
+			if (levelNumber == -1){
 				isALevel=false
 			}
+			else{
+				selectedLevel = levels[levelsToUse[levelNumber]]
+				levelViewController.levelNumber=levelNumber
+				levelViewController.bestScore=levels[levelsToUse[levelNumber]].highscore
+			}
+			
 			if (isALevel) {
 				levelViewController.level = selectedLevel
 				levelViewController.parentPlanetViewController = self
@@ -265,13 +348,13 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 				var alienLocation : (Int,Int) = (-1,-1)
 				
 				//DispatchQueue.main.sync{
-					var i = 0
-					for row in selectedLevel.data {
-						if (row.contains(4)) {
-							alienLocation = ( Int(i) + 1,Int(row.index(of: 4)!) + 1)
-						}
-						i += 1
+				var i = 0
+				for row in selectedLevel.data {
+					if (row.contains(4)) {
+						alienLocation = ( Int(i) + 1,Int(row.index(of: 4)!) + 1)
 					}
+					i += 1
+				}
 				//}
 				
 				var alienString = ""
@@ -290,7 +373,7 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 				//musicPlayer2.stop()
 			}
 		}
-    }
+	}
 	
 	override func viewWillDisappear(_ animated : Bool) {
 		//super.viewWillDisappear(animated)
@@ -298,5 +381,26 @@ class Planet1ViewController: UIViewController, PlanetViewController {
 		//drumPlayer.stop()
 	}
 	
+    
+    @IBAction func level1ButtonPressed(_ sender: Any) {
+        levelNumber=0
+        performSegue(withIdentifier: "toLevel", sender: nil)
+    }
+    
+    @IBAction func level2ButtonPressed(_ sender: Any) {
+        levelNumber=1
+        performSegue(withIdentifier: "toLevel", sender: nil)
+    }
+    
+    @IBAction func level3ButtonPressed(_ sender: Any) {
+        levelNumber=2
+        performSegue(withIdentifier: "toLevel", sender: nil)
+    }
+    
+    @IBAction func moon1ButtonPressed(_ sender: Any) {
+    }
+    
+    
+    
 	
 }

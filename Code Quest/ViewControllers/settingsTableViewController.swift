@@ -22,7 +22,12 @@ class settingsTableViewController: UITableViewController, UIPopoverPresentationC
 
     
     @IBAction func AddCustomLevel(_ sender: Any) {
-        parentTableView!.newMaze();
+		if (parentTableView != nil){
+			parentTableView!.newMaze();
+		}
+		else{
+			print("no parent")
+		}
     }
     
     override func viewDidLoad() {

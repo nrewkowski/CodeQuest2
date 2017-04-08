@@ -139,41 +139,42 @@ class CommandHandler {
 		print(level[0].count)
 		myGameScene.pewpew(pos: (playerLoc.0, playerLoc.1))
 		
+		//this ignores unbreakable walls simply because unbreakable walls are of wallCell class and unbreakable walls are of floorcell class. this needs to be changed; it makes no sense!
 		if(playerLoc.0 > 0) {
 			print(1)
-			if let loc = level[playerLoc.1][playerLoc.0 - 1] as? floorCell {
-				if(loc.isWall) {
+			if let loc = level[playerLoc.1][playerLoc.0 - 1] as? BreakableWallCell {
+				if(loc.isWall) { //will always be wall
 					myGameScene.kaboom(pos: (playerLoc.0 - 1, playerLoc.1))
-					loc.makeNotWall()
+					loc.loseHealth()
 				}
 			}
 		}
 		if(playerLoc.0 < level[0].count - 1) {
 			print(2)
-			if let loc = level[playerLoc.1][playerLoc.0 + 1] as? floorCell {
+			if let loc = level[playerLoc.1][playerLoc.0 + 1] as? BreakableWallCell {
 				if(loc.isWall) {
 					myGameScene.kaboom(pos: (playerLoc.0 + 1, playerLoc.1))
-					loc.makeNotWall()
+					loc.loseHealth()
 
 				}
 			}
 		}
 		if(playerLoc.1 > 0) {
 			print(3)
-			if let loc = level[playerLoc.1 - 1][playerLoc.0] as? floorCell {
+			if let loc = level[playerLoc.1 - 1][playerLoc.0] as? BreakableWallCell {
 				if(loc.isWall) {
 					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 - 1))
-					loc.makeNotWall()
+					loc.loseHealth()
 
 				}
 			}
 		}
 		if(playerLoc.1 < level.count - 1) {
 			print(4)
-			if let loc = level[playerLoc.1 + 1][playerLoc.0] as? floorCell {
+			if let loc = level[playerLoc.1 + 1][playerLoc.0] as? BreakableWallCell {
 				if(loc.isWall) {
 					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 + 1))
-					loc.makeNotWall()
+					loc.loseHealth()
 
 				}
 			}
@@ -226,10 +227,68 @@ class CommandHandler {
 				let isGoal = newLoc.isGoal
 				
 				if (!isGoal) {
+					//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
 					newLoc.makePlayer()
 				}
 				return true
-			} else {
+			}
+			
+					//need to handle this case because floorcell != breakablewallcell, so if you are standing on what was once a brekaablewall, the previous case will be false
+				else if let oldLoc = level[playerLoc.1][playerLoc.0] as? BreakableWallCell, let newLoc = level[newCoords.1][newCoords.0] as? floorCell {		//Check if space is floor
+					
+					// Check if the wall is an unblasted blastable tile
+					if (newLoc.isWall) {
+						return false
+					}
+					
+					if newLoc.isFuel {
+						print("was fuel")
+						//playSound(sound: URL(fileURLWithPath: Bundle.main.path(forResource: "AlienSound", ofType:"wav")!))
+						
+						do {
+							try audioPlayer2 = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "AlienSound", ofType:"wav")!))
+							
+							audioPlayer2.volume = 1.0
+							//audioPlayer.play
+							audioPlayer2.prepareToPlay()
+							audioPlayer2.play()
+							
+						} catch{
+							print ("Failed to play sound:")
+						}
+					}
+					//print("make not player")
+					
+					oldLoc.makeNotPlayer()
+					playerLoc = newCoords
+					let isGoal = newLoc.isGoal
+					
+					if (!isGoal) {
+						//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
+						newLoc.makePlayer()
+					}
+					return true
+				}
+			
+			else if let oldLoc = level[playerLoc.1][playerLoc.0] as? floorCell, let newLoc = level[newCoords.1][newCoords.0] as? BreakableWallCell {
+				print("breakable")
+				
+				if (newLoc.isWall) {
+					return false
+				}
+				oldLoc.makeNotPlayer()
+				playerLoc = newCoords
+				let isGoal = newLoc.isGoal
+				
+				if (!isGoal) {
+					//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
+					newLoc.makePlayer()
+				}
+				return true
+			}
+			
+			else {
+				print("not a floor")
 				return false
 			}
 		}

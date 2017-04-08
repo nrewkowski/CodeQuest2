@@ -17,14 +17,14 @@ let testImageNames = ["left", "up", "down", "right", "blast_button"]
 let testCommandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
-class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 	@available(iOS 2.0, *)
 	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
 	}
 
 	
-	var devParentLevelTableViewController : PlanetViewController? = nil
+	var parentPlanetViewController : PlanetViewController? = nil
 	var devCmdHandler: DevCommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
@@ -87,17 +87,33 @@ class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, U
 				tileArray.append([])
 				for x in 0..<testGrid[y].count {
 					var cell:gameCell
+					//NOTE: add more cases for more wall types
 					switch testGrid[y][x] {      //Instantiate gameCells based on input array
 					case 1:
 						cell = floorCell(isWall: false, isFuel: false)
 					case 2:
 						cell = wallCell()
 					case 3:
-						cell = floorCell(isWall: true, isFuel: false)
-						breakBlocks.append(cell as! floorCell)
+						cell = BreakableWallCell(initialHealth: 1)
+						breakBlocks.append(cell as! BreakableWallCell)
 					case 4:
 						cell = floorCell(isWall: false, isFuel: true)
 						fuelCells.append(cell as! floorCell)
+					case 5:
+						cell = BreakableWallCell(initialHealth: 1)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 6:
+						cell = BreakableWallCell(initialHealth: 2)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 7:
+						cell = BreakableWallCell(initialHealth: 3)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 8:
+						cell = BreakableWallCell(initialHealth: 4)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 9:
+						cell = BreakableWallCell(initialHealth: 5)
+						breakBlocks.append(cell as! BreakableWallCell)
 					default:
 						cell = floorCell(isWall: false, isFuel: false)
 					}
@@ -151,7 +167,12 @@ class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, U
 		skView.presentScene(scene)
 		
 		self.cmdHandler = CommandHandler(level: &tileArray, playerLoc: &playerLoc, goalLoc: &goalLoc, myGameScene: self.scene!)
+		print("par: "+String((level?.parNumMoves)! as Int))
+		print("stars: "+String((level?.starsGotten)! as Int))
+		print("stars: "+String(describing: level?.numOfMovesRequiredPerStar))
 		
+		//print("par: "+String(describing: level?.parNumMoves))
+		//print("stars: "+String(describing: level?.starsGotten))
 		//super.viewDidLoad()
 	}
 	
@@ -515,10 +536,14 @@ realCommandQueue.append(type.rawValue)
 			print("2")
 			if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
 				print("3")
-				if (currentStep==loopRanges[currentLoopRange].0){
+				if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
 					print("beginning of loop. move up")
 					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 					loopLabels[currentLoopRange-1].frame.origin.y += 10
+				}
+				else if (currentStep==loopRanges[currentLoopRange].0){
+					print("beginning of loop. move up")
+					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 				}
 				
 			}
@@ -649,8 +674,10 @@ realCommandQueue.append(type.rawValue)
 			if !level!.cleared {
 				level!.cleared = true
 				level!.highscore = commandQueue.count
+				level!.starsGotten = 2
 			} else if commandQueue.count < level!.highscore {
 				level!.highscore = commandQueue.count
+				level!.starsGotten = 2
 			}
 			
 			//alert...not sure if it is voiceover friendly or not
@@ -663,7 +690,7 @@ realCommandQueue.append(type.rawValue)
 			//if let selectedIndexPath = parentLevelTableViewController?.tableView.indexPathForSelectedRow{
 				//devParentLevelTableViewController?.levels[selectedIndexPath.row] = level!
 			//BUG: update parent controller's labels
-				devParentLevelTableViewController?.saveLevels()
+				parentPlanetViewController?.saveLevels()
 				//parentLevelTableViewController?.tableView.reloadRows(at: [selectedIndexPath], with:.none)
 			//}
 			aboutToWin = false
