@@ -42,6 +42,7 @@ class CommandView: UIView {
 				self.addSubview(pickerView!)
 			}
 		}
+
 	}
 	
 	/*override func intrinsicContentSize() -> CGSize {
