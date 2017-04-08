@@ -44,6 +44,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var layoutText:String = ""
 	var pickerData = ["1","2","3","4","5"]
 	
+	var penalties = -1
+	
 	/// Controls game logic
 	override func viewDidLoad() {
 		
@@ -53,9 +55,14 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		self.navigationItem.title = "Level "+String(planetNumber)+"-"+String(levelNumber+1)
         self.navigationItem.accessibilityLabel="Level "+String(planetNumber)+"-"+String(levelNumber+1)
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
-        self.navigationItem.rightBarButtonItem?.isEnabled=false
+        var scoreButton=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
+        scoreButton.tintColor = UIColor.black
+        scoreButton.isEnabled=false
+		
+		var penaltyButton=UIBarButtonItem(title: "Penalties = " + String(0), style: .plain, target: nil, action: nil)
+		penaltyButton.tintColor = UIColor.black
+		penaltyButton.isEnabled=false
+		self.navigationItem.rightBarButtonItems = [scoreButton, penaltyButton]
 		//add audio players
 		do {
 			try musicPlayer = AVAudioPlayer(contentsOf: music)
@@ -309,6 +316,17 @@ realCommandQueue.append(type.rawValue)
 		for cell in fuelCells {
 			cell.makeFuel()
 		}
+		
+		penalties += 1
+		
+		var scoreButton=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
+		scoreButton.tintColor = UIColor.black
+		scoreButton.isEnabled=false
+		
+		var penaltyButton=UIBarButtonItem(title: "Penalties = " + String(penalties), style: .plain, target: nil, action: nil)
+		penaltyButton.tintColor = UIColor.black
+		penaltyButton.isEnabled=false
+		self.navigationItem.rightBarButtonItems = [scoreButton, penaltyButton]
 	}
 	
 	/**
@@ -674,11 +692,11 @@ realCommandQueue.append(type.rawValue)
 			//handles the scoreboard...we should add to this to make the scoreboard more dynamic
 			if !level!.cleared {
 				level!.cleared = true
-				level!.highscore = commandQueue.count
-				if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[2])!){
+				level!.highscore = commandQueue.count + penalties
+				if (level!.highscore <= (level?.numOfMovesRequiredPerStar[2])!){
 					level!.starsGotten = 3
 				}
-				else if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[1])!){
+				else if (level!.highscore <= (level?.numOfMovesRequiredPerStar[1])!){
 					level!.starsGotten = 2
 				}
 				else{
@@ -687,12 +705,12 @@ realCommandQueue.append(type.rawValue)
 				print("stars gotten: "+String(level!.starsGotten))
 				
 			} else if commandQueue.count < level!.highscore {
-				level!.highscore = commandQueue.count
+				level!.highscore = commandQueue.count + penalties
 				var starsGotten=0
-				if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[2])!){
+				if (level!.highscore <= (level?.numOfMovesRequiredPerStar[2])!){
 					starsGotten = 3
 				}
-				else if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[1])!){
+				else if (level!.highscore <= (level?.numOfMovesRequiredPerStar[1])!){
 					starsGotten = 2
 				}
 				else{
@@ -706,10 +724,10 @@ realCommandQueue.append(type.rawValue)
 			}
 			else{
 				var starsGotten=0
-				if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[2])!){
+				if (level!.highscore <= (level?.numOfMovesRequiredPerStar[2])!){
 					starsGotten = 3
 				}
-				else if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[1])!){
+				else if (level!.highscore <= (level?.numOfMovesRequiredPerStar[1])!){
 					starsGotten = 2
 				}
 				else { //if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[0])!)
@@ -724,7 +742,7 @@ realCommandQueue.append(type.rawValue)
 			}
 			
 			//alert...not sure if it is voiceover friendly or not
-			let alert = UIAlertController(title: "You win!", message: "You took \(commandQueue.count) steps. Your best score is \(level!.highscore).", preferredStyle: UIAlertControllerStyle.alert)
+			let alert = UIAlertController(title: "You win!", message: "You took \(commandQueue.count) steps. You had \(penalties) penalties. Your best score is \(level!.highscore).", preferredStyle: UIAlertControllerStyle.alert)
 			alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.musicPlayer.volume = 1.0 * musicVolume}))
 			self.present(alert, animated: true, completion: nil)
 			
