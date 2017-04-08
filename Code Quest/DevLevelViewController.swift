@@ -67,7 +67,7 @@ class DevLevelViewController: LevelViewController {
 						cell = wallCell()
 					case 3:
 						cell = floorCell(isWall: true, isFuel: false)
-						breakBlocks.append(cell as! floorCell)
+						//breakBlocks.append(cell as! floorCell)
 					case 4:
 						cell = floorCell(isWall: false, isFuel: true)
 						fuelCells.append(cell as! floorCell)

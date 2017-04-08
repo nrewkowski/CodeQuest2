@@ -39,7 +39,7 @@ class floorCell: gameCell {
 			super.init(image: UIImage(named:"grid.png"))
 			self.accessibilityLabel = "Empty"
 		}
-		self.accessibilityTraits = UIAccessibilityTraitNone
+		//self.accessibilityTraits = UIAccessibilityTraitNone
     }
 	
 	///Changes image and VoiceOver label to player

@@ -12,6 +12,7 @@
 		10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B20FD91D909BD200142CAE /* Assets.xcassets */; };
 		10B20FDD1D909BD200142CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10B20FDB1D909BD200142CAE /* LaunchScreen.storyboard */; };
 		10B20FE81D909BD200142CAE /* Code_QuestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B20FE71D909BD200142CAE /* Code_QuestTests.swift */; };
+		3D1C7E531E98633F000D1681 /* BreakableWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */; };
 		3D1EBA211E8B8A1100F8EA04 /* AlienSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */; };
 		3D1EBA221E8B8A1100F8EA04 /* LevelSelect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D1EBA201E8B8A1100F8EA04 /* LevelSelect.wav */; };
 		3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D3086C11E85C22A005CB8B0 /* Demo.aiff */; };
@@ -83,6 +84,7 @@
 		10B20FE31D909BD200142CAE /* Code QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Code QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B20FE71D909BD200142CAE /* Code_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code_QuestTests.swift; sourceTree = "<group>"; };
 		10B20FE91D909BD200142CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreakableWallCell.swift; path = Cells/BreakableWallCell.swift; sourceTree = "<group>"; };
 		3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AlienSound.wav; sourceTree = "<group>"; };
 		3D1EBA201E8B8A1100F8EA04 /* LevelSelect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelSelect.wav; sourceTree = "<group>"; };
 		3D3086C11E85C22A005CB8B0 /* Demo.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Demo.aiff; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				3DB6D2431E6D1E1500E069B2 /* LevelTableViewCell.swift */,
 				3DB6D2441E6D1E1500E069B2 /* playerCell.swift */,
 				3DB6D2451E6D1E1500E069B2 /* wallCell.swift */,
+				3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				3DB6D24A1E6D1E1500E069B2 /* playerCell.swift in Sources */,
 				3DB6D23C1E6D1DE400E069B2 /* Input.swift in Sources */,
 				3D8A72E21E980C06007F57D4 /* GalaxyViewController.swift in Sources */,
+				3D1C7E531E98633F000D1681 /* BreakableWallCell.swift in Sources */,
 				3DB6D2391E6D1DE400E069B2 /* CommandHandler.swift in Sources */,
 				3DB6D2461E6D1E1500E069B2 /* floorCell.swift in Sources */,
 				3DB723B51E8B368700921D62 /* DevCommandHandler.swift in Sources */,

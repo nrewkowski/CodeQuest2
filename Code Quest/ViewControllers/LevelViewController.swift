@@ -44,7 +44,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	var parentLevelTableViewController : LevelTableViewController? = nil
 //	var won : Bool = false
 	/// List of breakable blocks that must be reset along with the level
-	var breakBlocks : [floorCell] = []
+	var breakBlocks : [BreakableWallCell] = []
 	/// List of fuel cells in the level
 	var fuelCells : [floorCell] = []
 	/// Number of pixels character should move/size of cells
@@ -109,7 +109,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
                             cell = wallCell()
                         case 3:
 							cell = floorCell(isWall: true, isFuel: false)
-							breakBlocks.append(cell as! floorCell)
+							//breakBlocks.append(cell as! floorCell)
                         case 4:
 							cell = floorCell(isWall: false, isFuel: true)
 							fuelCells.append(cell as! floorCell)

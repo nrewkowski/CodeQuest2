@@ -17,7 +17,7 @@ let testImageNames = ["left", "up", "down", "right", "blast_button"]
 let testCommandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
-class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 	@available(iOS 2.0, *)
 	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
@@ -94,11 +94,26 @@ class PlanetLevelViewController: DevLevelViewController, UIPickerViewDelegate, U
 					case 2:
 						cell = wallCell()
 					case 3:
-						cell = floorCell(isWall: true, isFuel: false)
-						breakBlocks.append(cell as! floorCell)
+						cell = BreakableWallCell(initialHealth: 1)
+						breakBlocks.append(cell as! BreakableWallCell)
 					case 4:
 						cell = floorCell(isWall: false, isFuel: true)
 						fuelCells.append(cell as! floorCell)
+					case 5:
+						cell = BreakableWallCell(initialHealth: 1)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 6:
+						cell = BreakableWallCell(initialHealth: 2)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 7:
+						cell = BreakableWallCell(initialHealth: 3)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 8:
+						cell = BreakableWallCell(initialHealth: 4)
+						breakBlocks.append(cell as! BreakableWallCell)
+					case 9:
+						cell = BreakableWallCell(initialHealth: 5)
+						breakBlocks.append(cell as! BreakableWallCell)
 					default:
 						cell = floorCell(isWall: false, isFuel: false)
 					}
