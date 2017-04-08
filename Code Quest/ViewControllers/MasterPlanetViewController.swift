@@ -45,7 +45,21 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
     @IBOutlet weak var level2Button: UIButton!
     @IBOutlet weak var level3Button: UIButton!
     
+    @IBOutlet weak var level1star1: UIButton!
+    @IBOutlet weak var level1star2: UIButton!
+    @IBOutlet weak var level1star3: UIButton!
     
+    @IBOutlet weak var level2star1: UIButton!
+    @IBOutlet weak var level2star2: UIButton!
+    @IBOutlet weak var level2star3: UIButton!
+    
+    @IBOutlet weak var level3star1: UIButton!
+    @IBOutlet weak var level3star2: UIButton!
+    @IBOutlet weak var level3star3: UIButton!
+    
+    var level1stars:[UIButton] = []
+    var level2stars:[UIButton] = []
+    var level3stars:[UIButton] = []
 	
 	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
 	var musicPlayer2 = AVAudioPlayer()
@@ -60,7 +74,9 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         
         nextPlanetArrow.accessibilityLabel = "Go to planet "+String(planetNumber+1)
 
-		
+		level1stars=[level1star1, level1star2, level1star3]
+        level2stars=[level2star1, level2star2, level2star3]
+        level3stars=[level3star1, level3star2, level3star3]
 		//let MrMaze = Maze(width:11, height:7)
 		//levels.append(LevelFromMaze(maze: MrMaze, name: "Mr Maze's Level", tutorial:"This is Mr Maze's level"))
 //		if let savedLevels = loadLevels() {
@@ -149,6 +165,18 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         level2Button.accessibilityLabel = "Level 2, best score = " + String(levels[levelsToUse[1]].highscore) + "moves"
         
         level3Button.accessibilityLabel = "Level 3, best score = " + String(levels[levelsToUse[2]].highscore) + "moves"
+        
+        for i in 0 ..< ((levels[levelsToUse[0]].starsGotten as Int)) {
+            level1stars[i].isEnabled=true
+        }
+        
+        for i in 0 ..< ((levels[levelsToUse[1]].starsGotten as Int)) {
+            level2stars[i].isEnabled=true
+        }
+        
+        for i in 0 ..< ((levels[levelsToUse[2]].starsGotten as Int)) {
+            level3stars[i].isEnabled=true
+        }
         
         view.accessibilityElements = [level1Button, level2Button, level3Button, moon1Button, nextPlanetArrow]
 	}

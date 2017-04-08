@@ -669,15 +669,58 @@ realCommandQueue.append(type.rawValue)
 		if aboutToWin {
 			musicPlayer.volume = 1.0 * musicVolume
 			playSound(sound: cheerSound)
-			
+			print("command queue count: "+String(commandQueue.count))
+			print(String(describing: level?.numOfMovesRequiredPerStar))
 			//handles the scoreboard...we should add to this to make the scoreboard more dynamic
 			if !level!.cleared {
 				level!.cleared = true
 				level!.highscore = commandQueue.count
-				level!.starsGotten = 2
+				if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[2])!){
+					level!.starsGotten = 3
+				}
+				else if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[1])!){
+					level!.starsGotten = 2
+				}
+				else{
+					level!.starsGotten = 1
+				}
+				print("stars gotten: "+String(level!.starsGotten))
+				
 			} else if commandQueue.count < level!.highscore {
 				level!.highscore = commandQueue.count
-				level!.starsGotten = 2
+				var starsGotten=0
+				if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[2])!){
+					starsGotten = 3
+				}
+				else if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[1])!){
+					starsGotten = 2
+				}
+				else{
+					starsGotten = 1
+				}
+				
+				if (starsGotten>(level!.starsGotten)){
+					level!.starsGotten=starsGotten
+				}
+				print("stars gotten: "+String(starsGotten))
+			}
+			else{
+				var starsGotten=0
+				if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[2])!){
+					starsGotten = 3
+				}
+				else if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[1])!){
+					starsGotten = 2
+				}
+				else { //if (commandQueue.count <= (level?.numOfMovesRequiredPerStar[0])!)
+					starsGotten = 1
+				}
+				
+				if (starsGotten>(level!.starsGotten)){
+					level!.starsGotten=starsGotten
+				}
+				print("stars gotten: "+String(starsGotten))
+			
 			}
 			
 			//alert...not sure if it is voiceover friendly or not

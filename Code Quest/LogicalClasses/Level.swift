@@ -90,7 +90,7 @@ class Level: NSObject, NSCoding {
 		self.parNumMoves=aDecoder.decodeInteger(forKey: PropertyKey.parNumMovesKey)
 		self.numOfMovesRequiredPerStar[0]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor1StarKey)
 		self.numOfMovesRequiredPerStar[1]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor2StarKey)
-		self.numOfMovesRequiredPerStar[2]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor2StarKey)
+		self.numOfMovesRequiredPerStar[2]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor3StarKey)
 	}
 	
 	/**
