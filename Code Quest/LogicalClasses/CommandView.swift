@@ -10,7 +10,7 @@ import UIKit
 let num_command_buttons = 10
 
 // The first num_queue_buttons buttons represent queueable commands that should come before the divider
-let num_queue_buttons = 5
+let num_queue_buttons = 6
 
 ///View that contains command butotns
 class CommandView: UIView {
@@ -35,7 +35,7 @@ class CommandView: UIView {
 			command.addTarget(self, action: #selector(CommandView.commandTapped(commandButton:)), for: .touchDown)
 			commandButtons += [command]
 			self.addSubview(command)
-			if i==8 {
+			if i==5 {
 				pickerView=UIPickerView(frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))))
 				//pickerView.dataSource=self
 				//pickerView.delegate=self

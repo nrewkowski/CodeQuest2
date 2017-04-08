@@ -17,10 +17,14 @@ let testImageNames = ["left", "up", "down", "right", "blast_button"]
 let testCommandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
-class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate {
 	@available(iOS 2.0, *)
 	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
+	}
+	
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
 	}
 
 	
@@ -47,6 +51,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var penalties = -1
 	
 	var failed = false
+	
+	var selectedNumOfLoops = 0
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -167,6 +173,10 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		ButtonView.backgroundColor = sceneColor
 		ButtonView.pickerView?.delegate=self
 		ButtonView.pickerView?.dataSource=self
+		
+		
+		
+		
 		let skView = SKView(frame: view.bounds)
 		skView.isUserInteractionEnabled = false
 		skView.allowsTransparency = true
@@ -180,10 +190,21 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		print("stars: "+String((level?.starsGotten)! as Int))
 		print("stars: "+String(describing: level?.numOfMovesRequiredPerStar))
 		
+		
+		let tap = UITapGestureRecognizer(target: self, action: #selector(self.loopTapped(recognizer:)))
+		tap.numberOfTapsRequired = 1
+		ButtonView.pickerView?.addGestureRecognizer(tap)
+		tap.delegate = self
+		//let touchOnLoopRecognizer = UITapGestureRecognizer(target: self, action: #selector (self.loopTapped(recognizer:)))
+		//self.view.addGestureRecognizer(touchOnLoopRecognizer)
+		
 		//print("par: "+String(describing: level?.parNumMoves))
 		//print("stars: "+String(describing: level?.starsGotten))
 		//super.viewDidLoad()
 	}
+	
+	
+	
 	
 	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
 		return 1
@@ -197,17 +218,13 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		return pickerData[row]
 	}
 	
- 
-	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		/*
-		let alertController = UIAlertController(title: "Error", message: pickerData[row], preferredStyle: UIAlertControllerStyle.alert)
-		alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-		self.present(alertController, animated: true, completion: nil)*/
-		//myLabel.text = pickerData[row]
-		
+	
+	func loopTapped(recognizer: UITapGestureRecognizer){
+		print("tapped")
 		print("loop pressed")
 		print("real queue before="+String(realCommandQueue.count))
-		var numOfLoops:Int = Int(pickerData[row])!
+		
+		var numOfLoops:Int = selectedNumOfLoops
 		if (commandQueue.count > 0) {
 			if (commandQueue[commandQueue.count-1] != 8){
 				let commandToLoop = commandQueue[commandQueue.count-1]
@@ -219,18 +236,18 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				
 				/*
 				while (!doneCountingLoops){
-					if index >= 0{
-						if (commandQueue[index] == commandToLoop){
-							numOfLoops += 1
-						}
-						else{
-							doneCountingLoops=true
-						}
-						index -= 1
-					}
-					else{
-						doneCountingLoops=true
-					}
+				if index >= 0{
+				if (commandQueue[index] == commandToLoop){
+				numOfLoops += 1
+				}
+				else{
+				doneCountingLoops=true
+				}
+				index -= 1
+				}
+				else{
+				doneCountingLoops=true
+				}
 				}*/
 				print("num of loops="+String(numOfLoops))
 				
@@ -246,11 +263,11 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				}
 				
 				/*
-
-commandQueue.append(type.rawValue)
-commandQueueViews.append(tempCell)
-realCommandQueue.append(type.rawValue)
-*/
+				
+				commandQueue.append(type.rawValue)
+				commandQueueViews.append(tempCell)
+				realCommandQueue.append(type.rawValue)
+				*/
 				print("real queue after="+String(realCommandQueue.count))
 				let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
 				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
@@ -289,6 +306,103 @@ realCommandQueue.append(type.rawValue)
 		else{
 			print("nothing to loop")
 		}
+
+	}
+	
+ 
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		/*
+		let alertController = UIAlertController(title: "Error", message: pickerData[row], preferredStyle: UIAlertControllerStyle.alert)
+		alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+		self.present(alertController, animated: true, completion: nil)*/
+		//myLabel.text = pickerData[row]
+		
+		selectedNumOfLoops = Int(pickerData[row])!
+		
+//		print("loop pressed")
+//		print("real queue before="+String(realCommandQueue.count))
+//		var numOfLoops:Int = Int(pickerData[row])!
+//		if (commandQueue.count > 0) {
+//			if (commandQueue[commandQueue.count-1] != 8){
+//				let commandToLoop = commandQueue[commandQueue.count-1]
+//				print("loop "+testImageNames[commandToLoop])
+//				
+//				var doneCountingLoops=false
+//				var index = commandQueue.count-2
+//				//var numOfLoops=1
+//				
+//				/*
+//				while (!doneCountingLoops){
+//					if index >= 0{
+//						if (commandQueue[index] == commandToLoop){
+//							numOfLoops += 1
+//						}
+//						else{
+//							doneCountingLoops=true
+//						}
+//						index -= 1
+//					}
+//					else{
+//						doneCountingLoops=true
+//					}
+//				}*/
+//				print("num of loops="+String(numOfLoops))
+//				
+//				var i = 0
+//				print("real queue before="+String(realCommandQueue.count))
+//				commandQueueViews.popLast()?.removeFromSuperview()
+//				commandQueue.popLast()
+//				realCommandQueue.popLast()
+//				for i in 0...numOfLoops-1 {
+//					print("pop view")
+//					//commandQueue.append(commandToLoop)
+//					realCommandQueue.append(commandToLoop)
+//				}
+//				
+//				/*
+//
+//commandQueue.append(type.rawValue)
+//commandQueueViews.append(tempCell)
+//realCommandQueue.append(type.rawValue)
+//*/
+//				print("real queue after="+String(realCommandQueue.count))
+//				let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
+//				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+//				tempCell.isAccessibilityElement = true
+//				tempCell.accessibilityTraits = UIAccessibilityTraitImage
+//				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
+//				tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//				
+//				self.view.addSubview(tempCell)
+//				
+//				
+//				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+//				loopLabel.textAlignment = .center
+//				loopLabel.text=String(numOfLoops)
+//				loopLabel.font = loopLabel.font.withSize(60)
+//				loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//				self.view.addSubview(loopLabel)
+//				loopLabels.append(loopLabel)
+//				
+//				
+//				commandQueue.append(8)
+//				//realCommandQueue.append(type.rawValue)
+//				commandQueueViews.append(tempCell)
+//				playSound(sound: testCommandSounds[commandToLoop])
+//				numOfLoopsPerLoop.append(numOfLoops)
+//				loopCommands.append(commandToLoop)
+//				loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
+//				totalNumOfLoops += 1
+//				
+//				print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
+//				print(loopCommands[loopCommands.count-1])
+//				print(loopRanges)
+//				print(totalNumOfLoops)
+//			}
+//		}
+//		else{
+//			print("nothing to loop")
+//		}
 
 	}
 	

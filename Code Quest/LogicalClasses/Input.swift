@@ -15,10 +15,10 @@ enum ButtonType:Int {
 	case UP = 1
 	case DOWN = 2
 	case BLAST = 4
-	case ERASE1 = 5
-	case ERASEALL = 6
-	case QUEUESOUND = 7
-	case LOOPCOMMAND = 8
+	case ERASE1 = 6
+	case ERASEALL = 7
+	case QUEUESOUND = 8
+	case LOOPCOMMAND = 5
 	case HELP = 9
 }
 
