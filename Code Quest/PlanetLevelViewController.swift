@@ -46,6 +46,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	
 	var penalties = -1
 	
+	var failed = false
+	
 	/// Controls game logic
 	override func viewDidLoad() {
 		
@@ -533,6 +535,7 @@ realCommandQueue.append(type.rawValue)
 			//interval was 0.4054
 			print("real count="+String(realCommandQueue.count))
 			tickTimer = Timer.scheduledTimer(timeInterval: 0.4054, target:self, selector:#selector(LevelViewController.runCommands), userInfo:nil, repeats: true)
+			return
 		}
 	}
 	
@@ -609,19 +612,55 @@ realCommandQueue.append(type.rawValue)
 			if (realCommandQueue[currentStep] != 8){
 				(moved, onShip) = (cmdHandler?.handleCmd(input: realCommandQueue[currentStep]))!
 				//(moved, onShip) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
+				if (realCommandQueue[currentStep] < 4){
+					if !moved {
+						if (currentIndexCorrected != commandQueueViews.count - 1){
+							if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+								print("3")
+								if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
+									print("beginning of loop. move up")
+									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+									loopLabels[currentLoopRange].frame.origin.y += 10
+								}
+								else if (currentStep==loopRanges[currentLoopRange].0){
+									print("beginning of loop. move up")
+									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+								}
+								
+							}
+							else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
+								//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
+								print("previous tile is loop")
+								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+								loopLabels[loopLabels.count].frame.origin.y += 10
+							}
+							else{
+								//there are no loops at all
+								print("no loops")
+								//currentIndexCorrected += 1
+								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+								//loopLabels[currentLoopRange].frame.origin.y += 10
+							}
+						}
+						tickTimer.invalidate()
+						takeInput = true
+						return
+						//this will cause an infinite loop. handle this another way
+					}
+				}
 			}
-			else{
-				//DEPRACATED...too many visual artifacts
-				print("this should not happen")
-				print("starting loop")
-				let commandToPlay=loopCommands[loopCommands.count-loopIndex-1]
-				let numOfLoopsToPlay=numOfLoopsPerLoop[numOfLoopsPerLoop.count-loopIndex-1]
-				print("process loop "+String(commandToPlay) + "___" + String(numOfLoopsToPlay))
-				
-				(moved, onShip) = (cmdHandler?.handleLoop(commandToLoop: commandToPlay, numOfLoops: numOfLoopsToPlay))!
-				loopIndex += 1
-				print("done")
-			}
+//			else{
+//				//DEPRACATED...too many visual artifacts
+//				print("this should not happen")
+//				print("starting loop")
+//				let commandToPlay=loopCommands[loopCommands.count-loopIndex-1]
+//				let numOfLoopsToPlay=numOfLoopsPerLoop[numOfLoopsPerLoop.count-loopIndex-1]
+//				print("process loop "+String(commandToPlay) + "___" + String(numOfLoopsToPlay))
+//				
+//				(moved, onShip) = (cmdHandler?.handleLoop(commandToLoop: commandToPlay, numOfLoops: numOfLoopsToPlay))!
+//				loopIndex += 1
+//				print("done")
+//			}
 			
 			//			won = won || maybewon
 			if (moved) {
