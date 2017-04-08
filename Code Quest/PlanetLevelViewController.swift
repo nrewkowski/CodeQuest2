@@ -24,7 +24,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	}
 
 	
-	var devParentLevelTableViewController : PlanetViewController? = nil
+	var parentPlanetViewController : PlanetViewController? = nil
 	var devCmdHandler: DevCommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
@@ -167,7 +167,12 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		skView.presentScene(scene)
 		
 		self.cmdHandler = CommandHandler(level: &tileArray, playerLoc: &playerLoc, goalLoc: &goalLoc, myGameScene: self.scene!)
+		print("par: "+String((level?.parNumMoves)! as Int))
+		print("stars: "+String((level?.starsGotten)! as Int))
+		print("stars: "+String(describing: level?.numOfMovesRequiredPerStar))
 		
+		//print("par: "+String(describing: level?.parNumMoves))
+		//print("stars: "+String(describing: level?.starsGotten))
 		//super.viewDidLoad()
 	}
 	
@@ -669,8 +674,10 @@ realCommandQueue.append(type.rawValue)
 			if !level!.cleared {
 				level!.cleared = true
 				level!.highscore = commandQueue.count
+				level!.starsGotten = 2
 			} else if commandQueue.count < level!.highscore {
 				level!.highscore = commandQueue.count
+				level!.starsGotten = 2
 			}
 			
 			//alert...not sure if it is voiceover friendly or not
@@ -683,7 +690,7 @@ realCommandQueue.append(type.rawValue)
 			//if let selectedIndexPath = parentLevelTableViewController?.tableView.indexPathForSelectedRow{
 				//devParentLevelTableViewController?.levels[selectedIndexPath.row] = level!
 			//BUG: update parent controller's labels
-				devParentLevelTableViewController?.saveLevels()
+				parentPlanetViewController?.saveLevels()
 				//parentLevelTableViewController?.tableView.reloadRows(at: [selectedIndexPath], with:.none)
 			//}
 			aboutToWin = false

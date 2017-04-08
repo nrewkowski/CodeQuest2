@@ -28,6 +28,12 @@ class Level: NSObject, NSCoding {
 	///The player's best score on this level
 	var highscore : Int
 	
+	var starsGotten: Int
+	
+	var parNumMoves: Int
+	
+	var numOfMovesRequiredPerStar: [Int] = [0,0,0]
+	
 	
 	static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
 	static let ArchiveURL = DocumentsDirectory.appendingPathComponent("levels")
@@ -45,9 +51,14 @@ class Level: NSObject, NSCoding {
 		static let backgroundKey = "background"
 		static let clearedKey = "cleared"
 		static let highscoreKey = "highscore"
+		static let starsGottenKey = "starsGotten"
+		static let parNumMovesKey = "parNumMoves"
+		static let numOfMovesRequiredFor1StarKey = "numOfMovesRequiredFor1Star"
+		static let numOfMovesRequiredFor2StarKey = "numOfMovesRequiredFor2Star"
+		static let numOfMovesRequiredFor3StarKey = "numOfMovesRequiredFor3Star"
 	}
 	
-	init(name: String, data: [[Int]], startingLoc: (Int, Int), goalLoc: (Int, Int), tutorial: String){
+	init(name: String, data: [[Int]], startingLoc: (Int, Int), goalLoc: (Int, Int), tutorial: String, starsGotten:Int, parNumMoves:Int, numOfMovesRequiredPerStar: [Int]){
         self.name = name
         self.data = data
 		self.startingLoc = startingLoc
@@ -55,6 +66,9 @@ class Level: NSObject, NSCoding {
 		self.tutorialText = tutorial
 		self.cleared = false
 		self.highscore = 0
+		self.starsGotten=starsGotten
+		self.parNumMoves=parNumMoves
+		self.numOfMovesRequiredPerStar=numOfMovesRequiredPerStar
     }
 	
 	required init (coder aDecoder: NSCoder) {
@@ -72,6 +86,11 @@ class Level: NSObject, NSCoding {
 		self.background = aDecoder.decodeObject(forKey: PropertyKey.backgroundKey) as? String
 		self.cleared = aDecoder.decodeBool(forKey: PropertyKey.clearedKey)
 		self.highscore = aDecoder.decodeInteger(forKey: PropertyKey.highscoreKey)
+		self.starsGotten=aDecoder.decodeInteger(forKey: PropertyKey.starsGottenKey)
+		self.parNumMoves=aDecoder.decodeInteger(forKey: PropertyKey.parNumMovesKey)
+		self.numOfMovesRequiredPerStar[0]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor1StarKey)
+		self.numOfMovesRequiredPerStar[1]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor2StarKey)
+		self.numOfMovesRequiredPerStar[2]=aDecoder.decodeInteger(forKey: PropertyKey.numOfMovesRequiredFor2StarKey)
 	}
 	
 	/**
@@ -96,8 +115,11 @@ class Level: NSObject, NSCoding {
 		aCoder.encode(background, forKey: PropertyKey.backgroundKey)
 		aCoder.encode(cleared, forKey: PropertyKey.clearedKey)
 		aCoder.encode(highscore, forKey: PropertyKey.highscoreKey)
-		
-		
+		aCoder.encode(parNumMoves, forKey: PropertyKey.parNumMovesKey)
+		aCoder.encode(starsGotten, forKey: PropertyKey.starsGottenKey)
+		aCoder.encode(numOfMovesRequiredPerStar[0], forKey: PropertyKey.numOfMovesRequiredFor1StarKey)
+		aCoder.encode(numOfMovesRequiredPerStar[1], forKey: PropertyKey.numOfMovesRequiredFor2StarKey)
+		aCoder.encode(numOfMovesRequiredPerStar[2], forKey: PropertyKey.numOfMovesRequiredFor3StarKey)
 	}
 	
 	

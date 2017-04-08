@@ -71,7 +71,7 @@ class BreakableWallCell: gameCell {
 		self.health = self.health - 1
 		//super.init(image: UIImage(named:"break_wall.png"))
 		self.image = UIImage(named:"ship_grid.png")
-		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health"
+		self.accessibilityLabel = "Wall with "+String(health)+" health"
 		
 		if (health == 0) {
 			makeNotWall()
