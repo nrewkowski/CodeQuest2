@@ -61,7 +61,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
     var level2stars:[UIButton] = []
     var level3stars:[UIButton] = []
 	
-	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"wav")!);
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"mp3")!);
 	var musicPlayer2 = AVAudioPlayer()
 	override func viewDidLoad() {
 		super.viewDidLoad()

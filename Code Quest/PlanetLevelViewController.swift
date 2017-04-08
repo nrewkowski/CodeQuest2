@@ -51,8 +51,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		//super.viewDidLoad() //this breaks it for some reason
 		
-		self.navigationItem.title = "Level "+String(planetNumber)+"-"+String(levelNumber)
-        self.navigationItem.accessibilityLabel="Level "+String(planetNumber)+"-"+String(levelNumber)
+		self.navigationItem.title = "Level "+String(planetNumber)+"-"+String(levelNumber+1)
+        self.navigationItem.accessibilityLabel="Level "+String(planetNumber)+"-"+String(levelNumber+1)
         self.navigationItem.rightBarButtonItem=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
         self.navigationItem.rightBarButtonItem?.isEnabled=false
