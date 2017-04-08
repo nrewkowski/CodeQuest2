@@ -19,6 +19,8 @@ class LevelTutorialViewController: UIViewController {
 	///The parent view controller
 	var myParent : LevelViewController?
 	
+	var layoutText : String = "layout"
+	
 	
 	//init(tutorialText : String) {
 	//	self.tutorialText = tutorialText
@@ -53,6 +55,19 @@ class LevelTutorialViewController: UIViewController {
 		label.text = tutorialText
 		label.textColor = UIColor.white
 		self.view.addSubview(label)
+		
+		let layoutButton = UIButton(type:.system)
+		layoutButton.frame = CGRect(x: LevelViewController.scaleDims(input: 50, x: true), y: LevelViewController.scaleDims(input: 50, x: false), width: LevelViewController.scaleDims(input: 200, x: true), height: LevelViewController.scaleDims(input: 100, x: false))
+		layoutButton.setTitle("LayoutButton", for: UIControlState.normal)
+		
+		layoutButton.titleLabel!.font = layoutButton.titleLabel!.font.withSize(30)
+		layoutButton.addTarget(self, action: #selector(DevLevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
+		layoutButton.accessibilityLabel=layoutText
+		layoutButton.isEnabled=false
+		self.view.addSubview(layoutButton)
+		//layoutButton.accessibilityTraits = UIAccessibilityTraitNone
+		//layoutButton.element
+		view.accessibilityElements=[layoutButton,label,button]
 
     }
 
