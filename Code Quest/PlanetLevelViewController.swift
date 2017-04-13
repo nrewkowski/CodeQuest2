@@ -46,13 +46,14 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var totalNumOfLoops=0
 	var loopLabels:[UILabel]=[]
 	var layoutText:String = ""
-	var pickerData = ["1","2","3","4","5"]
+	var pickerData = ["2","3","4","5"]
 	
 	var penalties = -1
 	
 	var failed = false
 	
-	var selectedNumOfLoops = 0
+	var selectedNumOfLoops = 2 //default to 2 or else crash
+	var currentLoopLabel = -1
 	
 	/// Controls game logic
 	override func viewDidLoad() {
@@ -103,34 +104,35 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				for x in 0..<testGrid[y].count {
 					var cell:gameCell
 					//NOTE: add more cases for more wall types
+					//NOTE: alter voiceover for row, column here
 					switch testGrid[y][x] {      //Instantiate gameCells based on input array
 					case 1:
-						cell = floorCell(isWall: false, isFuel: false)
+						cell = floorCell(isWall: false, isFuel: false,row: y+1, column: x+1)
 					case 2:
-						cell = wallCell()
+						cell = wallCell(row: y+1, column: x+1)
 					case 3:
-						cell = BreakableWallCell(initialHealth: 1)
+						cell = BreakableWallCell(initialHealth: 1,row: y+1, column: x+1)
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 4:
-						cell = floorCell(isWall: false, isFuel: true)
+						cell = floorCell(isWall: false, isFuel: true,row: y+1, column: x+1)
 						fuelCells.append(cell as! floorCell)
 					case 5:
-						cell = BreakableWallCell(initialHealth: 1)
+						cell = BreakableWallCell(initialHealth: 1,row: y+1, column: x+1)
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 6:
-						cell = BreakableWallCell(initialHealth: 2)
+						cell = BreakableWallCell(initialHealth: 2,row: y+1, column: x+1)
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 7:
-						cell = BreakableWallCell(initialHealth: 3)
+						cell = BreakableWallCell(initialHealth: 3,row: y+1, column: x+1)
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 8:
-						cell = BreakableWallCell(initialHealth: 4)
+						cell = BreakableWallCell(initialHealth: 4,row: y+1, column: x+1)
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 9:
-						cell = BreakableWallCell(initialHealth: 5)
+						cell = BreakableWallCell(initialHealth: 5,row: y+1, column: x+1)
 						breakBlocks.append(cell as! BreakableWallCell)
 					default:
-						cell = floorCell(isWall: false, isFuel: false)
+						cell = floorCell(isWall: false, isFuel: false,row: y+1, column: x+1)
 					}
 					cell.frame = CGRect(x: LevelViewController.scaleDims(input: LevelViewController.moveInc*x, x: true), y: LevelViewController.scaleDims(input: 64+LevelViewController.moveInc*y, x: false), width: LevelViewController.scaleDims(input: LevelViewController.moveInc, x: true), height: LevelViewController.scaleDims(input: LevelViewController.moveInc, x: false))
 					self.view.addSubview(cell)
@@ -227,6 +229,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		var numOfLoops:Int = selectedNumOfLoops
 		if (commandQueue.count > 0) {
 			if (commandQueue[commandQueue.count-1] != 8){
+				print("4.1")
 				let commandToLoop = commandQueue[commandQueue.count-1]
 				print("loop "+testImageNames[commandToLoop])
 				
@@ -256,8 +259,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				commandQueueViews.popLast()?.removeFromSuperview()
 				commandQueue.popLast()
 				realCommandQueue.popLast()
+				print("4.2")
 				for i in 0...numOfLoops-1 {
-					print("pop view")
+					print("append")
 					//commandQueue.append(commandToLoop)
 					realCommandQueue.append(commandToLoop)
 				}
@@ -643,6 +647,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			loopIndex=0
 			currentIndexCorrected=0
 			currentLoopRange=0
+			currentLoopLabel=0
 			//			won = false
 			
 			//i believe that this limits the time for the player to do 1 action
@@ -664,60 +669,313 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		//i guess that this animates the button that represents the current action?
 		if (currentIndexCorrected != 0 && !aboutToWin) {
-			//+y is downwards, so this moves the previous tile back down
-			//BUG: we need to borrow the below loop-detection logic to make sure we don't move the same block multiple times
-			print("1")
-			printStatus()
-			print("2")
-			if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
-				print("3")
-				if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
-					print("beginning of loop. move up")
-					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-					loopLabels[currentLoopRange-1].frame.origin.y += 10
-				}
-				else if (currentStep==loopRanges[currentLoopRange].0){
-					print("beginning of loop. move up")
-					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-				}
+
+
+			print("right1")
+			if (currentIndexCorrected > 0){//if there is a previous tile
+				//+y is downwards, so this moves the previous tile back down
+				/*			cases. all must be handled individually to prevent crashes
+				1. loop->...->loop->loop. current tile is a loop, previous tile is a loop, more loops prior to that
+				2. loop->...->loop->noloop current tile is not a loop, previous tile is loop, more loops prior
+				3. loop->...->noloop->loop current tile is loop, previous is not, loops prior to that
+				4. 1 loop->...->noloop->noloop current tile not a loop, previous not a loop, loops prior (easy case)
+				5. noloop->...->loop->loop current is loop, previous is loop, no previous loops
+				6. noloop->...->loop->noloop current is not a loop, previous is, none prior (easy case)
+				7. noloop->...->noloop->loop current is loop, previous is not, no loops prior (easy case)
+				8. noloop->...->noloop->noloop no loops at all (easiest case)
+				9. >1 loop->...->noloop->noloop. modified case 4
 				
+				for all cases in which current tile is loop, must also test condition that current step is at the beginning of loop, otherwise, don't move last tile down
+				handle no loop situation, then situations in which there is only 1 loop
+				IMPORTANT ASSUMPTION: if the previous tile is 8, then its index in loopranges is the last one
+				
+*/
+				print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
+				if (totalNumOfLoops == 0){
+					print("case 8")
+					
+					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+					if (currentIndexCorrected != commandQueue.count-1){
+						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+					}
+				}
+				else if (totalNumOfLoops == 1){
+					print("case 7,6, or 4")
+					if (commandQueue[currentIndexCorrected]==8){
+						print("case 7. current loop is only one")
+						if (currentStep == loopRanges[0].0){
+							print("beginning of loop")
+							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+							if (currentIndexCorrected != commandQueue.count-1){
+								commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+								loopLabels[0].frame.origin.y -= 10
+							}
+						}
+						else{
+							print("in loop")
+						}
+					}
+					else if (commandQueue[currentIndexCorrected-1]==8){
+						print("case 6. previous tile is only loop")
+						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+						loopLabels[0].frame.origin.y += 10
+						if (currentIndexCorrected != commandQueue.count-1){
+							commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+						}
+					}
+					else{
+						print("case 4. the 1 loop is somewhere else")
+						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+						if (currentIndexCorrected != commandQueue.count-1){
+							commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+						}
+					}
+				}
+				else{
+					print("case 1, 2, 3, 5, or 9. more than 1 loop")
+					if (commandQueue[currentIndexCorrected]==8){
+						print("case 1, 3, or 5. current tile is a loop")
+						if (commandQueue[currentIndexCorrected-1]==8){
+							print("case 1 or 5 (handled same way). previous tile is also a loop")
+							if (currentStep == loopRanges[currentLoopRange].0){
+								
+								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+								loopLabels[currentLoopLabel].frame.origin.y += 10
+								currentLoopLabel += 1
+								if (currentIndexCorrected != commandQueue.count-1){
+									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+									loopLabels[currentLoopLabel].frame.origin.y -= 10
+								}
+							}
+							else{
+								print("in a loop")
+							}
+						}
+						else{
+							print("case 3. previous is not a loop")
+							if (currentStep == loopRanges[currentLoopRange].0){
+								
+								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+								
+								if (currentIndexCorrected != commandQueue.count-1){
+									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+									loopLabels[currentLoopLabel].frame.origin.y -= 10
+								}
+							}
+							else{
+								print("in a loop")
+							}
+
+						}
+					}
+					else{
+						print("case 2 or 9. current tile is not a loop. more than 2 loops elsewhere")
+						//it is possible that they are in front of current tile...
+						//if (currentLoopRange>0){
+							//print("still case 2 or 9")
+							if (commandQueue[currentIndexCorrected-1]==8){ //currentlooprange-1 because if this is true, then currentlooprange would have been incremented already
+								print("case 2. current tile is not a loop, previous one is")
+								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+								loopLabels[currentLoopLabel].frame.origin.y += 10
+								currentLoopLabel += 1
+								
+								if (currentIndexCorrected != commandQueue.count-1){
+									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+								}
+							}
+							else{
+								print("case 9. current tile is not a loop, neither is previous one, but more than 1 loop elsewhere")
+								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+								
+								if (currentIndexCorrected != commandQueue.count-1){
+									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+								}
+							}
+						//}
+//						else if (currentLoopRange==0) //this case is not possible. currentlooprange could not possibly be 0 if the loop is before this tile.
+//						{
+//							print("there is only 1 loop before this one, the others are after")
+//							if (currentStep-1 == loopRanges[currentLoopRange-1].1){
+//								print("last tile is a loop")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								loopLabels[currentIndexCorrected-currentLoopRange].frame.origin.y += 10 //might crash
+//							}
+//							else{
+//								print("the previous tiles are elsewhere")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							}
+//						}
+//						else{ //no longer possible case
+//							print("all of the loops are ahead of this tile")
+//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//						}
+					}
+				}
+				print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+//				print("_7 current loop range : "+String(currentLoopRange))
+//				if (loopRanges.count>0){//there are loops
+//					if (currentLoopRange-1 < loopRanges.count && currentLoopRange-1 > 0) { //there might be a loop previously
+//						print("_1")
+//						if (currentStep-1 == loopRanges[currentLoopRange-1].1 ){ //last tile is a loop.
+//							print("_2")
+//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							print("_3")
+//							loopLabels[currentIndexCorrected-totalNumOfLoops].frame.origin.y += 10
+//							print("_4")
+//						}
+//						else{ //last tile is not a loop, but there were loops previously
+//							if (currentStep == loopRanges[currentLoopRange].0) //if the current tile is the beginning of a loop
+//							{
+//								print("_14")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_15")
+//							}
+//							else{ //current tile is not the beginning of a loop but might be in a loop. does not have the authority to push up previous tile
+//								print("_16")
+//								//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_17")
+//							}
+//
+//						}
+//					}
+//					else{ //no previous loop
+//						if (loopRanges.count > currentLoopRange){ //if the current tile might be a loop
+//							if (currentStep == loopRanges[currentLoopRange].0) //if the current tile is the beginning of a loop
+//							{
+//								print("_5")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_6")
+//							}
+//							else{ //current tile is not the beginning of a loop but might be in a loop. does not have the authority to push up previous tile
+//								print("_12")
+//								//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_13")
+//							}
+//						}
+//						else{ //there are no loops, so current tile cannot be one
+//							print("_10")
+//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							print("_11")
+//						}
+//					}
+//				}
+//				
+//				print("________________________________________________________")
+//				//+y is downwards, so this moves the previous tile back down
+//				//BUG: we need to borrow the below loop-detection logic to make sure we don't move the same block multiple times
+//				print("1")
+//				//printStatus()
+//				print("2")
+//				print("loopranges.count :"+String(loopRanges.count)+", totalnumofloops :"+String(totalNumOfLoops)+", currentlooprange :"+String(currentLoopRange))
+//				if (loopRanges.count != 0 && currentLoopRange<totalNumOfLoops) { //if there are loops and not finished iterating through loops. 2nd condition is required to avoid out of bounds in //loopranges
+//					print("3.1")
+//					if currentLoopRange > 0{ //if there even is a last loop
+//						print("3.111")
+//						print("last loop end index: "+String(loopRanges[currentLoopRange-1].1))
+//						if (currentStep-1 == loopRanges[currentLoopRange-1].1){ //if last tile is a loop
+//							print("beginning of loop. move up previous one")
+//							//double check to prevent crash
+//							if (currentIndexCorrected-1 >= 0) {
+//								print("3.21")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							}
+//							if (loopLabels.count-2 >= 0){
+//								print("3.22")
+//								loopLabels[loopLabels.count-2].frame.origin.y += 10
+//							}
+//		//					print("beginning of loop. move up previous one")
+//		//					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//		//					print("3.2")
+//		//					loopLabels[currentLoopRange-1].frame.origin.y += 10
+//						}
+//							
+//						else{ //last step is not a loop
+//							if (currentStep > loopRanges[currentLoopRange].0){ //indices that are not at the beginning of the current loop should not be allowed to move last tile down
+//								print("beginning of loop. move up")
+//								if (currentIndexCorrected-1 >= 0) {
+//									print("3.23")
+//									commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								}
+//								print("3.8")
+//							}
+//						}
+//						
+//					}
+//					else{
+//						print("there is no previous tile at all")
+//					}
+//				}
+//	//			else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){ //if there are loops and we just moved out of a loop
+//	//				//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
+//	//				print("previous tile is loop")
+//	//				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//	//				print("3.9")
+//	//				loopLabels[loopLabels.count-1].frame.origin.y += 10
+//	//				print("3.10")
+//	//			}
+//				else{//there are no loops at all
+//					print("no loops")
+//					//currentIndexCorrected += 1
+//					if (currentIndexCorrected-1 >= 0) {
+//						print("3.24")
+//						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//					}
+//					print("3.11")
+//					//loopLabels[currentLoopRange].frame.origin.y += 10
+//				}
+//				
+//				/*
+//				if (currentIndexCorrected-1 >= 0) {
+//					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//				}
+//				if (loopLabels.count-1 >= 0){
+//					loopLabels[loopLabels.count-1].frame.origin.y += 10
+//				}*/
+//				
+//				//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 			}
-			else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
-				//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
-				print("previous tile is loop")
-				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-				loopLabels[loopLabels.count-1].frame.origin.y += 10
+		}
+		//else if (currentIndexCorrected)
+		else if (currentIndexCorrected==0 && commandQueue.count>1){
+			print("there is no previous tile but there's a future one.")
+			if (totalNumOfLoops>0){
+				if (loopRanges[0].0 == 0){
+					if (currentStep == 0){
+						commandQueueViews[0].frame.origin.y -= 10
+						loopLabels[0].frame.origin.y -= 10
+					}
+				}
+				else{
+				commandQueueViews[0].frame.origin.y -= 10
+				}
 			}
 			else{
-				//there are no loops at all
-				print("no loops")
-				//currentIndexCorrected += 1
-				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-				//loopLabels[currentLoopRange].frame.origin.y += 10
+				commandQueueViews[0].frame.origin.y -= 10
 			}
-			
-			//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 		}
 		
 		//handles a basic command
 		if currentStep < realCommandQueue.count && !aboutToWin {
 			if (currentIndexCorrected < (commandQueue.count - 1)) {
 				//if (currentStep < (commandQueue.count - 1)) {
-				if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
-					if (currentStep==loopRanges[currentLoopRange].0){
-						print("beginning of loop. move up")
-						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
-						loopLabels[currentLoopRange].frame.origin.y -= 10
-					}
-					
-				}
-				else{
-					//there are no loops at all
-					print("no loops")
-					//currentIndexCorrected += 1
-					commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
-				}
-				
+//				if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+//					if (currentStep==loopRanges[currentLoopRange].0){
+//						print("beginning of loop. move up")
+//						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+//						print("3.12")
+//						loopLabels[currentLoopRange].frame.origin.y -= 10
+//						print("3.13")
+//					}
+//					
+//				}
+//				else{
+//					//there are no loops at all
+//					print("no loops")
+//					//currentIndexCorrected += 1
+//					commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+//					print("3.14")
+//				}
+//				
 				//commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 			}
 			//			var maybewon: Bool
@@ -728,34 +986,40 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				//(moved, onShip) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
 				if (realCommandQueue[currentStep] < 4){
 					if !moved {
-						if (currentIndexCorrected != commandQueueViews.count - 1){
-							if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
-								print("3")
-								if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
-									print("beginning of loop. move up")
-									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-									loopLabels[currentLoopRange].frame.origin.y += 10
-								}
-								else if (currentStep==loopRanges[currentLoopRange].0){
-									print("beginning of loop. move up")
-									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-								}
-								
-							}
-							else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
-								//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
-								print("previous tile is loop")
-								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-								loopLabels[loopLabels.count].frame.origin.y += 10
-							}
-							else{
-								//there are no loops at all
-								print("no loops")
-								//currentIndexCorrected += 1
-								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-								//loopLabels[currentLoopRange].frame.origin.y += 10
-							}
-						}
+//						if (currentIndexCorrected != commandQueueViews.count - 1){
+//							if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+//								print("3.3")
+//								if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
+//									print("beginning of loop. move up")
+//									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//									print("3.4")
+//									loopLabels[currentLoopRange].frame.origin.y += 10
+//									print("3.5")
+//								}
+//								else if (currentStep==loopRanges[currentLoopRange].0){
+//									print("beginning of loop. move up")
+//									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//									print("3.6")
+//								}
+//								
+//							}
+//							else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
+//								//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
+//								print("previous tile is loop")
+//								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//								print("3.15")
+//								loopLabels[loopLabels.count].frame.origin.y += 10
+//								print("3.16")
+//							}
+//							else{
+//								//there are no loops at all
+//								print("no loops")
+//								//currentIndexCorrected += 1
+//								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//								print("3.17")
+//								//loopLabels[currentLoopRange].frame.origin.y += 10
+//							}
+//						}
 						tickTimer.invalidate()
 						takeInput = true
 						return
@@ -810,8 +1074,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			}
 		}
 		else{
-			//there are no loops at all
-			print("no loops")
+			//no more loops
+			print("____________________________________________________________________________________________________")
+			print("no loops anymore")
 			currentIndexCorrected += 1
 		}
 		print("6")

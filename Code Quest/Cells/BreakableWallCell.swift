@@ -26,6 +26,9 @@ class BreakableWallCell: gameCell {
 	var health:Int = 0
 	var initialHealth = 0 //will be used to tell material for now. can explicitly name material later
 	
+	var row:Int = -1
+	var column:Int = -1
+	
 	init(initialHealth:Int) {
 		self.isWall = true
 		self.isFuel = false
@@ -36,6 +39,20 @@ class BreakableWallCell: gameCell {
 		super.init(image: UIImage(named:"break_wall.png"))
 		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health"
 	}
+	
+	init(initialHealth:Int, row:Int, column:Int) {
+		self.isWall = true
+		self.isFuel = false
+		self.health = initialHealth
+		self.initialHealth = initialHealth
+
+		self.row=row
+		self.column=column
+		
+		super.init(image: UIImage(named:"break_wall.png"))
+		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health, row "+String(self.row)+", column "+String(self.column)
+	}
+	
 	
 	///Changes image and VoiceOver label to player
 	func makePlayer() {
@@ -70,7 +87,7 @@ class BreakableWallCell: gameCell {
 	func loseHealth(){
 		self.health = self.health - 1
 		//super.init(image: UIImage(named:"break_wall.png"))
-		self.image = UIImage(named:"ship_grid.png")
+		self.image = UIImage(named:"wall1Health1.png")
 		self.accessibilityLabel = "Wall with "+String(health)+" health"
 		
 		if (health == 0) {

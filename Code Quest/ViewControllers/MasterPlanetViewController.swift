@@ -254,8 +254,8 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		let level8 = Level(name: "Level 8", data: data8, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The wall in your path seems to have cracks in it. Try standing next to it and using your blaster to break through it!",starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [6,4,3])
 		
 		let data9 = [[1,2,2,1,2,2],
-		             [1,2,2,3,2,2],
-		             [1,1,1,1,3,4],
+		             [1,2,2,6,2,2],
+		             [1,1,1,1,6,4],
 		             [2,2,2,2,2,2]]
 		
 		let level9 = Level(name: "Level 9", data: data9, startingLoc: (0, 0), goalLoc: (3, 0), tutorial: "The blaster will destroy walls on all 4 sides of you! Make sure to save the alien before continuing on to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
