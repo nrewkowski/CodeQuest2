@@ -371,7 +371,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 				var layoutText = ""
 				let levelHeight = selectedLevel.data.count
 				let levelWidth = selectedLevel.data[0].count
-				let gridString = "The level is "+String(levelHeight)+" rows tall and "+String(levelWidth)+" columns wide."
+				let gridString = "The level is "+String(levelHeight)+" rows and "+String(levelWidth)+" columns."
 				print(gridString)
 				let playerString = "The player is located at row 1 and column 1. "
 				let goalRow = selectedLevel.goalLoc.1 + 1

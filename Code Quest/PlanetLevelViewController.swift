@@ -55,6 +55,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var selectedNumOfLoops = 2 //default to 2 or else crash
 	var currentLoopLabel = -1
 	
+	let speechSynthesizer = AVSpeechSynthesizer()
+	var myUtterance = AVSpeechUtterance(string: "")
+	
 	/// Controls game logic
 	override func viewDidLoad() {
 		
@@ -153,7 +156,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			//let alert = UIAlertController(title: level?.name, message: tutorialString, preferredStyle: UIAlertControllerStyle.alert)
 			//alert.addAction(UIAlertAction(title: "Start level", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.drumPlayer.volume = 1}))
 			//self.present(alert, animated: true, completion: nil)
-			let tText = DevLevelTutorialViewController()
+			let tText = LevelTutorialViewController()
 			tText.tutorialText = tutorialString
 			tText.layoutText=layoutText
 			tText.modalPresentationStyle = .formSheet
@@ -565,6 +568,14 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				else{
 					print("nothing to loop")
 				}
+			}
+			else if type.rawValue == 9 {
+			
+				print("help")
+				
+				myUtterance = AVSpeechUtterance(string: layoutText)
+				myUtterance.rate = 0.5 //make this a slider like volume
+				speechSynthesizer.speak(myUtterance)
 			}
 			
 			else { // Command is to be executed immediately, deals with buttons that are not commands for the player (erase, queue, etc)

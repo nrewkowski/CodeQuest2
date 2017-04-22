@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 ///Displays tutorial text
 class LevelTutorialViewController: UIViewController {
@@ -20,6 +21,9 @@ class LevelTutorialViewController: UIViewController {
 	var myParent : LevelViewController?
 	
 	var layoutText : String = "layout"
+	
+	let speechSynthesizer = AVSpeechSynthesizer()
+	var myUtterance = AVSpeechUtterance(string: "")
 	
 	
 	//init(tutorialText : String) {
@@ -61,10 +65,10 @@ class LevelTutorialViewController: UIViewController {
 		layoutButton.setTitle("LayoutButton", for: UIControlState.normal)
 		
 		layoutButton.titleLabel!.font = layoutButton.titleLabel!.font.withSize(30)
-		layoutButton.addTarget(self, action: #selector(DevLevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
-		layoutButton.accessibilityLabel=layoutText
-		layoutButton.isEnabled=false
-		self.view.addSubview(layoutButton)
+		//layoutButton.addTarget(self, action: #selector(DevLevelTutorialViewController.start), for: UIControlEvents.touchUpInside)
+		//layoutButton.accessibilityLabel=layoutText
+		//layoutButton.isEnabled=false
+		//self.view.addSubview(layoutButton)
 		//layoutButton.accessibilityTraits = UIAccessibilityTraitNone
 		//layoutButton.element
 		view.accessibilityElements=[layoutButton,label,button]
@@ -72,6 +76,9 @@ class LevelTutorialViewController: UIViewController {
     }
 
 	func start() {
+		myUtterance = AVSpeechUtterance(string: layoutText)
+		myUtterance.rate = 0.5 //make this a slider like volume
+		speechSynthesizer.speak(myUtterance)
 		self.dismiss(animated: true, completion: {});
 		myParent?.drumPlayer.volume = 1.0 * musicVolume
 	}
