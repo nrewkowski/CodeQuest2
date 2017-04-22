@@ -48,6 +48,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var layoutText:String = ""
 	var pickerData = ["2","3","4","5"]
 	
+	var hint: String = ""
+	
 	var penalties = -1
 	
 	var failed = false
@@ -573,7 +575,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			
 				print("help")
 				
-				myUtterance = AVSpeechUtterance(string: layoutText)
+				myUtterance = AVSpeechUtterance(string: layoutText+","+hint)
 				myUtterance.rate = 0.5 //make this a slider like volume
 				speechSynthesizer.speak(myUtterance)
 			}

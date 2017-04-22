@@ -32,6 +32,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 	var planetNumber:Int = -1
 	
 	var levelNumber:Int = -1
+	var nextLevelHint:String=""
 	
 	
 	@IBOutlet weak var level1HighScore: UILabel!
@@ -404,6 +405,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 				layoutText = gridString+playerString+goalString+alienString
 				print(layoutText)
 				levelViewController.layoutText=layoutText
+				levelViewController.hint=nextLevelHint
 				//musicPlayer2.stop()
 			}
 		}
