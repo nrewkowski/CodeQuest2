@@ -77,6 +77,8 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		level1stars=[level1star1, level1star2, level1star3]
         level2stars=[level2star1, level2star2, level2star3]
         level3stars=[level3star1, level3star2, level3star3]
+        
+        
 		//let MrMaze = Maze(width:11, height:7)
 		//levels.append(LevelFromMaze(maze: MrMaze, name: "Mr Maze's Level", tutorial:"This is Mr Maze's level"))
 //		if let savedLevels = loadLevels() {
@@ -255,8 +257,8 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		
 		let data9 = [[1,2,2,1,2,2],
 		             [1,2,2,6,2,2],
-		             [1,1,1,1,6,4],
-		             [2,2,2,2,2,2]]
+		             [1,1,1,1,7,4],
+		             [2,5,9,8,2,2]]
 		
 		let level9 = Level(name: "Level 9", data: data9, startingLoc: (0, 0), goalLoc: (3, 0), tutorial: "The blaster will destroy walls on all 4 sides of you! Make sure to save the alien before continuing on to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
 		

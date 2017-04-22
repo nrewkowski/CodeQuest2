@@ -29,6 +29,8 @@ class BreakableWallCell: gameCell {
 	var row:Int = -1
 	var column:Int = -1
 	
+	//var imagesToUse:[UIImage] = []
+	
 	init(initialHealth:Int) {
 		self.isWall = true
 		self.isFuel = false
@@ -36,7 +38,7 @@ class BreakableWallCell: gameCell {
 		self.initialHealth = initialHealth
 		
 		//here, use switch case to find correct wall images
-		super.init(image: UIImage(named:"break_wall.png"))
+		super.init(image: UIImage(named:"wall"+String(initialHealth)+"health"+String(initialHealth)+".png"))
 		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health"
 	}
 	
@@ -49,7 +51,7 @@ class BreakableWallCell: gameCell {
 		self.row=row
 		self.column=column
 		
-		super.init(image: UIImage(named:"break_wall.png"))
+		super.init(image: UIImage(named:"wall"+String(initialHealth)+"health"+String(initialHealth)+".png"))
 		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health, row "+String(self.row)+", column "+String(self.column)
 	}
 	
@@ -80,18 +82,21 @@ class BreakableWallCell: gameCell {
 	func makeWall() {
 		self.isWall = true
 		self.health = initialHealth
-		self.image = UIImage(named:"break_wall.png")
+		self.image = UIImage(named:"wall"+String(initialHealth)+"health"+String(initialHealth)+".png")
 		self.accessibilityLabel = "Cracked wall"
 	}
 	
 	func loseHealth(){
 		self.health = self.health - 1
 		//super.init(image: UIImage(named:"break_wall.png"))
-		self.image = UIImage(named:"wall1Health1.png")
-		self.accessibilityLabel = "Wall with "+String(health)+" health"
+		
 		
 		if (health == 0) {
 			makeNotWall()
+		}
+		else{
+			self.image = UIImage(named:"wall"+String(initialHealth)+"health"+String(health)+".png")
+			self.accessibilityLabel = "Wall with "+String(health)+" health"
 		}
 	}
 	

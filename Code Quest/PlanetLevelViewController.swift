@@ -953,10 +953,13 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				commandQueueViews[0].frame.origin.y -= 10
 			}
 		}
+		else{
+			print("this is the only tile in total. no animation needed")
+		}
 		
 		//handles a basic command
 		if currentStep < realCommandQueue.count && !aboutToWin {
-			if (currentIndexCorrected < (commandQueue.count - 1)) {
+//			if (currentIndexCorrected < (commandQueue.count - 1)) {
 				//if (currentStep < (commandQueue.count - 1)) {
 //				if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
 //					if (currentStep==loopRanges[currentLoopRange].0){
@@ -977,7 +980,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 //				}
 //				
 				//commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
-			}
+//			}
 			//			var maybewon: Bool
 			//			(moved, maybewon) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
 			
