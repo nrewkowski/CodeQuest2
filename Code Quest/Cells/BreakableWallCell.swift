@@ -39,7 +39,7 @@ class BreakableWallCell: gameCell {
 		
 		//here, use switch case to find correct wall images
 		super.init(image: UIImage(named:"wall"+String(initialHealth)+"health"+String(initialHealth)+".png"))
-		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health"
+		self.accessibilityLabel = "Wall needs "+String(initialHealth)+" blasts"
 	}
 	
 	init(initialHealth:Int, row:Int, column:Int) {
@@ -52,7 +52,7 @@ class BreakableWallCell: gameCell {
 		self.column=column
 		
 		super.init(image: UIImage(named:"wall"+String(initialHealth)+"health"+String(initialHealth)+".png"))
-		self.accessibilityLabel = "Wall with "+String(initialHealth)+" health, row "+String(self.row)+", column "+String(self.column)
+		self.accessibilityLabel = "Wall needs "+String(initialHealth)+" blasts, row "+String(self.row)+", column "+String(self.column)
 	}
 	
 	
@@ -96,7 +96,7 @@ class BreakableWallCell: gameCell {
 		}
 		else{
 			self.image = UIImage(named:"wall"+String(initialHealth)+"health"+String(health)+".png")
-			self.accessibilityLabel = "Wall with "+String(health)+" health"
+			self.accessibilityLabel = "Wall needs "+String(health)+" blasts"
 		}
 	}
 	

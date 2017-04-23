@@ -29,15 +29,14 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 	
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.isAccessibilityElement=true
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
     
 //    @IBAction func settingsButtonPressed(_ sender: Any) {
@@ -55,14 +54,26 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
 		print("tapped")
 		
 		if recognizer.state == UIGestureRecognizerState.ended{
-		guard let presentedView = presentedViewController?.view else {
-		return
+			guard let presentedView = presentedViewController?.view
+			else {
+                //print("strange3")
+				return
+			}
+			if !presentedView.bounds.contains(recognizer.location(in: presentedView)) {
+				self.dismiss(animated: true, completion: { () -> Void in
+				
+				})
+			}
+            else{
+                self.dismiss(animated: true, completion: { () -> Void in
+                    
+                })
+                //print("strange2")
+            }
 		}
-		if !presentedView.bounds.contains(recognizer.location(in: presentedView)) {
-		self.dismiss(animated: true, completion: { () -> Void in
-		})
-		}
-		}
+        else{
+            //print("strange1")
+        }
 	}
 	
     var tapBGGesture: UITapGestureRecognizer!
