@@ -221,8 +221,24 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		return pickerData.count
 	}
 	
-	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		return pickerData[row]
+//	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//		return pickerData[row]
+//	}
+	
+	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+		var pickerLabel : UILabel
+		if let label = view as? UILabel {
+			pickerLabel = label
+		} else {
+			pickerLabel = UILabel()
+			pickerLabel.textColor = UIColor.black
+			pickerLabel.textAlignment = NSTextAlignment.center
+		}
+		
+		pickerLabel.text = pickerData[row]
+		pickerLabel.sizeToFit()
+		pickerLabel.accessibilityLabel = "Loop "+String(pickerData[row])+" times."
+		return pickerLabel
 	}
 	
 	
@@ -325,8 +341,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
 		self.present(alertController, animated: true, completion: nil)*/
 		//myLabel.text = pickerData[row]
-		
+		print("row select")
 		selectedNumOfLoops = Int(pickerData[row])!
+		//pickerView.row
 		
 //		print("loop pressed")
 //		print("real queue before="+String(realCommandQueue.count))
