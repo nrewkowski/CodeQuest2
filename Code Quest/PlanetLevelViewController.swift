@@ -498,79 +498,79 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				})
 				
 				
-				
-			} else if type.rawValue == 8 {
-				print("loop pressed")
-				print("real queue before="+String(realCommandQueue.count))
-				if (commandQueue.count > 0) {
-					if (commandQueue[commandQueue.count-1] != 8){
-						let commandToLoop = commandQueue[commandQueue.count-1]
-						print("loop "+testImageNames[commandToLoop])
-						
-						var doneCountingLoops=false
-						var index = commandQueue.count-2
-						var numOfLoops=1
-						
-						while (!doneCountingLoops){
-							if index >= 0{
-								if (commandQueue[index] == commandToLoop){
-									numOfLoops += 1
-								}
-								else{
-									doneCountingLoops=true
-								}
-								index -= 1
-							}
-							else{
-								doneCountingLoops=true
-							}
-						}
-						print("num of loops="+String(numOfLoops))
-						
-						var i = 0
-						print("real queue before="+String(realCommandQueue.count))
-						for i in 0...numOfLoops-1 {
-							print("pop view")
-							commandQueueViews.popLast()?.removeFromSuperview()
-							commandQueue.popLast()
-							//realCommandQueue.append(commandToLoop)
-						}
-						print("real queue after="+String(realCommandQueue.count))
-						let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
-						tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
-						tempCell.isAccessibilityElement = true
-						tempCell.accessibilityTraits = UIAccessibilityTraitImage
-						//tempCell.accessibilityTraits = UIAccessibilityTraitNone
-						tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-						
-						self.view.addSubview(tempCell)
-						
-						
-						var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
-						loopLabel.textAlignment = .center
-						loopLabel.text=String(numOfLoops)
-						loopLabel.font = loopLabel.font.withSize(60)
-						loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-						self.view.addSubview(loopLabel)
-						loopLabels.append(loopLabel)
-						
-						commandQueue.append(type.rawValue)
-						//realCommandQueue.append(type.rawValue)
-						commandQueueViews.append(tempCell)
-						playSound(sound: testCommandSounds[commandToLoop])
-						numOfLoopsPerLoop.append(numOfLoops)
-						loopCommands.append(commandToLoop)
-						loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
-						totalNumOfLoops += 1
-						print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
-						print(loopCommands[loopCommands.count-1])
-						print(loopRanges)
-					}
-				}
-				else{
-					print("nothing to loop")
-				}
 			}
+//			 else if type.rawValue == 8 { this is no longer how loops are handled
+//				print("loop pressed")
+//				print("real queue before="+String(realCommandQueue.count))
+//				if (commandQueue.count > 0) {
+//					if (commandQueue[commandQueue.count-1] != 8){
+//						let commandToLoop = commandQueue[commandQueue.count-1]
+//						print("loop "+testImageNames[commandToLoop])
+//						
+//						var doneCountingLoops=false
+//						var index = commandQueue.count-2
+//						var numOfLoops=1
+//						
+//						while (!doneCountingLoops){
+//							if index >= 0{
+//								if (commandQueue[index] == commandToLoop){
+//									numOfLoops += 1
+//								}
+//								else{
+//									doneCountingLoops=true
+//								}
+//								index -= 1
+//							}
+//							else{
+//								doneCountingLoops=true
+//							}
+//						}
+//						print("num of loops="+String(numOfLoops))
+//						
+//						var i = 0
+//						print("real queue before="+String(realCommandQueue.count))
+//						for i in 0...numOfLoops-1 {
+//							print("pop view")
+//							commandQueueViews.popLast()?.removeFromSuperview()
+//							commandQueue.popLast()
+//							//realCommandQueue.append(commandToLoop)
+//						}
+//						print("real queue after="+String(realCommandQueue.count))
+//						let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
+//						tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+//						tempCell.isAccessibilityElement = true
+//						tempCell.accessibilityTraits = UIAccessibilityTraitImage
+//						//tempCell.accessibilityTraits = UIAccessibilityTraitNone
+//						tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//						
+//						self.view.addSubview(tempCell)
+//						
+//						
+//						var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+//						loopLabel.textAlignment = .center
+//						loopLabel.text=String(numOfLoops)
+//						loopLabel.font = loopLabel.font.withSize(60)
+//						loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//						self.view.addSubview(loopLabel)
+//						loopLabels.append(loopLabel)
+//						
+//						commandQueue.append(type.rawValue)
+//						//realCommandQueue.append(type.rawValue)
+//						commandQueueViews.append(tempCell)
+//						playSound(sound: testCommandSounds[commandToLoop])
+//						numOfLoopsPerLoop.append(numOfLoops)
+//						loopCommands.append(commandToLoop)
+//						loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
+//						totalNumOfLoops += 1
+//						print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
+//						print(loopCommands[loopCommands.count-1])
+//						print(loopRanges)
+//					}
+//				}
+//				else{
+//					print("nothing to loop")
+//				}
+//			}
 			else if type.rawValue == 9 {
 			
 				print("help")
@@ -1222,8 +1222,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	// Note that commands and queue sounds will never be running at the same time, so it
 	// should be safe to reuse tickTimer and currentStep here
 	override func runQueueSounds() {
-		if (currentStep < commandQueue.count) {
-			playSound(sound: testCommandSounds[commandQueue[currentStep]])
+		if (currentStep < realCommandQueue.count) {
+			playSound(sound: testCommandSounds[realCommandQueue[currentStep]])
 			currentStep += 1
 		} else {
 			tickTimer.invalidate()
