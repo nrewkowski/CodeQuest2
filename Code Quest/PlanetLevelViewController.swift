@@ -29,7 +29,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 
 	
 	var parentPlanetViewController : PlanetViewController? = nil
-	var devCmdHandler: DevCommandHandler? = nil
+	var devCmdHandler: CommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
     

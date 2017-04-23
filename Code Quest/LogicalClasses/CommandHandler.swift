@@ -132,7 +132,8 @@ class CommandHandler {
 	Checks surrounding spaces for breakable walls, then calls blast function on relevant cells
 	*/
 	func blastCommand() {
-		
+		var alreadyBlasted=false
+		print(String(alreadyBlasted)+"*************************************************************************************************************************")
 		print(playerLoc)
 		print(level)
 		print(level.count)
@@ -144,7 +145,8 @@ class CommandHandler {
 			print(1)
 			if let loc = level[playerLoc.1][playerLoc.0 - 1] as? BreakableWallCell {
 				if(loc.isWall) { //will always be wall
-					myGameScene.kaboom(pos: (playerLoc.0 - 1, playerLoc.1))
+					myGameScene.kaboom(pos: (playerLoc.0 - 1, playerLoc.1),shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.loseHealth()
 				}
 			}
@@ -153,7 +155,8 @@ class CommandHandler {
 			print(2)
 			if let loc = level[playerLoc.1][playerLoc.0 + 1] as? BreakableWallCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0 + 1, playerLoc.1))
+					myGameScene.kaboom(pos: (playerLoc.0 + 1, playerLoc.1),shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.loseHealth()
 
 				}
@@ -163,7 +166,8 @@ class CommandHandler {
 			print(3)
 			if let loc = level[playerLoc.1 - 1][playerLoc.0] as? BreakableWallCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 - 1))
+					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 - 1),shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.loseHealth()
 
 				}
@@ -173,7 +177,8 @@ class CommandHandler {
 			print(4)
 			if let loc = level[playerLoc.1 + 1][playerLoc.0] as? BreakableWallCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 + 1))
+					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 + 1),shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.loseHealth()
 
 				}

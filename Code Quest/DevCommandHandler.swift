@@ -100,7 +100,7 @@ class DevCommandHandler : CommandHandler {
 	Checks surrounding spaces for breakable walls, then calls blast function on relevant cells
 	*/
 	override func blastCommand() {
-		
+		var alreadyBlasted=false
 		print(playerLoc)
 		print(level)
 		print(level.count)
@@ -111,7 +111,8 @@ class DevCommandHandler : CommandHandler {
 			print(1)
 			if let loc = level[playerLoc.1][playerLoc.0 - 1] as? floorCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0 - 1, playerLoc.1))
+					myGameScene.kaboom(pos: (playerLoc.0 - 1, playerLoc.1), shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.makeNotWall()
 				}
 			}
@@ -120,7 +121,8 @@ class DevCommandHandler : CommandHandler {
 			print(2)
 			if let loc = level[playerLoc.1][playerLoc.0 + 1] as? floorCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0 + 1, playerLoc.1))
+					myGameScene.kaboom(pos: (playerLoc.0 + 1, playerLoc.1), shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.makeNotWall()
 					
 				}
@@ -130,7 +132,8 @@ class DevCommandHandler : CommandHandler {
 			print(3)
 			if let loc = level[playerLoc.1 - 1][playerLoc.0] as? floorCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 - 1))
+					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 - 1), shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.makeNotWall()
 					
 				}
@@ -140,7 +143,8 @@ class DevCommandHandler : CommandHandler {
 			print(4)
 			if let loc = level[playerLoc.1 + 1][playerLoc.0] as? floorCell {
 				if(loc.isWall) {
-					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 + 1))
+					myGameScene.kaboom(pos: (playerLoc.0, playerLoc.1 + 1), shouldPlayNoise: !alreadyBlasted)
+					alreadyBlasted=true
 					loc.makeNotWall()
 					
 				}

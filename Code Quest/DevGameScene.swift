@@ -94,7 +94,7 @@ class DevGameScene : GameScene {
 		
 	}
 	
-	override func kaboom (pos: (Int, Int)) {
+	override func kaboom (pos: (Int, Int), shouldPlayNoise: Bool) {
 		let kaboomo = SKSpriteNode(imageNamed: "break_wall.png")
 		kaboomo.xScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.width
 		kaboomo.yScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.height
@@ -108,10 +108,12 @@ class DevGameScene : GameScene {
 			SKAction.wait(forDuration: 1),
 			SKAction.removeFromParent()
 			]))
-		boomSound.run(SKAction.sequence([
-			SKAction.wait(forDuration: 0.15),
-			SKAction.play()
-			]))
+		if (shouldPlayNoise){
+			boomSound.run(SKAction.sequence([
+				SKAction.wait(forDuration: 0.15),
+				SKAction.play()
+				]))
+		}
 		
 	}
 	

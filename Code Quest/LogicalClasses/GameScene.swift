@@ -101,7 +101,7 @@ class GameScene : SKScene {
 		
 	}
 	
-	func kaboom (pos: (Int, Int)) {
+	func kaboom (pos: (Int, Int), shouldPlayNoise:Bool) {
 		let kaboomo = SKSpriteNode(imageNamed: "break_wall.png")
 		kaboomo.xScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.width
 		kaboomo.yScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.height
@@ -115,10 +115,14 @@ class GameScene : SKScene {
 			SKAction.wait(forDuration: 1),
 			SKAction.removeFromParent()
 		]))
-		boomSound.run(SKAction.sequence([
-				SKAction.wait(forDuration: 0.15),
-				SKAction.play()
-		]))
+		
+		if (shouldPlayNoise){
+			print("playing noise")
+//			boomSound.run(SKAction.sequence([
+//					SKAction.wait(forDuration: 0.15),
+//					SKAction.play()
+//			]))
+		}
 		
 	}
 	
