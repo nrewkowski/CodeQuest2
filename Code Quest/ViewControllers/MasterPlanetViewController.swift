@@ -406,6 +406,8 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 				print(layoutText)
 				levelViewController.layoutText=layoutText
 				levelViewController.hint=nextLevelHint
+				levelViewController.levels=levels
+				levelViewController.levelsToUse=levelsToUse
 				//musicPlayer2.stop()
 			}
 		}

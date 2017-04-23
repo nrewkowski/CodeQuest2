@@ -48,6 +48,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var layoutText:String = ""
 	var pickerData = ["2","3","4","5"]
 	
+	var levels = [Level]()
+	var levelsToUse:[Int]=[]
+	
 	var hint: String = ""
 	
 	var penalties = -1
@@ -1194,7 +1197,15 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			
 			//alert...not sure if it is voiceover friendly or not
 			let alert = UIAlertController(title: "You win!", message: "You took \(commandQueue.count) steps. You had \(penalties) penalties. Your best score is \(level!.highscore).", preferredStyle: UIAlertControllerStyle.alert)
-			alert.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.musicPlayer.volume = 1.0 * musicVolume}))
+			
+			var alertTitle=""
+			if (levelNumber==2){
+				alertTitle="Return to Solar System"
+			}
+			else{
+				alertTitle="Go to Next Level"
+			}
+			alert.addAction(UIAlertAction(title: alertTitle, style: UIAlertActionStyle.default, handler: goToNextLevel))
 			self.present(alert, animated: true, completion: nil)
 			
 			
@@ -1211,6 +1222,91 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		}
 		
 		
+	}
+	
+	func goToNextLevel(alert: UIAlertAction) -> Void{
+		print("level num: "+String(levelNumber))
+		self.musicPlayer.volume = 1.0 * musicVolume
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		
+		if (levelNumber==2){ //last level on planet. go back to planet screen
+			//this needs some reimplementation so that too many viewcontrollers don't get pushed onto the stack
+			let vc = storyboard.instantiateViewController(withIdentifier: "Galaxy")
+			self.navigationController?.pushViewController(vc, animated: true)
+		}
+		else{
+			let vc = storyboard.instantiateViewController(withIdentifier: "level")
+			//pop if current level number is 3, else push new one
+			
+			let levelViewController = vc as! PlanetLevelViewController
+			
+			
+			levelViewController.planetNumber = planetNumber
+			var selectedLevel: Level;
+			selectedLevel = levels[levelsToUse[levelNumber+1]]
+			var isALevel=true;
+			
+			if (levelNumber == -1){
+				isALevel=false
+			}
+			else{
+				selectedLevel = levels[levelsToUse[levelNumber+1]]
+				levelViewController.levelNumber=levelNumber+1
+				levelViewController.bestScore=levels[levelsToUse[levelNumber+1]].highscore
+			}
+			
+			if (isALevel) {
+				levelViewController.level = selectedLevel
+				levelViewController.parentPlanetViewController = parentPlanetViewController
+				
+				var layoutText = ""
+				let levelHeight = selectedLevel.data.count
+				let levelWidth = selectedLevel.data[0].count
+				let gridString = "The level is "+String(levelHeight)+" rows and "+String(levelWidth)+" columns."
+				print(gridString)
+				let playerString = "The player is located at row 1 and column 1. "
+				let goalRow = selectedLevel.goalLoc.1 + 1
+				let goalColumn = selectedLevel.goalLoc.0 + 1
+				let goalString = "The rocket ship is located at row " + String(goalRow) + ", column " + String(goalColumn) + ". "
+				print(goalString)
+				
+				var alienLocation : (Int,Int) = (-1,-1)
+				
+				//DispatchQueue.main.sync{
+				var i = 0
+				for row in selectedLevel.data {
+					if (row.contains(4)) {
+						alienLocation = ( Int(i) + 1,Int(row.index(of: 4)!) + 1)
+					}
+					i += 1
+				}
+				//}
+				
+				var alienString = ""
+				
+				if (alienLocation == (-1,-1)){
+					alienString = "There is no alien in this level."
+				}
+				else{
+					alienString = "The alien is located at row "+String(alienLocation.0)+", column "+String(alienLocation.1)+"."
+				}
+				
+				print(alienString)
+				layoutText = gridString+playerString+goalString+alienString
+				print(layoutText)
+				levelViewController.layoutText=layoutText
+				//levelViewController.hint=nextLevelHint
+				levelViewController.levels=levels
+				levelViewController.levelsToUse=levelsToUse
+				//we need to add this hint once we decide how to hint system will work
+				
+				//musicPlayer2.stop()
+			}
+			
+			
+			
+			self.navigationController?.pushViewController(levelViewController, animated: true)
+		}
 	}
 	
 	override func win() {
