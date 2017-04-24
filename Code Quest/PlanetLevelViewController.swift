@@ -48,6 +48,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var layoutText:String = ""
 	var pickerData = ["2","3","4","5"]
 	
+	var isFirstViewControllerOnStack = true
+	
 	var levels = [Level]()
 	var levelsToUse:[Int]=[]
 	
@@ -65,6 +67,13 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	
 	/// Controls game logic
 	override func viewDidLoad() {
+		
+		if (!isFirstViewControllerOnStack){
+			var navArray = self.navigationController?.viewControllers
+			navArray?.remove(at: (navArray?.count)! - 2)
+			self.navigationController?.viewControllers = navArray!
+			isFirstViewControllerOnStack = true
+		}
 		
 		self.view.backgroundColor = sceneColor
 		
@@ -1231,8 +1240,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		if (levelNumber==2){ //last level on planet. go back to planet screen
 			//this needs some reimplementation so that too many viewcontrollers don't get pushed onto the stack
-			let vc = storyboard.instantiateViewController(withIdentifier: "Galaxy")
-			self.navigationController?.pushViewController(vc, animated: true)
+			//let vc = storyboard.instantiateViewController(withIdentifier: "Galaxy")
+			//self.navigationController?.pushViewController(vc, animated: true)
+			self.navigationController?.popViewController(animated: true)
 		}
 		else{
 			let vc = storyboard.instantiateViewController(withIdentifier: "level")
@@ -1304,7 +1314,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			}
 			
 			
-			
+			levelViewController.isFirstViewControllerOnStack = false
 			self.navigationController?.pushViewController(levelViewController, animated: true)
 		}
 	}
