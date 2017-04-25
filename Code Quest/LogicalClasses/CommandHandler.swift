@@ -200,7 +200,7 @@ class CommandHandler {
 	
 	*/
 	func setPlayerLoc(newCoords: (Int, Int)) -> Bool {
-		
+		print("#^#^#^$&$*$*#*#*#*#**#$*&%&%&%&%&%&%&%&%&*%*%(((#(#(##^#^#^$&$*$*#*#*#*#**#$*&%&%&%&%&%&%&%&%&*%*%(((#(#(##^#^#^$&$*$*#*#*#*#**#$*&%&%&%&%&%&%&%&%&*%*%(((#(#(#")
 		if (newCoords.0 >= 0) && (newCoords.0 < level[0].count) && (newCoords.1 >= 0) && (newCoords.1 < level.count) {  //Check boundaries
 			if let oldLoc = level[playerLoc.1][playerLoc.0] as? floorCell, let newLoc = level[newCoords.1][newCoords.0] as? floorCell {		//Check if space is floor
 				
@@ -226,8 +226,10 @@ class CommandHandler {
 					}
 				}
 				//print("make not player")
+				if (playerLoc.0 != 0 || playerLoc.1 != 0){
+					oldLoc.makeNotPlayer()
+				}
 				
-				oldLoc.makeNotPlayer()
 				playerLoc = newCoords
 				let isGoal = newLoc.isGoal
 				
@@ -263,8 +265,9 @@ class CommandHandler {
 						}
 					}
 					//print("make not player")
-					
-					oldLoc.makeNotPlayer()
+					if (playerLoc.0 != 0 || playerLoc.1 != 0){
+						oldLoc.makeNotPlayer()
+					}
 					playerLoc = newCoords
 					let isGoal = newLoc.isGoal
 					
@@ -281,7 +284,9 @@ class CommandHandler {
 				if (newLoc.isWall) {
 					return false
 				}
-				oldLoc.makeNotPlayer()
+				if (playerLoc.0 != 0 || playerLoc.1 != 0){
+					oldLoc.makeNotPlayer()
+				}
 				playerLoc = newCoords
 				let isGoal = newLoc.isGoal
 				

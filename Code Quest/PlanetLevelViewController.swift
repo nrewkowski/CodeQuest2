@@ -155,6 +155,10 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 					default:
 						cell = floorCell(isWall: false, isFuel: false,row: y+1, column: x+1)
 					}
+					
+					if x==0 && y==0 {
+						//cell.image = UIImage(named: "greentile")
+					}
 					cell.frame = CGRect(x: LevelViewController.scaleDims(input: LevelViewController.moveInc*x, x: true), y: LevelViewController.scaleDims(input: 64+LevelViewController.moveInc*y, x: false), width: LevelViewController.scaleDims(input: LevelViewController.moveInc, x: true), height: LevelViewController.scaleDims(input: LevelViewController.moveInc, x: false))
 					self.view.addSubview(cell)
 					self.tileArray[y].append(cell)  //Store gameCells in array for accessing
@@ -165,6 +169,10 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			}
 			if let goal = tileArray[goalLoc.1][goalLoc.0] as? floorCell {
 				goal.makeGoal()           //Draw goal on position cell
+			}
+			
+			if let firstTile = tileArray[0][0] as? floorCell {
+				firstTile.image = UIImage(named: "greentile")
 			}
 		}
 		

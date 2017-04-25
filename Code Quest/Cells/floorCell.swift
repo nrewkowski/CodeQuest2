@@ -72,7 +72,7 @@ class floorCell: gameCell {
 	func makePlayer() {
 		isPlayer = true
 		isFuel = false
-		self.image = UIImage(named:"player.png")
+		//self.image = UIImage(named:"player.png")
 		self.accessibilityLabel = "Player, row "+String(self.row)+", column "+String(self.column)
 		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}
