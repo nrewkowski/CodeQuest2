@@ -65,6 +65,10 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	let speechSynthesizer = AVSpeechSynthesizer()
 	var myUtterance = AVSpeechUtterance(string: "")
 	
+	var originalSpeechSynthesizer = AVSpeechSynthesizer()
+	
+	var movedLastStep = true
+	
 	/// Controls game logic
 	override func viewDidLoad() {
 		
@@ -176,6 +180,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			tText.modalPresentationStyle = .formSheet
 			tText.modalTransitionStyle = .coverVertical
 			tText.myParent = self
+			tText.speechSynthesizer = originalSpeechSynthesizer
 			if let background = (level?.background) as String? {
 				tText.background = background
 			}
@@ -357,90 +362,6 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		selectedNumOfLoops = Int(pickerData[row])!
 		//pickerView.row
 		
-//		print("loop pressed")
-//		print("real queue before="+String(realCommandQueue.count))
-//		var numOfLoops:Int = Int(pickerData[row])!
-//		if (commandQueue.count > 0) {
-//			if (commandQueue[commandQueue.count-1] != 8){
-//				let commandToLoop = commandQueue[commandQueue.count-1]
-//				print("loop "+testImageNames[commandToLoop])
-//				
-//				var doneCountingLoops=false
-//				var index = commandQueue.count-2
-//				//var numOfLoops=1
-//				
-//				/*
-//				while (!doneCountingLoops){
-//					if index >= 0{
-//						if (commandQueue[index] == commandToLoop){
-//							numOfLoops += 1
-//						}
-//						else{
-//							doneCountingLoops=true
-//						}
-//						index -= 1
-//					}
-//					else{
-//						doneCountingLoops=true
-//					}
-//				}*/
-//				print("num of loops="+String(numOfLoops))
-//				
-//				var i = 0
-//				print("real queue before="+String(realCommandQueue.count))
-//				commandQueueViews.popLast()?.removeFromSuperview()
-//				commandQueue.popLast()
-//				realCommandQueue.popLast()
-//				for i in 0...numOfLoops-1 {
-//					print("pop view")
-//					//commandQueue.append(commandToLoop)
-//					realCommandQueue.append(commandToLoop)
-//				}
-//				
-//				/*
-//
-//commandQueue.append(type.rawValue)
-//commandQueueViews.append(tempCell)
-//realCommandQueue.append(type.rawValue)
-//*/
-//				print("real queue after="+String(realCommandQueue.count))
-//				let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
-//				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
-//				tempCell.isAccessibilityElement = true
-//				tempCell.accessibilityTraits = UIAccessibilityTraitImage
-//				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
-//				tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-//				
-//				self.view.addSubview(tempCell)
-//				
-//				
-//				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
-//				loopLabel.textAlignment = .center
-//				loopLabel.text=String(numOfLoops)
-//				loopLabel.font = loopLabel.font.withSize(60)
-//				loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-//				self.view.addSubview(loopLabel)
-//				loopLabels.append(loopLabel)
-//				
-//				
-//				commandQueue.append(8)
-//				//realCommandQueue.append(type.rawValue)
-//				commandQueueViews.append(tempCell)
-//				playSound(sound: testCommandSounds[commandToLoop])
-//				numOfLoopsPerLoop.append(numOfLoops)
-//				loopCommands.append(commandToLoop)
-//				loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
-//				totalNumOfLoops += 1
-//				
-//				print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
-//				print(loopCommands[loopCommands.count-1])
-//				print(loopRanges)
-//				print(totalNumOfLoops)
-//			}
-//		}
-//		else{
-//			print("nothing to loop")
-//		}
 
 	}
 	
@@ -528,82 +449,12 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				
 				
 			}
-//			 else if type.rawValue == 8 { this is no longer how loops are handled
-//				print("loop pressed")
-//				print("real queue before="+String(realCommandQueue.count))
-//				if (commandQueue.count > 0) {
-//					if (commandQueue[commandQueue.count-1] != 8){
-//						let commandToLoop = commandQueue[commandQueue.count-1]
-//						print("loop "+testImageNames[commandToLoop])
-//						
-//						var doneCountingLoops=false
-//						var index = commandQueue.count-2
-//						var numOfLoops=1
-//						
-//						while (!doneCountingLoops){
-//							if index >= 0{
-//								if (commandQueue[index] == commandToLoop){
-//									numOfLoops += 1
-//								}
-//								else{
-//									doneCountingLoops=true
-//								}
-//								index -= 1
-//							}
-//							else{
-//								doneCountingLoops=true
-//							}
-//						}
-//						print("num of loops="+String(numOfLoops))
-//						
-//						var i = 0
-//						print("real queue before="+String(realCommandQueue.count))
-//						for i in 0...numOfLoops-1 {
-//							print("pop view")
-//							commandQueueViews.popLast()?.removeFromSuperview()
-//							commandQueue.popLast()
-//							//realCommandQueue.append(commandToLoop)
-//						}
-//						print("real queue after="+String(realCommandQueue.count))
-//						let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
-//						tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
-//						tempCell.isAccessibilityElement = true
-//						tempCell.accessibilityTraits = UIAccessibilityTraitImage
-//						//tempCell.accessibilityTraits = UIAccessibilityTraitNone
-//						tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-//						
-//						self.view.addSubview(tempCell)
-//						
-//						
-//						var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
-//						loopLabel.textAlignment = .center
-//						loopLabel.text=String(numOfLoops)
-//						loopLabel.font = loopLabel.font.withSize(60)
-//						loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-//						self.view.addSubview(loopLabel)
-//						loopLabels.append(loopLabel)
-//						
-//						commandQueue.append(type.rawValue)
-//						//realCommandQueue.append(type.rawValue)
-//						commandQueueViews.append(tempCell)
-//						playSound(sound: testCommandSounds[commandToLoop])
-//						numOfLoopsPerLoop.append(numOfLoops)
-//						loopCommands.append(commandToLoop)
-//						loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
-//						totalNumOfLoops += 1
-//						print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
-//						print(loopCommands[loopCommands.count-1])
-//						print(loopRanges)
-//					}
-//				}
-//				else{
-//					print("nothing to loop")
-//				}
-//			}
+
 			else if type.rawValue == 9 {
 			
 				print("help")
-				
+				originalSpeechSynthesizer.stopSpeaking(at: .immediate)
+				speechSynthesizer.stopSpeaking(at: .immediate)
 				myUtterance = AVSpeechUtterance(string: layoutText+","+hint)
 				myUtterance.rate = 0.5 //make this a slider like volume
 				speechSynthesizer.speak(myUtterance)
@@ -690,6 +541,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			currentIndexCorrected=0
 			currentLoopRange=0
 			currentLoopLabel=0
+			movedLastStep = true
 			//			won = false
 			
 			//i believe that this limits the time for the player to do 1 action
@@ -703,6 +555,41 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	/// Executes one step of the game loop
 	override func runCommands() {
 		musicPlayer.volume = 0.1 * musicVolume
+		
+		if (!movedLastStep){
+			print(commandQueue.count)
+			print(currentIndexCorrected)
+			if (currentIndexCorrected != commandQueue.count-1){ //if this is not the last step
+				print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+				if (commandQueue[currentIndexCorrected] == 8){
+					commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+					loopLabels[currentLoopLabel].frame.origin.y += 10
+				}
+				else{
+					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+				}
+			}
+			else{
+				print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+				if (commandQueue[currentIndexCorrected] == 8){
+					if (currentStep == loopRanges[loopRanges.count-1].0) {
+						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+					}
+					else{
+						//commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+					}
+				}
+				else{
+					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+				}
+			}
+			
+			musicPlayer.volume = 1.0 * musicVolume
+			tickTimer.invalidate()
+			takeInput = true
+			
+			return
+		}
 		print("current step="+String(currentStep))
 		print("correctedIndex="+String(currentIndexCorrected))
 		print(realCommandQueue)
@@ -833,148 +720,11 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 								}
 							}
-						//}
-//						else if (currentLoopRange==0) //this case is not possible. currentlooprange could not possibly be 0 if the loop is before this tile.
-//						{
-//							print("there is only 1 loop before this one, the others are after")
-//							if (currentStep-1 == loopRanges[currentLoopRange-1].1){
-//								print("last tile is a loop")
-//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//								loopLabels[currentIndexCorrected-currentLoopRange].frame.origin.y += 10 //might crash
-//							}
-//							else{
-//								print("the previous tiles are elsewhere")
-//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//							}
-//						}
-//						else{ //no longer possible case
-//							print("all of the loops are ahead of this tile")
-//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//						}
+
 					}
 				}
 				print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-//				print("_7 current loop range : "+String(currentLoopRange))
-//				if (loopRanges.count>0){//there are loops
-//					if (currentLoopRange-1 < loopRanges.count && currentLoopRange-1 > 0) { //there might be a loop previously
-//						print("_1")
-//						if (currentStep-1 == loopRanges[currentLoopRange-1].1 ){ //last tile is a loop.
-//							print("_2")
-//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//							print("_3")
-//							loopLabels[currentIndexCorrected-totalNumOfLoops].frame.origin.y += 10
-//							print("_4")
-//						}
-//						else{ //last tile is not a loop, but there were loops previously
-//							if (currentStep == loopRanges[currentLoopRange].0) //if the current tile is the beginning of a loop
-//							{
-//								print("_14")
-//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//								print("_15")
-//							}
-//							else{ //current tile is not the beginning of a loop but might be in a loop. does not have the authority to push up previous tile
-//								print("_16")
-//								//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//								print("_17")
-//							}
-//
-//						}
-//					}
-//					else{ //no previous loop
-//						if (loopRanges.count > currentLoopRange){ //if the current tile might be a loop
-//							if (currentStep == loopRanges[currentLoopRange].0) //if the current tile is the beginning of a loop
-//							{
-//								print("_5")
-//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//								print("_6")
-//							}
-//							else{ //current tile is not the beginning of a loop but might be in a loop. does not have the authority to push up previous tile
-//								print("_12")
-//								//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//								print("_13")
-//							}
-//						}
-//						else{ //there are no loops, so current tile cannot be one
-//							print("_10")
-//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//							print("_11")
-//						}
-//					}
-//				}
-//				
-//				print("________________________________________________________")
-//				//+y is downwards, so this moves the previous tile back down
-//				//BUG: we need to borrow the below loop-detection logic to make sure we don't move the same block multiple times
-//				print("1")
-//				//printStatus()
-//				print("2")
-//				print("loopranges.count :"+String(loopRanges.count)+", totalnumofloops :"+String(totalNumOfLoops)+", currentlooprange :"+String(currentLoopRange))
-//				if (loopRanges.count != 0 && currentLoopRange<totalNumOfLoops) { //if there are loops and not finished iterating through loops. 2nd condition is required to avoid out of bounds in //loopranges
-//					print("3.1")
-//					if currentLoopRange > 0{ //if there even is a last loop
-//						print("3.111")
-//						print("last loop end index: "+String(loopRanges[currentLoopRange-1].1))
-//						if (currentStep-1 == loopRanges[currentLoopRange-1].1){ //if last tile is a loop
-//							print("beginning of loop. move up previous one")
-//							//double check to prevent crash
-//							if (currentIndexCorrected-1 >= 0) {
-//								print("3.21")
-//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//							}
-//							if (loopLabels.count-2 >= 0){
-//								print("3.22")
-//								loopLabels[loopLabels.count-2].frame.origin.y += 10
-//							}
-//		//					print("beginning of loop. move up previous one")
-//		//					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//		//					print("3.2")
-//		//					loopLabels[currentLoopRange-1].frame.origin.y += 10
-//						}
-//							
-//						else{ //last step is not a loop
-//							if (currentStep > loopRanges[currentLoopRange].0){ //indices that are not at the beginning of the current loop should not be allowed to move last tile down
-//								print("beginning of loop. move up")
-//								if (currentIndexCorrected-1 >= 0) {
-//									print("3.23")
-//									commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//								}
-//								print("3.8")
-//							}
-//						}
-//						
-//					}
-//					else{
-//						print("there is no previous tile at all")
-//					}
-//				}
-//	//			else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){ //if there are loops and we just moved out of a loop
-//	//				//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
-//	//				print("previous tile is loop")
-//	//				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//	//				print("3.9")
-//	//				loopLabels[loopLabels.count-1].frame.origin.y += 10
-//	//				print("3.10")
-//	//			}
-//				else{//there are no loops at all
-//					print("no loops")
-//					//currentIndexCorrected += 1
-//					if (currentIndexCorrected-1 >= 0) {
-//						print("3.24")
-//						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//					}
-//					print("3.11")
-//					//loopLabels[currentLoopRange].frame.origin.y += 10
-//				}
-//				
-//				/*
-//				if (currentIndexCorrected-1 >= 0) {
-//					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-//				}
-//				if (loopLabels.count-1 >= 0){
-//					loopLabels[loopLabels.count-1].frame.origin.y += 10
-//				}*/
-//				
-//				//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+
 			}
 		}
 		//else if (currentIndexCorrected)
@@ -1001,89 +751,21 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		//handles a basic command
 		if currentStep < realCommandQueue.count && !aboutToWin {
-//			if (currentIndexCorrected < (commandQueue.count - 1)) {
-				//if (currentStep < (commandQueue.count - 1)) {
-//				if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
-//					if (currentStep==loopRanges[currentLoopRange].0){
-//						print("beginning of loop. move up")
-//						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
-//						print("3.12")
-//						loopLabels[currentLoopRange].frame.origin.y -= 10
-//						print("3.13")
-//					}
-//					
-//				}
-//				else{
-//					//there are no loops at all
-//					print("no loops")
-//					//currentIndexCorrected += 1
-//					commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
-//					print("3.14")
-//				}
-//				
-				//commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
-//			}
-			//			var maybewon: Bool
-			//			(moved, maybewon) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
+
 			
 			if (realCommandQueue[currentStep] != 8){
 				(moved, onShip) = (cmdHandler?.handleCmd(input: realCommandQueue[currentStep]))!
 				//(moved, onShip) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
 				if (realCommandQueue[currentStep] < 4){
-					if !moved {
-//						if (currentIndexCorrected != commandQueueViews.count - 1){
-//							if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
-//								print("3.3")
-//								if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
-//									print("beginning of loop. move up")
-//									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-//									print("3.4")
-//									loopLabels[currentLoopRange].frame.origin.y += 10
-//									print("3.5")
-//								}
-//								else if (currentStep==loopRanges[currentLoopRange].0){
-//									print("beginning of loop. move up")
-//									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-//									print("3.6")
-//								}
-//								
-//							}
-//							else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
-//								//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
-//								print("previous tile is loop")
-//								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-//								print("3.15")
-//								loopLabels[loopLabels.count].frame.origin.y += 10
-//								print("3.16")
-//							}
-//							else{
-//								//there are no loops at all
-//								print("no loops")
-//								//currentIndexCorrected += 1
-//								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
-//								print("3.17")
-//								//loopLabels[currentLoopRange].frame.origin.y += 10
-//							}
-//						}
-						tickTimer.invalidate()
-						takeInput = true
-						return
-						//this will cause an infinite loop. handle this another way
+					if !moved { //handles what happens when you go out of bounds or hit a wall (moved will be false in these cases)
+						movedLastStep = false
+//						tickTimer.invalidate()
+//						takeInput = true
+//						return
 					}
 				}
 			}
-//			else{
-//				//DEPRACATED...too many visual artifacts
-//				print("this should not happen")
-//				print("starting loop")
-//				let commandToPlay=loopCommands[loopCommands.count-loopIndex-1]
-//				let numOfLoopsToPlay=numOfLoopsPerLoop[numOfLoopsPerLoop.count-loopIndex-1]
-//				print("process loop "+String(commandToPlay) + "___" + String(numOfLoopsToPlay))
-//				
-//				(moved, onShip) = (cmdHandler?.handleLoop(commandToLoop: commandToPlay, numOfLoops: numOfLoopsToPlay))!
-//				loopIndex += 1
-//				print("done")
-//			}
+
 			
 			//			won = won || maybewon
 			if (moved) {
@@ -1337,6 +1019,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	
 	override func viewWillDisappear(_ animated : Bool) {
 		super.viewWillDisappear(animated)
+		originalSpeechSynthesizer.stopSpeaking(at: .immediate)
+		speechSynthesizer.stopSpeaking(at: .immediate)
 		musicPlayer.stop()
 		drumPlayer.stop()
 	}
@@ -1368,3 +1052,384 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	
 }
 
+/* THE CODE GRAVEYARD
+//		print("loop pressed")
+//		print("real queue before="+String(realCommandQueue.count))
+//		var numOfLoops:Int = Int(pickerData[row])!
+//		if (commandQueue.count > 0) {
+//			if (commandQueue[commandQueue.count-1] != 8){
+//				let commandToLoop = commandQueue[commandQueue.count-1]
+//				print("loop "+testImageNames[commandToLoop])
+//
+//				var doneCountingLoops=false
+//				var index = commandQueue.count-2
+//				//var numOfLoops=1
+//
+//				/*
+//				while (!doneCountingLoops){
+//					if index >= 0{
+//						if (commandQueue[index] == commandToLoop){
+//							numOfLoops += 1
+//						}
+//						else{
+//							doneCountingLoops=true
+//						}
+//						index -= 1
+//					}
+//					else{
+//						doneCountingLoops=true
+//					}
+//				}*/
+//				print("num of loops="+String(numOfLoops))
+//
+//				var i = 0
+//				print("real queue before="+String(realCommandQueue.count))
+//				commandQueueViews.popLast()?.removeFromSuperview()
+//				commandQueue.popLast()
+//				realCommandQueue.popLast()
+//				for i in 0...numOfLoops-1 {
+//					print("pop view")
+//					//commandQueue.append(commandToLoop)
+//					realCommandQueue.append(commandToLoop)
+//				}
+//
+//				/*
+//
+//commandQueue.append(type.rawValue)
+//commandQueueViews.append(tempCell)
+//realCommandQueue.append(type.rawValue)
+//*/
+//				print("real queue after="+String(realCommandQueue.count))
+//				let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
+//				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+//				tempCell.isAccessibilityElement = true
+//				tempCell.accessibilityTraits = UIAccessibilityTraitImage
+//				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
+//				tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//
+//				self.view.addSubview(tempCell)
+//
+//
+//				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+//				loopLabel.textAlignment = .center
+//				loopLabel.text=String(numOfLoops)
+//				loopLabel.font = loopLabel.font.withSize(60)
+//				loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//				self.view.addSubview(loopLabel)
+//				loopLabels.append(loopLabel)
+//
+//
+//				commandQueue.append(8)
+//				//realCommandQueue.append(type.rawValue)
+//				commandQueueViews.append(tempCell)
+//				playSound(sound: testCommandSounds[commandToLoop])
+//				numOfLoopsPerLoop.append(numOfLoops)
+//				loopCommands.append(commandToLoop)
+//				loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
+//				totalNumOfLoops += 1
+//
+//				print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
+//				print(loopCommands[loopCommands.count-1])
+//				print(loopRanges)
+//				print(totalNumOfLoops)
+//			}
+//		}
+//		else{
+//			print("nothing to loop")
+//		}
+
+//			 else if type.rawValue == 8 { this is no longer how loops are handled
+//				print("loop pressed")
+//				print("real queue before="+String(realCommandQueue.count))
+//				if (commandQueue.count > 0) {
+//					if (commandQueue[commandQueue.count-1] != 8){
+//						let commandToLoop = commandQueue[commandQueue.count-1]
+//						print("loop "+testImageNames[commandToLoop])
+//
+//						var doneCountingLoops=false
+//						var index = commandQueue.count-2
+//						var numOfLoops=1
+//
+//						while (!doneCountingLoops){
+//							if index >= 0{
+//								if (commandQueue[index] == commandToLoop){
+//									numOfLoops += 1
+//								}
+//								else{
+//									doneCountingLoops=true
+//								}
+//								index -= 1
+//							}
+//							else{
+//								doneCountingLoops=true
+//							}
+//						}
+//						print("num of loops="+String(numOfLoops))
+//
+//						var i = 0
+//						print("real queue before="+String(realCommandQueue.count))
+//						for i in 0...numOfLoops-1 {
+//							print("pop view")
+//							commandQueueViews.popLast()?.removeFromSuperview()
+//							commandQueue.popLast()
+//							//realCommandQueue.append(commandToLoop)
+//						}
+//						print("real queue after="+String(realCommandQueue.count))
+//						let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
+//						tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+//						tempCell.isAccessibilityElement = true
+//						tempCell.accessibilityTraits = UIAccessibilityTraitImage
+//						//tempCell.accessibilityTraits = UIAccessibilityTraitNone
+//						tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//
+//						self.view.addSubview(tempCell)
+//
+//
+//						var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+//						loopLabel.textAlignment = .center
+//						loopLabel.text=String(numOfLoops)
+//						loopLabel.font = loopLabel.font.withSize(60)
+//						loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+//						self.view.addSubview(loopLabel)
+//						loopLabels.append(loopLabel)
+//
+//						commandQueue.append(type.rawValue)
+//						//realCommandQueue.append(type.rawValue)
+//						commandQueueViews.append(tempCell)
+//						playSound(sound: testCommandSounds[commandToLoop])
+//						numOfLoopsPerLoop.append(numOfLoops)
+//						loopCommands.append(commandToLoop)
+//						loopRanges.append((realCommandQueue.count-numOfLoops,realCommandQueue.count-1))
+//						totalNumOfLoops += 1
+//						print(numOfLoopsPerLoop[numOfLoopsPerLoop.count-1])
+//						print(loopCommands[loopCommands.count-1])
+//						print(loopRanges)
+//					}
+//				}
+//				else{
+//					print("nothing to loop")
+//				}
+//			}
+
+
+//}
+//						else if (currentLoopRange==0) //this case is not possible. currentlooprange could not possibly be 0 if the loop is before this tile.
+//						{
+//							print("there is only 1 loop before this one, the others are after")
+//							if (currentStep-1 == loopRanges[currentLoopRange-1].1){
+//								print("last tile is a loop")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								loopLabels[currentIndexCorrected-currentLoopRange].frame.origin.y += 10 //might crash
+//							}
+//							else{
+//								print("the previous tiles are elsewhere")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							}
+//						}
+//						else{ //no longer possible case
+//							print("all of the loops are ahead of this tile")
+//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//						}
+
+
+//				print("_7 current loop range : "+String(currentLoopRange))
+//				if (loopRanges.count>0){//there are loops
+//					if (currentLoopRange-1 < loopRanges.count && currentLoopRange-1 > 0) { //there might be a loop previously
+//						print("_1")
+//						if (currentStep-1 == loopRanges[currentLoopRange-1].1 ){ //last tile is a loop.
+//							print("_2")
+//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							print("_3")
+//							loopLabels[currentIndexCorrected-totalNumOfLoops].frame.origin.y += 10
+//							print("_4")
+//						}
+//						else{ //last tile is not a loop, but there were loops previously
+//							if (currentStep == loopRanges[currentLoopRange].0) //if the current tile is the beginning of a loop
+//							{
+//								print("_14")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_15")
+//							}
+//							else{ //current tile is not the beginning of a loop but might be in a loop. does not have the authority to push up previous tile
+//								print("_16")
+//								//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_17")
+//							}
+//
+//						}
+//					}
+//					else{ //no previous loop
+//						if (loopRanges.count > currentLoopRange){ //if the current tile might be a loop
+//							if (currentStep == loopRanges[currentLoopRange].0) //if the current tile is the beginning of a loop
+//							{
+//								print("_5")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_6")
+//							}
+//							else{ //current tile is not the beginning of a loop but might be in a loop. does not have the authority to push up previous tile
+//								print("_12")
+//								//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								print("_13")
+//							}
+//						}
+//						else{ //there are no loops, so current tile cannot be one
+//							print("_10")
+//							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							print("_11")
+//						}
+//					}
+//				}
+//
+//				print("________________________________________________________")
+//				//+y is downwards, so this moves the previous tile back down
+//				//BUG: we need to borrow the below loop-detection logic to make sure we don't move the same block multiple times
+//				print("1")
+//				//printStatus()
+//				print("2")
+//				print("loopranges.count :"+String(loopRanges.count)+", totalnumofloops :"+String(totalNumOfLoops)+", currentlooprange :"+String(currentLoopRange))
+//				if (loopRanges.count != 0 && currentLoopRange<totalNumOfLoops) { //if there are loops and not finished iterating through loops. 2nd condition is required to avoid out of bounds in //loopranges
+//					print("3.1")
+//					if currentLoopRange > 0{ //if there even is a last loop
+//						print("3.111")
+//						print("last loop end index: "+String(loopRanges[currentLoopRange-1].1))
+//						if (currentStep-1 == loopRanges[currentLoopRange-1].1){ //if last tile is a loop
+//							print("beginning of loop. move up previous one")
+//							//double check to prevent crash
+//							if (currentIndexCorrected-1 >= 0) {
+//								print("3.21")
+//								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//							}
+//							if (loopLabels.count-2 >= 0){
+//								print("3.22")
+//								loopLabels[loopLabels.count-2].frame.origin.y += 10
+//							}
+//		//					print("beginning of loop. move up previous one")
+//		//					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//		//					print("3.2")
+//		//					loopLabels[currentLoopRange-1].frame.origin.y += 10
+//						}
+//
+//						else{ //last step is not a loop
+//							if (currentStep > loopRanges[currentLoopRange].0){ //indices that are not at the beginning of the current loop should not be allowed to move last tile down
+//								print("beginning of loop. move up")
+//								if (currentIndexCorrected-1 >= 0) {
+//									print("3.23")
+//									commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//								}
+//								print("3.8")
+//							}
+//						}
+//
+//					}
+//					else{
+//						print("there is no previous tile at all")
+//					}
+//				}
+//	//			else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){ //if there are loops and we just moved out of a loop
+//	//				//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
+//	//				print("previous tile is loop")
+//	//				commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//	//				print("3.9")
+//	//				loopLabels[loopLabels.count-1].frame.origin.y += 10
+//	//				print("3.10")
+//	//			}
+//				else{//there are no loops at all
+//					print("no loops")
+//					//currentIndexCorrected += 1
+//					if (currentIndexCorrected-1 >= 0) {
+//						print("3.24")
+//						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//					}
+//					print("3.11")
+//					//loopLabels[currentLoopRange].frame.origin.y += 10
+//				}
+//
+//				/*
+//				if (currentIndexCorrected-1 >= 0) {
+//					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+//				}
+//				if (loopLabels.count-1 >= 0){
+//					loopLabels[loopLabels.count-1].frame.origin.y += 10
+//				}*/
+//
+//				//commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
+
+
+
+
+//			if (currentIndexCorrected < (commandQueue.count - 1)) {
+//if (currentStep < (commandQueue.count - 1)) {
+//				if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+//					if (currentStep==loopRanges[currentLoopRange].0){
+//						print("beginning of loop. move up")
+//						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+//						print("3.12")
+//						loopLabels[currentLoopRange].frame.origin.y -= 10
+//						print("3.13")
+//					}
+//
+//				}
+//				else{
+//					//there are no loops at all
+//					print("no loops")
+//					//currentIndexCorrected += 1
+//					commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+//					print("3.14")
+//				}
+//
+//commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+//			}
+//			var maybewon: Bool
+//			(moved, maybewon) = (cmdHandler?.handleCmd(input: commandQueue[currentStep]))!
+
+
+
+//						if (currentIndexCorrected != commandQueueViews.count - 1){
+//							if loopRanges.count != 0 && currentLoopRange<totalNumOfLoops {
+//								print("3.3")
+//								if (currentStep==loopRanges[currentLoopRange].0 && loopRanges.count>1){
+//									print("beginning of loop. move up")
+//									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//									print("3.4")
+//									loopLabels[currentLoopRange].frame.origin.y += 10
+//									print("3.5")
+//								}
+//								else if (currentStep==loopRanges[currentLoopRange].0){
+//									print("beginning of loop. move up")
+//									commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//									print("3.6")
+//								}
+//
+//							}
+//							else if (loopRanges.count != 0 && currentStep-1 == loopRanges[loopRanges.count-1].1){
+//								//the previous one was a loop and this one is not a loop. will still need to bring the loop's number down
+//								print("previous tile is loop")
+//								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//								print("3.15")
+//								loopLabels[loopLabels.count].frame.origin.y += 10
+//								print("3.16")
+//							}
+//							else{
+//								//there are no loops at all
+//								print("no loops")
+//								//currentIndexCorrected += 1
+//								commandQueueViews[currentIndexCorrected].frame.origin.y += 10
+//								print("3.17")
+//								//loopLabels[currentLoopRange].frame.origin.y += 10
+//							}
+//						}
+
+
+//			else{
+//				//DEPRACATED...too many visual artifacts
+//				print("this should not happen")
+//				print("starting loop")
+//				let commandToPlay=loopCommands[loopCommands.count-loopIndex-1]
+//				let numOfLoopsToPlay=numOfLoopsPerLoop[numOfLoopsPerLoop.count-loopIndex-1]
+//				print("process loop "+String(commandToPlay) + "___" + String(numOfLoopsToPlay))
+//
+//				(moved, onShip) = (cmdHandler?.handleLoop(commandToLoop: commandToPlay, numOfLoops: numOfLoopsToPlay))!
+//				loopIndex += 1
+//				print("done")
+//			}
+*/*/*/
