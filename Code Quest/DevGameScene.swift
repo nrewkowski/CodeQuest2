@@ -95,7 +95,7 @@ class DevGameScene : GameScene {
 	}
 	
 	override func kaboom (pos: (Int, Int), shouldPlayNoise: Bool) {
-		let kaboomo = SKSpriteNode(imageNamed: "break_wall.png")
+		let kaboomo = SKSpriteNode()
 		kaboomo.xScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.width
 		kaboomo.yScale = CGFloat(LevelViewController.moveInc) / kaboomo.size.height
 		

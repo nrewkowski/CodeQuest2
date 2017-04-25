@@ -107,7 +107,7 @@ class floorCell: gameCell {
 	
 	func makeWall() {
 		self.isWall = true
-		self.image = UIImage(named:"break_wall.png")
+		//self.image = UIImage(named:"break_wall.png")
 		self.accessibilityLabel = "Cracked wall, row "+String(self.row)+", column "+String(self.column)
 		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}

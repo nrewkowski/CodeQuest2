@@ -419,6 +419,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 				levelViewController.hint=nextLevelHint
 				levelViewController.levels=levels
 				levelViewController.levelsToUse=levelsToUse
+				levelViewController.isFirstViewControllerOnStack = true
 				//musicPlayer2.stop()
 			}
 		}

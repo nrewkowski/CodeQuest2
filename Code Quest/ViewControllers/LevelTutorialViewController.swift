@@ -22,7 +22,7 @@ class LevelTutorialViewController: UIViewController {
 	
 	var layoutText : String = "layout"
 	
-	let speechSynthesizer = AVSpeechSynthesizer()
+	var speechSynthesizer = AVSpeechSynthesizer()
 	var myUtterance = AVSpeechUtterance(string: "")
 	
 	
@@ -80,6 +80,7 @@ class LevelTutorialViewController: UIViewController {
 		myUtterance.rate = 0.5 //make this a slider like volume
 		myUtterance.volume = musicVolume
 		speechSynthesizer.speak(myUtterance)
+		
 		self.dismiss(animated: true, completion: {});
 		myParent?.drumPlayer.volume = 1.0 * musicVolume
 	}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GalaxyViewController: UIViewController {
     
@@ -24,8 +25,9 @@ class GalaxyViewController: UIViewController {
     @IBOutlet weak var planet3Completed: UILabel!
     @IBOutlet weak var planet3Stars: UILabel!
     
-    
-    
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"mp3")!);
+	var musicPlayer2 = AVAudioPlayer()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -122,6 +124,18 @@ class GalaxyViewController: UIViewController {
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
+		do {
+			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
+			musicPlayer2.numberOfLoops = -1
+			musicPlayer2.volume = 1.0 * musicVolume
+			
+			
+			let sdelay : TimeInterval = 0.1
+			let now = musicPlayer2.deviceCurrentTime
+			//musicPlayer2.play(atTime: now+sdelay)
+		} catch {
+			print ("music failed")
+		}
 		if let savedLevels = loadLevels() {
 			levels += savedLevels
 			var planet1LevelsCompleted=0
