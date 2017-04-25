@@ -226,14 +226,17 @@ class CommandHandler {
 					}
 				}
 				//print("make not player")
+				if (playerLoc.1 == 0 && playerLoc.0==0){
 				
-				oldLoc.makeNotPlayer()
+				}else{
+					//oldLoc.makeNotPlayer()
+				}
 				playerLoc = newCoords
 				let isGoal = newLoc.isGoal
 				
 				if (!isGoal) {
 					//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
-					newLoc.makePlayer()
+					//newLoc.makePlayer()
 				}
 				return true
 			}
@@ -264,13 +267,17 @@ class CommandHandler {
 					}
 					//print("make not player")
 					
-					oldLoc.makeNotPlayer()
+				if (playerLoc.1 == 0 && playerLoc.0==0){
+					
+				}else{
+					//oldLoc.makeNotPlayer()
+				}
 					playerLoc = newCoords
 					let isGoal = newLoc.isGoal
 					
 					if (!isGoal) {
 						//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
-						newLoc.makePlayer()
+						//newLoc.makePlayer()
 					}
 					return true
 				}
@@ -281,13 +288,17 @@ class CommandHandler {
 				if (newLoc.isWall) {
 					return false
 				}
-				oldLoc.makeNotPlayer()
+				if (playerLoc.1 == 0 && playerLoc.0==0){
+					
+				}else{
+					//oldLoc.makeNotPlayer()
+				}
 				playerLoc = newCoords
 				let isGoal = newLoc.isGoal
 				
 				if (!isGoal) {
 					//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
-					newLoc.makePlayer()
+					//newLoc.makePlayer()
 				}
 				return true
 			}

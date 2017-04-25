@@ -83,7 +83,7 @@ class floorCell: gameCell {
 		if wasGoal {
 			self.makeGoal()
 		} else {
-			self.image = UIImage(named:"grid.png")
+			//self.image = UIImage(named:"grid.png")
 			self.accessibilityLabel = "Empty, row "+String(self.row)+", column "+String(self.column)
 			//self.accessibilityTraits = UIAccessibilityTraitNone
 		}
@@ -100,7 +100,7 @@ class floorCell: gameCell {
 	
 	func makeNotWall() {
 		self.isWall = false
-		self.image = UIImage(named:"grid.png")
+		//self.image = UIImage(named:"grid.png")
 		self.accessibilityLabel = "Empty, row "+String(self.row)+", column "+String(self.column)
 		//self.accessibilityTraits = UIAccessibilityTraitNone
 	}
