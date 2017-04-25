@@ -274,8 +274,19 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         let data11 = [[1,1,4,1,1]]
         
         let level11 = Level(name: "Level 4-1", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Some walls are stronger than others and may take multiple blasts to destroy! Try it on this wall!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
-        
-        levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11]
+		
+		let data12 = [[1,2,2,2,1],
+		              [1,1,5,1,1]]
+		
+		let level12 = Level(name: "Level 4-2", data: data12, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require one more hit with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		
+		let data13 = [[1,2,2,2,2],
+		              [1,1,2,2,1],
+		              [2,6,1,1,1]]
+		
+		let level13 = Level(name: "Level 4-2", data: data13, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		
+        levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11, level12]
         saveLevels()	}
 	
 	///Given a maze, returns a level

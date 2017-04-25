@@ -46,22 +46,23 @@
 		3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */; };
 		3DB6D25C1E6D1E2900E069B2 /* cheer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */; };
 		3DB6D25D1E6D1E2900E069B2 /* cheer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24F1E6D1E2900E069B2 /* cheer.wav */; };
-		3DB6D25E1E6D1E2900E069B2 /* down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2501E6D1E2900E069B2 /* down.wav */; };
 		3DB6D25F1E6D1E2900E069B2 /* drum.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2511E6D1E2900E069B2 /* drum.aif */; };
 		3DB6D2601E6D1E2900E069B2 /* drum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2521E6D1E2900E069B2 /* drum.wav */; };
 		3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2531E6D1E2900E069B2 /* kaboom.wav */; };
 		3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2541E6D1E2900E069B2 /* lazar.wav */; };
-		3DB6D2631E6D1E2900E069B2 /* left.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2551E6D1E2900E069B2 /* left.wav */; };
-		3DB6D2641E6D1E2900E069B2 /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2561E6D1E2900E069B2 /* right.wav */; };
 		3DB6D2651E6D1E2900E069B2 /* song.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2571E6D1E2900E069B2 /* song.aif */; };
 		3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2581E6D1E2900E069B2 /* song.wav */; };
-		3DB6D2671E6D1E2900E069B2 /* up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2591E6D1E2900E069B2 /* up.wav */; };
 		3DB723AD1E8B2A1800921D62 /* Planet1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */; };
 		3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */; };
 		3DB723B11E8B2CB800921D62 /* DevLevelTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */; };
 		3DB723B31E8B2D2E00921D62 /* DevCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B21E8B2D2E00921D62 /* DevCommandView.swift */; };
 		3DB723B51E8B368700921D62 /* DevCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B41E8B368700921D62 /* DevCommandHandler.swift */; };
 		B17EA2241E948D6C000732D7 /* LevelSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */; };
+		B1C9F4171EAE981A00B00322 /* down.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1C9F4121EAE981A00B00322 /* down.wav */; };
+		B1C9F4181EAE981A00B00322 /* bump.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1C9F4131EAE981A00B00322 /* bump.wav */; };
+		B1C9F4191EAE981A00B00322 /* left.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1C9F4141EAE981A00B00322 /* left.wav */; };
+		B1C9F41A1EAE981A00B00322 /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1C9F4151EAE981A00B00322 /* right.wav */; };
+		B1C9F41B1EAE981A00B00322 /* up.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1C9F4161EAE981A00B00322 /* up.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,22 +119,23 @@
 		3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bumpo.wav; path = audio/bumpo.wav; sourceTree = "<group>"; };
 		3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cheer.mp3; path = audio/cheer.mp3; sourceTree = "<group>"; };
 		3DB6D24F1E6D1E2900E069B2 /* cheer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cheer.wav; path = audio/cheer.wav; sourceTree = "<group>"; };
-		3DB6D2501E6D1E2900E069B2 /* down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = down.wav; path = audio/down.wav; sourceTree = "<group>"; };
 		3DB6D2511E6D1E2900E069B2 /* drum.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = drum.aif; path = audio/drum.aif; sourceTree = "<group>"; };
 		3DB6D2521E6D1E2900E069B2 /* drum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drum.wav; path = audio/drum.wav; sourceTree = "<group>"; };
 		3DB6D2531E6D1E2900E069B2 /* kaboom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kaboom.wav; path = audio/kaboom.wav; sourceTree = "<group>"; };
 		3DB6D2541E6D1E2900E069B2 /* lazar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = lazar.wav; path = audio/lazar.wav; sourceTree = "<group>"; };
-		3DB6D2551E6D1E2900E069B2 /* left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = left.wav; path = audio/left.wav; sourceTree = "<group>"; };
-		3DB6D2561E6D1E2900E069B2 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right.wav; path = audio/right.wav; sourceTree = "<group>"; };
 		3DB6D2571E6D1E2900E069B2 /* song.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = song.aif; path = audio/song.aif; sourceTree = "<group>"; };
 		3DB6D2581E6D1E2900E069B2 /* song.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = song.wav; path = audio/song.wav; sourceTree = "<group>"; };
-		3DB6D2591E6D1E2900E069B2 /* up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = up.wav; path = audio/up.wav; sourceTree = "<group>"; };
 		3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet1ViewController.swift; path = ViewControllers/Planet1ViewController.swift; sourceTree = "<group>"; };
 		3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetLevelViewController.swift; sourceTree = "<group>"; };
 		3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTutorialViewController.swift; sourceTree = "<group>"; };
 		3DB723B21E8B2D2E00921D62 /* DevCommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevCommandView.swift; sourceTree = "<group>"; };
 		3DB723B41E8B368700921D62 /* DevCommandHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevCommandHandler.swift; sourceTree = "<group>"; };
 		B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = LevelSelect.mp3; path = audio/LevelSelect.mp3; sourceTree = "<group>"; };
+		B1C9F4121EAE981A00B00322 /* down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = down.wav; path = ../../../Downloads/down.wav; sourceTree = "<group>"; };
+		B1C9F4131EAE981A00B00322 /* bump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bump.wav; path = ../../../Downloads/bump.wav; sourceTree = "<group>"; };
+		B1C9F4141EAE981A00B00322 /* left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = left.wav; path = ../../../Downloads/left.wav; sourceTree = "<group>"; };
+		B1C9F4151EAE981A00B00322 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right.wav; path = ../../../Downloads/right.wav; sourceTree = "<group>"; };
+		B1C9F4161EAE981A00B00322 /* up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = up.wav; path = ../../../Downloads/up.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,22 +211,23 @@
 		3DFA38F81E5CDFA900F4E914 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				B1C9F4121EAE981A00B00322 /* down.wav */,
+				B1C9F4131EAE981A00B00322 /* bump.wav */,
+				B1C9F4141EAE981A00B00322 /* left.wav */,
+				B1C9F4151EAE981A00B00322 /* right.wav */,
+				B1C9F4161EAE981A00B00322 /* up.wav */,
 				3DB6D24C1E6D1E2900E069B2 /* bump.wav */,
 				3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */,
 				3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */,
 				3DB6D24F1E6D1E2900E069B2 /* cheer.wav */,
 				3D3086C11E85C22A005CB8B0 /* Demo.aiff */,
-				3DB6D2501E6D1E2900E069B2 /* down.wav */,
 				3DB6D2511E6D1E2900E069B2 /* drum.aif */,
 				3DB6D2521E6D1E2900E069B2 /* drum.wav */,
 				3DB6D2531E6D1E2900E069B2 /* kaboom.wav */,
 				B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */,
 				3DB6D2541E6D1E2900E069B2 /* lazar.wav */,
-				3DB6D2551E6D1E2900E069B2 /* left.wav */,
-				3DB6D2561E6D1E2900E069B2 /* right.wav */,
 				3DB6D2571E6D1E2900E069B2 /* song.aif */,
 				3DB6D2581E6D1E2900E069B2 /* song.wav */,
-				3DB6D2591E6D1E2900E069B2 /* up.wav */,
 				3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */,
 			);
 			name = audio;
@@ -339,6 +342,7 @@
 					};
 					10B20FE21D909BD200142CAE = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 48L58E6GTS;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 10B20FCE1D909BD100142CAE;
 					};
@@ -369,24 +373,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB6D2601E6D1E2900E069B2 /* drum.wav in Resources */,
+				B1C9F4171EAE981A00B00322 /* down.wav in Resources */,
 				3DB6D25C1E6D1E2900E069B2 /* cheer.mp3 in Resources */,
 				3DB6D25A1E6D1E2900E069B2 /* bump.wav in Resources */,
 				3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */,
 				3DB6D2651E6D1E2900E069B2 /* song.aif in Resources */,
+				B1C9F4181EAE981A00B00322 /* bump.wav in Resources */,
 				3DB6D25D1E6D1E2900E069B2 /* cheer.wav in Resources */,
 				10B20FDD1D909BD200142CAE /* LaunchScreen.storyboard in Resources */,
-				3DB6D2631E6D1E2900E069B2 /* left.wav in Resources */,
 				3DB6D25F1E6D1E2900E069B2 /* drum.aif in Resources */,
+				B1C9F4191EAE981A00B00322 /* left.wav in Resources */,
+				B1C9F41A1EAE981A00B00322 /* right.wav in Resources */,
 				B17EA2241E948D6C000732D7 /* LevelSelect.mp3 in Resources */,
-				3DB6D2671E6D1E2900E069B2 /* up.wav in Resources */,
-				3DB6D25E1E6D1E2900E069B2 /* down.wav in Resources */,
 				3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */,
 				3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */,
 				10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */,
 				3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */,
 				3D1EBA211E8B8A1100F8EA04 /* AlienSound.wav in Resources */,
-				3DB6D2641E6D1E2900E069B2 /* right.wav in Resources */,
 				10B20FD81D909BD200142CAE /* Main.storyboard in Resources */,
+				B1C9F41B1EAE981A00B00322 /* up.wav in Resources */,
 				3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +507,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -553,6 +559,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -579,6 +586,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = J4QZ65T39F;
 				INFOPLIST_FILE = "Code Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -594,6 +603,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = J4QZ65T39F;
 				INFOPLIST_FILE = "Code Quest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -610,6 +621,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 48L58E6GTS;
 				INFOPLIST_FILE = "Code QuestTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.spookle.Code-QuestTests";
@@ -624,6 +638,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 48L58E6GTS;
 				INFOPLIST_FILE = "Code QuestTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "xyz.spookle.Code-QuestTests";

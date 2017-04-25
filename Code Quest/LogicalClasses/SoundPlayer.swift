@@ -15,11 +15,11 @@ var musicVolume : Float = 1.0
 /// Sound that plays when moving left
 let leftSound = URL(fileURLWithPath: Bundle.main.path(forResource: "left", ofType:"wav")!);
 /// Sound that plays when moving right
-let rightSound = URL(fileURLWithPath: Bundle.main.path(forResource: "right", ofType:"wav")!);
+let rightSound = URL(fileURLWithPath: Bundle.main.path(forResource: "up", ofType:"wav")!);
 /// Sound that plays when moving up
-let upSound = URL(fileURLWithPath: Bundle.main.path(forResource: "up", ofType:"wav")!);
+let upSound = URL(fileURLWithPath: Bundle.main.path(forResource: "down", ofType:"wav")!);
 /// Sound that plays when moving down
-let downSound = URL(fileURLWithPath: Bundle.main.path(forResource: "down", ofType:"wav")!);
+let downSound = URL(fileURLWithPath: Bundle.main.path(forResource: "right", ofType:"wav")!);
 /// Sound that plays when bumping into a wall
 let bumpSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bump", ofType:"wav")!);
 /// Sound that plays when command queue is full
