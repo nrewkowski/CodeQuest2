@@ -83,8 +83,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		//super.viewDidLoad() //this breaks it for some reason
 		
-		self.navigationItem.title = "Level "+String(planetNumber)+"-"+String(levelNumber+1)
-        self.navigationItem.accessibilityLabel="Level "+String(planetNumber)+"-"+String(levelNumber+1)
+		self.navigationItem.title = "Planet "+String(planetNumber)+", Level "+String(levelNumber+1)
+        self.navigationItem.accessibilityLabel="Planet "+String(planetNumber)+", Level "+String(levelNumber+1)
         var scoreButton=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
         scoreButton.tintColor = UIColor.black
         scoreButton.isEnabled=false
@@ -416,12 +416,12 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	override func getButtonInput(type:ButtonType) {
 		//if the commands are not being played through atm
 		if (takeInput) {
-			if (type.rawValue < 5 && commandQueue.count < 28) { // If command is to be added to queue and queue is not full
+			if (type.rawValue < 5 && commandQueue.count < 23) { // If command is to be added to queue and queue is not full
 				
 				
 				//queues up this command, adds accessibility, etc.
 				let tempCell = UIImageView(image: UIImage(named:testImageNames[type.rawValue] + ".png"))
-				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (84*commandQueue.count) % 960, x: true), y: LevelViewController.scaleDims(input: 480 + 90*(commandQueue.count/12), x: false), width: LevelViewController.scaleDims(input:80, x: true), height: LevelViewController.scaleDims(input: 80, x: false))
 				tempCell.isAccessibilityElement = true
 				tempCell.accessibilityTraits = UIAccessibilityTraitImage
 				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
@@ -439,7 +439,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				commandQueueViews.append(tempCell)
 				realCommandQueue.append(type.rawValue)
 				playSound(sound: testCommandSounds[type.rawValue])
-			} else if(type.rawValue < 5 && commandQueue.count >= 28) { //the queue is full
+			} else if(type.rawValue < 5 && commandQueue.count >= 23) { //the queue is full
 				
 				playSound(sound: failSound);
 				let delayTime = DispatchTime.now() + .milliseconds(300)
