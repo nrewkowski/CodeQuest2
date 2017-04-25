@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code Quest/LogicalClasses/CommandHandler.swift"
-            timestampString = "514854023.038138"
+            timestampString = "514855370.842148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "setPlayerLoc(newCoords:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -200,7 +200,7 @@ class CommandHandler {
 	
 	*/
 	func setPlayerLoc(newCoords: (Int, Int)) -> Bool {
-		
+		print("#^#^#^$&$*$*#*#*#*#**#$*&%&%&%&%&%&%&%&%&*%*%(((#(#(##^#^#^$&$*$*#*#*#*#**#$*&%&%&%&%&%&%&%&%&*%*%(((#(#(##^#^#^$&$*$*#*#*#*#**#$*&%&%&%&%&%&%&%&%&*%*%(((#(#(#")
 		if (newCoords.0 >= 0) && (newCoords.0 < level[0].count) && (newCoords.1 >= 0) && (newCoords.1 < level.count) {  //Check boundaries
 			if let oldLoc = level[playerLoc.1][playerLoc.0] as? floorCell, let newLoc = level[newCoords.1][newCoords.0] as? floorCell {		//Check if space is floor
 				
@@ -226,17 +226,16 @@ class CommandHandler {
 					}
 				}
 				//print("make not player")
-				if (playerLoc.1 == 0 && playerLoc.0==0){
-				
-				}else{
-					//oldLoc.makeNotPlayer()
+				if (playerLoc.0 != 0 || playerLoc.1 != 0){
+					oldLoc.makeNotPlayer()
 				}
+				
 				playerLoc = newCoords
 				let isGoal = newLoc.isGoal
 				
 				if (!isGoal) {
 					//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
-					//newLoc.makePlayer()
+					newLoc.makePlayer()
 				}
 				return true
 			}
@@ -266,18 +265,15 @@ class CommandHandler {
 						}
 					}
 					//print("make not player")
-					
-				if (playerLoc.1 == 0 && playerLoc.0==0){
-					
-				}else{
-					//oldLoc.makeNotPlayer()
-				}
+					if (playerLoc.0 != 0 || playerLoc.1 != 0){
+						oldLoc.makeNotPlayer()
+					}
 					playerLoc = newCoords
 					let isGoal = newLoc.isGoal
 					
 					if (!isGoal) {
 						//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
-						//newLoc.makePlayer()
+						newLoc.makePlayer()
 					}
 					return true
 				}
@@ -288,17 +284,15 @@ class CommandHandler {
 				if (newLoc.isWall) {
 					return false
 				}
-				if (playerLoc.1 == 0 && playerLoc.0==0){
-					
-				}else{
-					//oldLoc.makeNotPlayer()
+				if (playerLoc.0 != 0 || playerLoc.1 != 0){
+					oldLoc.makeNotPlayer()
 				}
 				playerLoc = newCoords
 				let isGoal = newLoc.isGoal
 				
 				if (!isGoal) {
 					//i guess that they get rid of the alien just by using makeplayer and setting isfuel to false...that's about it. when the player leaves the tile that used to be the alien, makenotplayer just sets it to empty. this system of replacing the tiles entirely is really bad design. we should fix this at some point
-					//newLoc.makePlayer()
+					newLoc.makePlayer()
 				}
 				return true
 			}
