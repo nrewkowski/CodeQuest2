@@ -284,9 +284,26 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		              [1,1,2,2,1],
 		              [2,6,1,1,1]]
 		
-		let level13 = Level(name: "Level 4-2", data: data13, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		let level13 = Level(name: "Level 4-3", data: data13, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
-        levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11, level12]
+		//Planet 5
+		let data14 = [[1,1,4,1,1]]
+		
+		let level14 = Level(name: "Level 5-1", data: data14, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Using the blaster command so many times can bet annoying! Try using the loop feature to break this wall!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		
+		let data15 = [[1,2,2,2,1],
+		              [1,1,3,1,1]]
+		
+		let level15 = Level(name: "Level 5-2", data: data15, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The loop function can also be used on movements to get a better score! Try it here!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		
+		let data16 = [[1,2,2,2,2],
+		              [1,2,1,1,1],
+		              [1,1,5,2,1]]
+		
+		let level16 = Level(name: "Level 5-3", data: data16, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Use loops to get through this level as quickly as possible!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		
+		
+        levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11, level12, level13, level14, level15, level16]
         saveLevels()	}
 	
 	///Given a maze, returns a level
