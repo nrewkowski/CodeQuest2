@@ -259,7 +259,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         let level6 = Level(name: "Planet 2, Level 3", data: data6, startingLoc: (0, 0), goalLoc: (0, 3), tutorial: "An alien needs your help! Remember you cannot leave until you have saved the alien!", starsGotten: 0, parNumMoves: 10,numOfMovesRequiredPerStar: [13,11,9])
         
         //Planet 3
-        let data7 = [[1,1,3,1,1]]
+        let data7 = [[1,1,5,1,1]]
         
         let level7 = Level(name: "Planet 3, Level 1", data: data7, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The wall in your path seems to have cracks in it. Try standing next to it and using your blaster to break through it!",starsGotten: 0, parNumMoves: 6,numOfMovesRequiredPerStar: [9,7,5])
         
@@ -278,12 +278,12 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         
         //Planet 4
         
-        let data10 = [[1,1,5,1,1]]
+        let data10 = [[1,1,6,1,1]]
         
         let level10 = Level(name: "Planet 4, Level 1", data: data10, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Some walls are stronger than others and may take multiple blasts to destroy! Try it on this wall!", starsGotten: 0, parNumMoves: 7,numOfMovesRequiredPerStar: [10,8,6])
 		
 		let data11 = [[1,2,2,2,1],
-		              [1,1,7,1,1]]
+		              [1,1,8,1,1]]
 		
 		let level11 = Level(name: "Planet 4, Level 2", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require two more hits with your blaster!", starsGotten: 0, parNumMoves: 10,numOfMovesRequiredPerStar: [13,11,9])
 		
@@ -294,9 +294,9 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		let level12 = Level(name: "Planet 4, Level 3", data: data12, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 12,numOfMovesRequiredPerStar: [15,13,11])
 		
 		//Planet 5
-		let data13 = [[1,1,4,1,1]]
+		let data13 = [[1,1,5,1,1]]
 		
-		let level13 = Level(name: "Planet 5, Level 1", data: data13, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Using the blaster command so many times can bet annoying! Try using the loop feature to break this wall!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [7,5,3])
+		let level13 = Level(name: "Planet 5, Level 1", data: data13, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Using the blaster command so many times can be annoying! Try using the loop feature to break this wall!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [7,5,3])
 		
 		let data14 = [[1,2,2,2,1],
 		              [1,1,3,1,1]]
@@ -305,7 +305,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		
 		let data15 = [[1,2,2,2,2],
 		              [1,2,1,1,1],
-		              [1,1,5,2,1]]
+		              [1,1,6,2,1]]
 		
 		let level15 = Level(name: "Planet 5, Level 3", data: data15, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Use loops to get through this level as quickly as possible!", starsGotten: 0, parNumMoves: 7,numOfMovesRequiredPerStar: [10,8,6])
 		
