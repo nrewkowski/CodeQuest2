@@ -234,7 +234,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         let data3 = [[1,1,1,1,1],
                      [2,2,1,2,2],
                      [2,2,1,2,2]]
-        let level3 = Level(name: "Planet 1, Level 3", data: data3, startingLoc: (0, 0), goalLoc: (2, 2), tutorial: "Make sure you take the correct path to get to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [5,4,3])
+        let level3 = Level(name: "Planet 1, Level 3", data: data3, startingLoc: (0, 0), goalLoc: (2, 2), tutorial: "Make sure you take the correct path to get to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [8,5,4])
         
         //Planet 2
         
@@ -278,18 +278,18 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         
         //Planet 4
         
-        let data10 = [[1,1,4,1,1]]
+        let data10 = [[1,1,5,1,1]]
         
         let level10 = Level(name: "Planet 4, Level 1", data: data10, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Some walls are stronger than others and may take multiple blasts to destroy! Try it on this wall!", starsGotten: 0, parNumMoves: 7,numOfMovesRequiredPerStar: [10,7,6])
 		
 		let data11 = [[1,2,2,2,1],
-		              [1,1,5,1,1]]
+		              [1,1,7,1,1]]
 		
-		let level11 = Level(name: "Planet 4, Level 2", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require one more hit with your blaster!", starsGotten: 0, parNumMoves: 10,numOfMovesRequiredPerStar: [13,10,9])
+		let level11 = Level(name: "Planet 4, Level 2", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require two more hits with your blaster!", starsGotten: 0, parNumMoves: 10,numOfMovesRequiredPerStar: [13,10,9])
 		
 		let data12 = [[1,2,2,2,2],
 		              [1,1,2,2,1],
-		              [2,6,1,1,1]]
+		              [2,9,1,1,1]]
 		
 		let level12 = Level(name: "Planet 4, Level 3", data: data12, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 12,numOfMovesRequiredPerStar: [15,12,11])
 		
