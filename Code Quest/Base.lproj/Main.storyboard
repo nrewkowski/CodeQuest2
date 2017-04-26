@@ -255,7 +255,7 @@
                                 <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDf-VJ-q4x">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDf-VJ-q4x">
                                 <rect key="frame" x="376" y="314" width="291" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="CodeQuest 1"/>
@@ -267,7 +267,7 @@
                                     <segue destination="4CZ-oK-lLi" kind="show" id="MUJ-Fu-F4d"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-oY-Do5">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-oY-Do5">
                                 <rect key="frame" x="435" y="404" width="173" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Dev Stuff"/>
@@ -1526,7 +1526,7 @@
         <image name="planet2" width="1478" height="1479"/>
         <image name="planet3" width="1476" height="1476"/>
         <image name="planet4" width="1476" height="1476"/>
-        <image name="planet5" width="1481" height="1499"/>
+        <image name="planet5" width="1481" height="1502"/>
         <image name="play.png" width="150" height="150"/>
         <image name="star" width="300" height="285"/>
     </resources>
