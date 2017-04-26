@@ -69,6 +69,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	
 	var movedLastStep = true
 	
+	
 	/// Controls game logic
 	override func viewDidLoad() {
 		
@@ -136,6 +137,12 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 4:
 						cell = floorCell(isWall: false, isFuel: true,row: y+1, column: x+1)
+						if (planetNumber == 2) {
+							cell.image = UIImage(named: "alien2tile")
+						}
+						else if (planetNumber == 3) {
+							cell.image = UIImage(named: "alien3tile")
+						}
 						fuelCells.append(cell as! floorCell)
 					case 5:
 						cell = BreakableWallCell(initialHealth: 1,row: y+1, column: x+1)
@@ -206,8 +213,18 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		ButtonView.pickerView?.delegate=self
 		ButtonView.pickerView?.dataSource=self
 		
+		ButtonView.planetNumber = planetNumber
 		
-		
+		if (planetNumber<5){
+			ButtonView.loopButton?.isEnabled=false
+			ButtonView.loopButton?.isAccessibilityElement=false
+			ButtonView.pickerView?.isHidden = true
+			ButtonView.pickerView?.isAccessibilityElement=false
+		}
+		if (planetNumber<3){
+			ButtonView.blastButton?.isEnabled=false
+			ButtonView.blastButton?.isAccessibilityElement=false
+		}
 		
 		let skView = SKView(frame: view.bounds)
 		skView.isUserInteractionEnabled = false
@@ -398,6 +415,12 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		}
 		for cell in fuelCells {
 			cell.makeFuel()
+			if (planetNumber == 2) {
+				cell.image = UIImage(named: "alien2tile")
+			}
+			else if (planetNumber == 3) {
+				cell.image = UIImage(named: "alien3tile")
+			}
 		}
 		
 		penalties += 1
