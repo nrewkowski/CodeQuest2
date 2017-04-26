@@ -223,7 +223,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		
         
         let data1 = [[1,1,1,1,1]]
-        let level1 = Level(name: "Planet 1, Level 1", data: data1, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This is your ship's computer, Glados. I need you to return to me so that we can fly back to our home. To reach count the steps needed then move that many steps to the right!", starsGotten: 0, parNumMoves: 5, numOfMovesRequiredPerStar: [8,6,4])
+        let level1 = Level(name: "Planet 1, Level 1", data: data1, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This is your ship's computer, Glados. I need you to return to me so that we can fly back to our home. To reach the ship, count the steps you need to move then move that many steps to the right!", starsGotten: 0, parNumMoves: 5, numOfMovesRequiredPerStar: [8,6,4])
         
         
         let data2 = [[1,1,1,1,1],
