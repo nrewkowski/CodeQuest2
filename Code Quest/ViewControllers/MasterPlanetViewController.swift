@@ -283,15 +283,15 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
         let level10 = Level(name: "Planet 4, Level 1", data: data10, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Some walls are stronger than others and may take multiple blasts to destroy! Try it on this wall!", starsGotten: 0, parNumMoves: 7,numOfMovesRequiredPerStar: [10,8,6])
 		
 		let data11 = [[1,2,2,2,1],
-		              [1,1,8,1,1]]
+		              [1,1,7,1,1]]
 		
-		let level11 = Level(name: "Planet 4, Level 2", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require two more hits with your blaster!", starsGotten: 0, parNumMoves: 10,numOfMovesRequiredPerStar: [13,11,9])
+		let level11 = Level(name: "Planet 4, Level 2", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require three blasts to destroy it!", starsGotten: 0, parNumMoves: 10,numOfMovesRequiredPerStar: [13,11,9])
 		
 		let data12 = [[1,2,2,2,2],
 		              [1,1,2,2,1],
 		              [2,9,1,1,1]]
 		
-		let level12 = Level(name: "Planet 4, Level 3", data: data12, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 12,numOfMovesRequiredPerStar: [15,13,11])
+		let level12 = Level(name: "Planet 4, Level 3", data: data12, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require five blasts to destroy it!", starsGotten: 0, parNumMoves: 12,numOfMovesRequiredPerStar: [15,13,11])
 		
 		//Planet 5
 		let data13 = [[1,1,5,1,1]]
