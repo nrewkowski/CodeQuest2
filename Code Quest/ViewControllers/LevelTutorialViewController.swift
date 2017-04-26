@@ -79,9 +79,11 @@ class LevelTutorialViewController: UIViewController {
 		myUtterance = AVSpeechUtterance(string: layoutText)
 		myUtterance.rate = 0.5 //make this a slider like volume
 		myUtterance.volume = musicVolume
-		myUtterance.preUtteranceDelay = 6
+		if (UIAccessibilityIsVoiceOverRunning())
+		{
+			myUtterance.preUtteranceDelay = 6
+		}
 		speechSynthesizer.speak(myUtterance)
-		
 		self.dismiss(animated: true, completion: {});
 		myParent?.drumPlayer.volume = 1.0 * musicVolume
 	}
