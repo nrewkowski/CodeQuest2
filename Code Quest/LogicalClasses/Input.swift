@@ -75,7 +75,57 @@ class Input: UIButton {
 			self.accessibilityLabel = "Help"
 		}
 		
+		//self.isEnabled = false
+	}
+	
+	init(type: ButtonType, frame: CGRect, isEnabled: Bool) {
+		self.type = type
 		
+		super.init(frame: frame)
+		self.backgroundColor = UIColor.clear
+		switch type {
+		case ButtonType.LEFT:
+			self.setImage(UIImage(named:"left.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Left"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.RIGHT:
+			self.setImage(UIImage(named:"right.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Right"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.UP:
+			self.setImage(UIImage(named:"up.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Up"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.DOWN:
+			self.setImage(UIImage(named:"down.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Down"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.ERASE1:
+			self.setImage(UIImage(named:"erase1.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Erase last command"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.ERASEALL:
+			self.setImage(UIImage(named:"eraseall.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Erase all commands"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.QUEUESOUND:
+			self.setImage(UIImage(named:"queuesound.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Hear the commands you have input"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.BLAST:
+			self.setImage(UIImage(named:"blast_button.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Blaster"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.LOOPCOMMAND:
+			self.setImage(UIImage(named:"loopsymbol.png"), for: UIControlState.normal)
+			self.accessibilityLabel = "Loop"
+		//self.accessibilityTraits = UIAccessibilityTraitNone
+		case ButtonType.HELP:
+			self.setImage(UIImage(named:"helpsymbol.png"), for: .normal)
+			self.accessibilityLabel = "Help"
+		}
+		
+		self.isEnabled = isEnabled
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

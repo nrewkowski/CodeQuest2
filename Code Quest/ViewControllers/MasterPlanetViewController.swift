@@ -66,7 +66,17 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 	var musicPlayer2 = AVAudioPlayer()
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
+        if (planetNumber == 2){
+            level1Button.setImage(UIImage(named: "alien2"), for: .normal)
+            level2Button.setImage(UIImage(named: "alien2"), for: .normal)
+            level3Button.setImage(UIImage(named: "alien2"), for: .normal)
+        }
+        else if (planetNumber == 3){
+            level1Button.setImage(UIImage(named: "alien3"), for: .normal)
+            level2Button.setImage(UIImage(named: "alien3"), for: .normal)
+            level3Button.setImage(UIImage(named: "alien3"), for: .normal)
+        }
 		
 		planetImage.image=UIImage(named: "planet"+String(planetNumber))
 		self.navigationItem.title="Planet "+String(planetNumber)
@@ -117,6 +127,7 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
+       
 		do {
 			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
 			musicPlayer2.numberOfLoops = -1
