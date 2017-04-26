@@ -337,7 +337,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				*/
 				print("real queue after="+String(realCommandQueue.count))
 				let tempCell = UIImageView(image: UIImage(named:testImageNames[commandToLoop] + ".png"))
-				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false))
+				tempCell.frame = CGRect(x: LevelViewController.scaleDims(input: (84*commandQueue.count) % 960, x: true), y: LevelViewController.scaleDims(input: 480 + 90*(commandQueue.count/12), x: false), width: LevelViewController.scaleDims(input:80, x: true), height: LevelViewController.scaleDims(input: 80, x: false))
 				tempCell.isAccessibilityElement = true
 				tempCell.accessibilityTraits = UIAccessibilityTraitImage
 				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
@@ -346,7 +346,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				self.view.addSubview(tempCell)
 				
 				
-				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (70*commandQueue.count) % 980, x: true), y: LevelViewController.scaleDims(input: 526 + 70*(commandQueue.count/14), x: false), width: LevelViewController.scaleDims(input:64, x: true), height: LevelViewController.scaleDims(input: 64, x: false)))
+				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (84*commandQueue.count) % 960, x: true), y: LevelViewController.scaleDims(input: 480 + 90*(commandQueue.count/12), x: false), width: LevelViewController.scaleDims(input:80, x: true), height: LevelViewController.scaleDims(input: 80, x: false)))
 				loopLabel.textAlignment = .center
 				loopLabel.text=String(numOfLoops)
 				loopLabel.font = loopLabel.font.withSize(60)
