@@ -223,23 +223,23 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
 		
         
         let data1 = [[1,1,1,1,1]]
-        let level1 = Level(name: "Level 1-1", data: data1, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This is your ship's computer, Glados. I need you to return to me so that we can fly back to our home. To reach count the steps needed then move that many steps to the right!", starsGotten: 0, parNumMoves: 2, numOfMovesRequiredPerStar: [5,2,1])
+        let level1 = Level(name: "Planet 1, Level 1", data: data1, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This is your ship's computer, Glados. I need you to return to me so that we can fly back to our home. To reach count the steps needed then move that many steps to the right!", starsGotten: 0, parNumMoves: 2, numOfMovesRequiredPerStar: [5,2,1])
         
         
         let data2 = [[1,1,1,1,1],
                      [2,2,2,2,1],
                      [2,2,2,2,1]]
-        let level2 = Level(name: "Level 1-2", data: data2, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Walls cannot be walked through. Move right and down to reach the ship! Remember to count your steps before moving!", starsGotten: 0, parNumMoves: 3,numOfMovesRequiredPerStar: [5,3,2])
+        let level2 = Level(name: "Planet 1, Level 2", data: data2, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Walls cannot be walked through. Move right and down to reach the ship! Remember to count your steps before moving!", starsGotten: 0, parNumMoves: 3,numOfMovesRequiredPerStar: [5,3,2])
         
         let data3 = [[1,1,1,1,1],
                      [2,2,1,2,2],
                      [2,2,1,2,2]]
-        let level3 = Level(name: "Level 1-3", data: data3, startingLoc: (0, 0), goalLoc: (2, 2), tutorial: "Make sure you take the correct path to get to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
+        let level3 = Level(name: "Planet 1, Level 3", data: data3, startingLoc: (0, 0), goalLoc: (2, 2), tutorial: "Make sure you take the correct path to get to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
         
         //Planet 2
         
         let data4 = [[1,1,1,4,1,1]]
-        let level4 = Level(name: "Level 2-1", data: data4, startingLoc:(0,0), goalLoc:(5,0), tutorial:"An alien needs your help! Be sure to pick up the alien before returning to your ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [5,2,1])
+        let level4 = Level(name: "Planet 2, Level 1", data: data4, startingLoc:(0,0), goalLoc:(5,0), tutorial:"An alien needs your help! Be sure to pick up the alien before returning to your ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [5,2,1])
         
         let data5 = [[1,1,2,2],
                      [2,1,2,1],
@@ -247,74 +247,70 @@ class MasterPlanetViewController: UIViewController, PlanetViewController {
                      [2,1,4,1]]
         
         
-        let level5 = Level(name: "Level 2-2", data: data5, startingLoc: (0, 0), goalLoc: (3, 1), tutorial: "Another alien is lost! Remember to pick them up before going to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
+        let level5 = Level(name: "Planet 2, Level 2", data: data5, startingLoc: (0, 0), goalLoc: (3, 1), tutorial: "Another alien is lost! Remember to pick them up before going to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
         
-        let data6 = [[1,2,1,1,1],
-                     [1,1,1,2,2],
-                     [2,2,1,1,4]]
+	
         
-        let level6 = Level(name: "Level 2-3", data: data6, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Another alien is lost! You need to pick them up before leaving the planet! You may have to backtrack!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
-        
-        let data7 = [[1,2,2,2,2,2],
+        let data6 = [[1,2,2,2,2,2],
                      [1,1,1,1,2,2],
                      [2,2,2,1,2,2],
                      [1,1,4,1,2,2]]
         
-        let level7 = Level(name: "Level 7", data: data7, startingLoc: (0, 0), goalLoc: (0, 3), tutorial: "An alien needs your help! Remember you cannot leave until you have saved the alien!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
+        let level6 = Level(name: "Planet 2, Level 3", data: data6, startingLoc: (0, 0), goalLoc: (0, 3), tutorial: "An alien needs your help! Remember you cannot leave until you have saved the alien!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
         
         //Planet 3
-        let data8 = [[1,1,3,1,1]]
+        let data7 = [[1,1,3,1,1]]
         
-        let level8 = Level(name: "Level 3-1", data: data8, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The wall in your path seems to have cracks in it. Try standing next to it and using your blaster to break through it!",starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [6,4,3])
+        let level7 = Level(name: "Planet 3, Level 1", data: data7, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The wall in your path seems to have cracks in it. Try standing next to it and using your blaster to break through it!",starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [6,4,3])
         
-        let data9 = [[1,2,2,2,2],
+        let data8 = [[1,2,2,2,2],
                      [3,2,2,2,2],
                      [1,3,1,1,1]]
         
-        let level9 = Level(name: "Level 3-2", data: data9, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "The blaster will destroy walls on all 4 sides of you! Make sure to save the alien before continuing on to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
+        let level8 = Level(name: "Planet 3, Level 2", data: data8, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "The blaster will destroy walls on all 4 sides of you! Make sure to save the alien before continuing on to the ship!", starsGotten: 0, parNumMoves: 4,numOfMovesRequiredPerStar: [6,4,3])
         
-        let data10 = [[1,3,3,1,3],
+        let data9 = [[1,3,3,1,3],
                       [2,2,2,2,1],
                       [2,1,4,3,1],
                       [2,2,2,2,2]]
         
-        let level10 = Level(name: "Level 3-3", data: data10, startingLoc: (0, 0), goalLoc: (1, 2), tutorial: "Use all you have learned to break the walls, save the alien, and get to the ship!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [6,4,3])
+        let level9 = Level(name: "Planet 3, Level 3", data: data9, startingLoc: (0, 0), goalLoc: (1, 2), tutorial: "Use all you have learned to break the walls, save the alien, and get to the ship!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [6,4,3])
         
         //Planet 4
         
-        let data11 = [[1,1,4,1,1]]
+        let data10 = [[1,1,4,1,1]]
         
-        let level11 = Level(name: "Level 4-1", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Some walls are stronger than others and may take multiple blasts to destroy! Try it on this wall!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+        let level10 = Level(name: "Planet 4, Level 1", data: data10, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Some walls are stronger than others and may take multiple blasts to destroy! Try it on this wall!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
-		let data12 = [[1,2,2,2,1],
+		let data11 = [[1,2,2,2,1],
 		              [1,1,5,1,1]]
 		
-		let level12 = Level(name: "Level 4-2", data: data12, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require one more hit with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		let level11 = Level(name: "Planet 4, Level 2", data: data11, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "This wall is even stronger and will require one more hit with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
-		let data13 = [[1,2,2,2,2],
+		let data12 = [[1,2,2,2,2],
 		              [1,1,2,2,1],
 		              [2,6,1,1,1]]
 		
-		let level13 = Level(name: "Level 4-3", data: data13, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		let level12 = Level(name: "Planet 4, Level 3", data: data12, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "This is the strongest wall and will require the most hits with your blaster!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
 		//Planet 5
-		let data14 = [[1,1,4,1,1]]
+		let data13 = [[1,1,4,1,1]]
 		
-		let level14 = Level(name: "Level 5-1", data: data14, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Using the blaster command so many times can bet annoying! Try using the loop feature to break this wall!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		let level13 = Level(name: "Planet 5, Level 1", data: data13, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "Using the blaster command so many times can bet annoying! Try using the loop feature to break this wall!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
-		let data15 = [[1,2,2,2,1],
+		let data14 = [[1,2,2,2,1],
 		              [1,1,3,1,1]]
 		
-		let level15 = Level(name: "Level 5-2", data: data15, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The loop function can also be used on movements to get a better score! Try it here!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		let level14 = Level(name: "Planet 5, Level 2", data: data14, startingLoc: (0, 0), goalLoc: (4, 0), tutorial: "The loop function can also be used on movements to get a better score! Try it here!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
-		let data16 = [[1,2,2,2,2],
+		let data15 = [[1,2,2,2,2],
 		              [1,2,1,1,1],
 		              [1,1,5,2,1]]
 		
-		let level16 = Level(name: "Level 5-3", data: data16, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Use loops to get through this level as quickly as possible!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
+		let level15 = Level(name: "Planet 5, Level 3", data: data15, startingLoc: (0, 0), goalLoc: (4, 2), tutorial: "Use loops to get through this level as quickly as possible!", starsGotten: 0, parNumMoves: 5,numOfMovesRequiredPerStar: [5,2,1])
 		
 		
-        levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11, level12, level13, level14, level15, level16]
+        levels += [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10, level11, level12, level13, level14, level15]
         saveLevels()	}
 	
 	///Given a maze, returns a level
