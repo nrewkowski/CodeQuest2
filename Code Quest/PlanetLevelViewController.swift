@@ -28,7 +28,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	}
 
 	
-	var parentPlanetViewController : PlanetViewController? = nil
+	var parentPlanetViewController : MasterPlanetViewController? = nil
 	var devCmdHandler: CommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
@@ -230,7 +230,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		skView.isUserInteractionEnabled = false
 		skView.allowsTransparency = true
 		self.view.addSubview(skView)
-		self.scene = DevGameScene(size: view.bounds.size)
+		self.scene = GameScene(size: view.bounds.size)
 		scene?.playerPosition = playerLoc
 		skView.presentScene(scene)
 		

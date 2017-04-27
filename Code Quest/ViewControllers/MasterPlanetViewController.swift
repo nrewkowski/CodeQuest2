@@ -21,7 +21,7 @@ import AVFoundation
 import SpriteKit
 import Darwin
 
-class MasterPlanetViewController: UIViewController, PlanetViewController {
+class MasterPlanetViewController: UIViewController {
 	
 	///Array of level objects
 	var levels = [Level]()
