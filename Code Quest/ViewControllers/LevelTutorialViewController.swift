@@ -85,7 +85,7 @@ class LevelTutorialViewController: UIViewController {
 		}
 		speechSynthesizer.speak(myUtterance)
 		self.dismiss(animated: true, completion: {});
-		myParent?.drumPlayer.volume = 1.0 * musicVolume
+		//myParent?.drumPlayer.volume = 1.0 * musicVolume
 	}
 	
     override func didReceiveMemoryWarning() {

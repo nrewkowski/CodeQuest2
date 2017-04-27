@@ -59,8 +59,8 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	
 	let music: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "Demo", ofType:"aiff")!);
 	var musicPlayer = AVAudioPlayer()
-	let drum = URL(fileURLWithPath: Bundle.main.path(forResource: "drum", ofType:"aif")!);
-	var drumPlayer = AVAudioPlayer()
+	//let drum = URL(fileURLWithPath: Bundle.main.path(forResource: "drum", ofType:"aif")!);
+	//var drumPlayer = AVAudioPlayer()
 	
 
     
@@ -74,13 +74,13 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 		//add audio players
 		do {
 			try musicPlayer = AVAudioPlayer(contentsOf: music)
-			try drumPlayer = AVAudioPlayer(contentsOf: drum)
+			//try drumPlayer = AVAudioPlayer(contentsOf: drum)
 			musicPlayer.numberOfLoops = -1
-			drumPlayer.numberOfLoops = -1
+			//drumPlayer.numberOfLoops = -1
 			musicPlayer.volume = 1.0 * musicVolume
 			
 			
-			drumPlayer.volume = 0
+			//drumPlayer.volume = 0
 			let sdelay : TimeInterval = 0.1
 			let now = musicPlayer.deviceCurrentTime
 			musicPlayer.play(atTime: now+sdelay)
@@ -378,7 +378,7 @@ class LevelViewController: UIViewController, UICollectionViewDelegate {
 	override func viewWillDisappear(_ animated : Bool) {
 		super.viewWillDisappear(animated)
 		musicPlayer.stop()
-		drumPlayer.stop()
+		//drumPlayer.stop()
 	}
 	
 	// Plays the sound associated with the command in commandQueue[currentStep]

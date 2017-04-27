@@ -97,13 +97,13 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		//add audio players
 		do {
 			try musicPlayer = AVAudioPlayer(contentsOf: music)
-			try drumPlayer = AVAudioPlayer(contentsOf: drum)
+			//try drumPlayer = AVAudioPlayer(contentsOf: drum)
 			musicPlayer.numberOfLoops = -1
-			drumPlayer.numberOfLoops = -1
+			//drumPlayer.numberOfLoops = -1
 			musicPlayer.volume = 1.0 * musicVolume
 			
 			
-			drumPlayer.volume = 0
+			//drumPlayer.volume = 0
 			let sdelay : TimeInterval = 0.1
 			let now = musicPlayer.deviceCurrentTime
 			musicPlayer.play(atTime: now+sdelay)
@@ -1139,7 +1139,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		originalSpeechSynthesizer.stopSpeaking(at: .immediate)
 		speechSynthesizer.stopSpeaking(at: .immediate)
 		musicPlayer.stop()
-		drumPlayer.stop()
+		//drumPlayer.stop()
 	}
 	
 	// Plays the sound associated with the command in commandQueue[currentStep]

@@ -80,7 +80,7 @@ class DevLevelTutorialViewController: UIViewController {
 	
 	func start() {
 		self.dismiss(animated: true, completion: {});
-		myParent?.drumPlayer.volume = 1.0 * musicVolume
+		//myParent?.drumPlayer.volume = 1.0 * musicVolume
 	}
 	
 	override func didReceiveMemoryWarning() {

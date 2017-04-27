@@ -45,12 +45,8 @@
 		3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */; };
 		3DB6D25C1E6D1E2900E069B2 /* cheer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */; };
 		3DB6D25D1E6D1E2900E069B2 /* cheer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24F1E6D1E2900E069B2 /* cheer.wav */; };
-		3DB6D25F1E6D1E2900E069B2 /* drum.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2511E6D1E2900E069B2 /* drum.aif */; };
-		3DB6D2601E6D1E2900E069B2 /* drum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2521E6D1E2900E069B2 /* drum.wav */; };
 		3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2531E6D1E2900E069B2 /* kaboom.wav */; };
 		3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2541E6D1E2900E069B2 /* lazar.wav */; };
-		3DB6D2651E6D1E2900E069B2 /* song.aif in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2571E6D1E2900E069B2 /* song.aif */; };
-		3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2581E6D1E2900E069B2 /* song.wav */; };
 		3DB723AD1E8B2A1800921D62 /* Planet1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */; };
 		3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */; };
 		3DB723B11E8B2CB800921D62 /* DevLevelTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */; };
@@ -117,12 +113,8 @@
 		3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bumpo.wav; path = audio/bumpo.wav; sourceTree = "<group>"; };
 		3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cheer.mp3; path = audio/cheer.mp3; sourceTree = "<group>"; };
 		3DB6D24F1E6D1E2900E069B2 /* cheer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cheer.wav; path = audio/cheer.wav; sourceTree = "<group>"; };
-		3DB6D2511E6D1E2900E069B2 /* drum.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = drum.aif; path = audio/drum.aif; sourceTree = "<group>"; };
-		3DB6D2521E6D1E2900E069B2 /* drum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drum.wav; path = audio/drum.wav; sourceTree = "<group>"; };
 		3DB6D2531E6D1E2900E069B2 /* kaboom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kaboom.wav; path = audio/kaboom.wav; sourceTree = "<group>"; };
 		3DB6D2541E6D1E2900E069B2 /* lazar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = lazar.wav; path = audio/lazar.wav; sourceTree = "<group>"; };
-		3DB6D2571E6D1E2900E069B2 /* song.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = song.aif; path = audio/song.aif; sourceTree = "<group>"; };
-		3DB6D2581E6D1E2900E069B2 /* song.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = song.wav; path = audio/song.wav; sourceTree = "<group>"; };
 		3DB723AC1E8B2A1800921D62 /* Planet1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Planet1ViewController.swift; path = ViewControllers/Planet1ViewController.swift; sourceTree = "<group>"; };
 		3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetLevelViewController.swift; sourceTree = "<group>"; };
 		3DB723B01E8B2CB800921D62 /* DevLevelTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevLevelTutorialViewController.swift; sourceTree = "<group>"; };
@@ -218,13 +210,9 @@
 				B1FAABEF1EAFEE9500A5AAD7 /* up.wav */,
 				3DB6D24F1E6D1E2900E069B2 /* cheer.wav */,
 				3D3086C11E85C22A005CB8B0 /* Demo.aiff */,
-				3DB6D2511E6D1E2900E069B2 /* drum.aif */,
-				3DB6D2521E6D1E2900E069B2 /* drum.wav */,
 				3DB6D2531E6D1E2900E069B2 /* kaboom.wav */,
 				B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */,
 				3DB6D2541E6D1E2900E069B2 /* lazar.wav */,
-				3DB6D2571E6D1E2900E069B2 /* song.aif */,
-				3DB6D2581E6D1E2900E069B2 /* song.wav */,
 				3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */,
 			);
 			name = audio;
@@ -369,19 +357,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DB6D2601E6D1E2900E069B2 /* drum.wav in Resources */,
 				B1FAABF11EAFEE9500A5AAD7 /* down.wav in Resources */,
 				3DB6D25C1E6D1E2900E069B2 /* cheer.mp3 in Resources */,
 				3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */,
-				3DB6D2651E6D1E2900E069B2 /* song.aif in Resources */,
 				3DB6D25D1E6D1E2900E069B2 /* cheer.wav in Resources */,
 				10B20FDD1D909BD200142CAE /* LaunchScreen.storyboard in Resources */,
-				3DB6D25F1E6D1E2900E069B2 /* drum.aif in Resources */,
 				B17EA2241E948D6C000732D7 /* LevelSelect.mp3 in Resources */,
 				B1FAABF31EAFEE9500A5AAD7 /* right.wav in Resources */,
 				B1FAABF01EAFEE9500A5AAD7 /* bump.wav in Resources */,
 				3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */,
-				3DB6D2661E6D1E2900E069B2 /* song.wav in Resources */,
 				10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */,
 				3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */,
 				B1FAABF41EAFEE9500A5AAD7 /* up.wav in Resources */,
