@@ -33,6 +33,8 @@ class MasterPlanetViewController: UIViewController {
 	
 	var levelNumber:Int = -1
 	var nextLevelHint:String=""
+    var segueType = 0
+    var isFirstViewControllerOnStack = true
 	
 	
 	@IBOutlet weak var level1HighScore: UILabel!
@@ -66,6 +68,21 @@ class MasterPlanetViewController: UIViewController {
 	var musicPlayer2 = AVAudioPlayer()
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        
+        if (!isFirstViewControllerOnStack){
+            var navArray = self.navigationController?.viewControllers
+            navArray?.remove(at: (navArray?.count)! - 2)
+            self.navigationController?.viewControllers = navArray!
+            isFirstViewControllerOnStack = true
+        }
+        
+        if (planetNumber == 5){
+            nextPlanetArrow.isHidden=true
+            nextPlanetLabel.isHidden = true
+            nextPlanetArrow.isEnabled = false
+            
+        }
         
         if (planetNumber == 2){
             level1Button.setImage(UIImage(named: "alien2"), for: .normal)
@@ -365,6 +382,8 @@ class MasterPlanetViewController: UIViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if (segue.identifier == "toLevel"){ //this needs to be changed....reload this viewcontroller with new data instead (FOR TO NEXT PLANET)
+            
+            
 			let levelViewController = segue.destination as! PlanetLevelViewController
 			
 			
@@ -475,6 +494,19 @@ class MasterPlanetViewController: UIViewController {
     }
     
     
+    @IBAction func nextPlanetButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let vc = storyboard.instantiateViewController(withIdentifier: "planet") as! MasterPlanetViewController
+        
+        vc.isFirstViewControllerOnStack = false
+        
+        vc.planetNumber=planetNumber+1
+        vc.levelsToUse=[planetNumber*3, (planetNumber*3)+1, (planetNumber*3)+2]
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
     
 	
 }

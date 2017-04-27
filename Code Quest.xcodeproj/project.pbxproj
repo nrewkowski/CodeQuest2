@@ -152,11 +152,11 @@
 				3DFA38F91E5CDFB900F4E914 /* Cells */,
 				3DFA38FB1E5CDFDC00F4E914 /* LogicalClasses */,
 				3DFA38FA1E5CDFCA00F4E914 /* ViewControllers */,
-				10B20FD61D909BD200142CAE /* Main.storyboard */,
 				10B20FD21D909BD200142CAE /* AppDelegate.swift */,
 				10B20FD91D909BD200142CAE /* Assets.xcassets */,
-				10B20FDB1D909BD200142CAE /* LaunchScreen.storyboard */,
 				10B20FDE1D909BD200142CAE /* Info.plist */,
+				10B20FDB1D909BD200142CAE /* LaunchScreen.storyboard */,
+				10B20FD61D909BD200142CAE /* Main.storyboard */,
 			);
 			path = "Code Quest";
 			sourceTree = "<group>";
@@ -182,19 +182,19 @@
 		3DFA38F81E5CDFA900F4E914 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */,
+				B1FAABEB1EAFEE9500A5AAD7 /* bump.wav */,
 				3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */,
 				3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */,
-				B1FAABEB1EAFEE9500A5AAD7 /* bump.wav */,
-				B1FAABEC1EAFEE9500A5AAD7 /* down.wav */,
-				B1FAABED1EAFEE9500A5AAD7 /* left.wav */,
-				B1FAABEE1EAFEE9500A5AAD7 /* right.wav */,
-				B1FAABEF1EAFEE9500A5AAD7 /* up.wav */,
 				3DB6D24F1E6D1E2900E069B2 /* cheer.wav */,
 				3D3086C11E85C22A005CB8B0 /* Demo.aiff */,
+				B1FAABEC1EAFEE9500A5AAD7 /* down.wav */,
 				3DB6D2531E6D1E2900E069B2 /* kaboom.wav */,
-				B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */,
 				3DB6D2541E6D1E2900E069B2 /* lazar.wav */,
-				3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */,
+				B1FAABED1EAFEE9500A5AAD7 /* left.wav */,
+				B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */,
+				B1FAABEE1EAFEE9500A5AAD7 /* right.wav */,
+				B1FAABEF1EAFEE9500A5AAD7 /* up.wav */,
 			);
 			name = audio;
 			sourceTree = "<group>";
@@ -202,13 +202,13 @@
 		3DFA38F91E5CDFB900F4E914 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */,
 				3DB6D2401E6D1E1500E069B2 /* floorCell.swift */,
 				3DB6D2411E6D1E1500E069B2 /* gameCell.swift */,
 				3DB6D2421E6D1E1500E069B2 /* goalCell.swift */,
 				3DB6D2431E6D1E1500E069B2 /* LevelTableViewCell.swift */,
 				3DB6D2441E6D1E1500E069B2 /* playerCell.swift */,
 				3DB6D2451E6D1E1500E069B2 /* wallCell.swift */,
-				3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -216,8 +216,8 @@
 		3DFA38FA1E5CDFCA00F4E914 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D8A72E11E980C06007F57D4 /* GalaxyViewController.swift */,
 				3D7FE97B1EB292C9008D6EE3 /* depracated */,
+				3D8A72E11E980C06007F57D4 /* GalaxyViewController.swift */,
 				3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */,
 				3D8A72E51E981058007F57D4 /* MainMenuSettingsViewController.swift */,
 				3D8A72E31E980F06007F57D4 /* MainMenuViewController.swift */,

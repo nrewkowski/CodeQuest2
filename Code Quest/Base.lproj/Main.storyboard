@@ -323,7 +323,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FrV-KV-Tah" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Kp5-TW-ogT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1446" y="-19"/>
+            <point key="canvasLocation" x="-1671" y="-866"/>
         </scene>
         <!--Galaxy-->
         <scene sceneID="Evr-iw-2kh">
@@ -944,10 +944,10 @@
             </objects>
             <point key="canvasLocation" x="894" y="1036"/>
         </scene>
-        <!--Master Planet View Controller-->
+        <!--planet-->
         <scene sceneID="fup-3O-DY1">
             <objects>
-                <viewController id="huC-7H-vsg" customClass="MasterPlanetViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="planet" title="planet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="huC-7H-vsg" customClass="MasterPlanetViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sOZ-3e-nUS"/>
                         <viewControllerLayoutGuide type="bottom" id="NP8-cv-Exz"/>
@@ -1008,6 +1008,9 @@
                                 <state key="normal" title="&gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextPlanetButtonPressed:" destination="huC-7H-vsg" eventType="touchUpInside" id="WTO-MX-Skg"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Planet 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtQ-BZ-s21">
                                 <rect key="frame" x="884" y="512" width="119" height="35"/>
