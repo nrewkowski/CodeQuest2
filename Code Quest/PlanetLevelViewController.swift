@@ -587,7 +587,19 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	override func runCommands() {
 		musicPlayer.volume = 0.1 * musicVolume
 		
+		/* NO LONGER DOING IT THIS WAY!!!
+		
+		cases to handle: important note: to preserve animation, the current step is the step AFTER the failed one. so we need to decide whether the previous step gets pushed down
+			case 1,1: the step that was stop short on was not a loop and neither is this one and there are no loops at all
+			case 1.2: same as 1.1 except there are loops somewhere (split to prevent crashes most robustly)
+			case 2: the step that was stop short on was not a loop, this one is
+			case 3: the step that was stop short on was a loop, but this step is not
+			case 4: the step that was stop short on was a loop, and so is this one, but they are different loops
+			case 5: the step that was stop short on was a loop, and so is this one, and they are part of the same loop
+		*/
+		/*
 		if (!movedLastStep){
+			
 			print(commandQueue.count)
 			print(currentIndexCorrected)
 			if (currentIndexCorrected != commandQueue.count-1){ //if this is not the last step
@@ -618,9 +630,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			musicPlayer.volume = 1.0 * musicVolume
 			tickTimer.invalidate()
 			takeInput = true
-			
+
 			return
-		}
+		}*/
 		print("current step="+String(currentStep))
 		print("correctedIndex="+String(currentIndexCorrected))
 		print(realCommandQueue)
@@ -655,8 +667,14 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 					print("case 8")
 					
 					commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-					if (currentIndexCorrected != commandQueue.count-1){
+					if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 						commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+					}
+					else if (!movedLastStep){
+						tickTimer.invalidate()
+						takeInput = true
+						musicPlayer.volume = 1.0 * musicVolume
+						return
 					}
 				}
 				else if (totalNumOfLoops == 1){
@@ -666,9 +684,15 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 						if (currentStep == loopRanges[0].0){
 							print("beginning of loop")
 							commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-							if (currentIndexCorrected != commandQueue.count-1){
+							if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 								commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 								loopLabels[0].frame.origin.y -= 10
+							}
+							else if (!movedLastStep){
+								tickTimer.invalidate()
+								takeInput = true
+								musicPlayer.volume = 1.0 * musicVolume
+								return
 							}
 						}
 						else{
@@ -679,15 +703,27 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 						print("case 6. previous tile is only loop")
 						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 						loopLabels[0].frame.origin.y += 10
-						if (currentIndexCorrected != commandQueue.count-1){
+						if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 							commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+						}
+						else if (!movedLastStep){
+							tickTimer.invalidate()
+							takeInput = true
+							musicPlayer.volume = 1.0 * musicVolume
+							return
 						}
 					}
 					else{
 						print("case 4. the 1 loop is somewhere else")
 						commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
-						if (currentIndexCorrected != commandQueue.count-1){
+						if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 							commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+						}
+						else if (!movedLastStep){
+							tickTimer.invalidate()
+							takeInput = true
+							musicPlayer.volume = 1.0 * musicVolume
+							return
 						}
 					}
 				}
@@ -702,9 +738,15 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 								loopLabels[currentLoopLabel].frame.origin.y += 10
 								currentLoopLabel += 1
-								if (currentIndexCorrected != commandQueue.count-1){
+								if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 									loopLabels[currentLoopLabel].frame.origin.y -= 10
+								}
+								else if (!movedLastStep){
+									tickTimer.invalidate()
+									takeInput = true
+									musicPlayer.volume = 1.0 * musicVolume
+									return
 								}
 							}
 							else{
@@ -717,9 +759,15 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 								
 								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 								
-								if (currentIndexCorrected != commandQueue.count-1){
+								if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
 									loopLabels[currentLoopLabel].frame.origin.y -= 10
+								}
+								else if (!movedLastStep){
+									tickTimer.invalidate()
+									takeInput = true
+									musicPlayer.volume = 1.0 * musicVolume
+									return
 								}
 							}
 							else{
@@ -735,20 +783,35 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 							//print("still case 2 or 9")
 							if (commandQueue[currentIndexCorrected-1]==8){ //currentlooprange-1 because if this is true, then currentlooprange would have been incremented already
 								print("case 2. current tile is not a loop, previous one is")
+								print(String(describing: loopLabels))
+								print ("count: "+String(loopLabels.count))
+								print ("current loop label: "+String(currentLoopLabel))
 								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 								loopLabels[currentLoopLabel].frame.origin.y += 10
 								currentLoopLabel += 1
 								
-								if (currentIndexCorrected != commandQueue.count-1){
+								if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+								}
+								else if (!movedLastStep){
+									tickTimer.invalidate()
+									takeInput = true
+									musicPlayer.volume = 1.0 * musicVolume
+									return
 								}
 							}
 							else{
 								print("case 9. current tile is not a loop, neither is previous one, but more than 1 loop elsewhere")
 								commandQueueViews[currentIndexCorrected-1].frame.origin.y += 10
 								
-								if (currentIndexCorrected != commandQueue.count-1){
+								if (currentIndexCorrected != commandQueue.count-1 && movedLastStep){
 									commandQueueViews[currentIndexCorrected].frame.origin.y -= 10
+								}
+								else if (!movedLastStep){
+									tickTimer.invalidate()
+									takeInput = true
+									musicPlayer.volume = 1.0 * musicVolume
+									return
 								}
 							}
 
@@ -763,17 +826,40 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			print("there is no previous tile but there's a future one.")
 			if (totalNumOfLoops>0){
 				if (loopRanges[0].0 == 0){
-					if (currentStep == 0){
+					if (currentStep == 0 && movedLastStep){
 						commandQueueViews[0].frame.origin.y -= 10
 						loopLabels[0].frame.origin.y -= 10
 					}
+					else if (!movedLastStep){
+						tickTimer.invalidate()
+						takeInput = true
+						musicPlayer.volume = 1.0 * musicVolume
+						return
+					}
+					
 				}
 				else{
-				commandQueueViews[0].frame.origin.y -= 10
+					if (movedLastStep){
+						commandQueueViews[0].frame.origin.y -= 10
+					}
+					else if (!movedLastStep){
+						tickTimer.invalidate()
+						takeInput = true
+						musicPlayer.volume = 1.0 * musicVolume
+						return
+					}
 				}
 			}
 			else{
-				commandQueueViews[0].frame.origin.y -= 10
+				if (movedLastStep){
+					commandQueueViews[0].frame.origin.y -= 10
+				}
+				else if (!movedLastStep){
+					tickTimer.invalidate()
+					takeInput = true
+					musicPlayer.volume = 1.0 * musicVolume
+					return
+				}
 			}
 		}
 		else{
