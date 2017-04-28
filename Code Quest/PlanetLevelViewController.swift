@@ -12,12 +12,14 @@ import UIKit
 import AVFoundation
 import SpriteKit
 import Darwin
+import SSAccessibility
+
 
 let testImageNames = ["left", "up", "down", "right", "blast_button"]
 let testCommandSounds = [leftSound, rightSound, upSound, downSound, blastSound]
 
 /// Primary game controller. Contains most game state information
-class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate {
+class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, SSSpeechSynthesizerDelegate {
 	@available(iOS 2.0, *)
 	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
@@ -27,7 +29,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		return true
 	}
 
-	
+	var voiceoverSynthesizer : SSSpeechSynthesizer? = nil
 	var parentPlanetViewController : MasterPlanetViewController? = nil
 	var devCmdHandler: CommandHandler? = nil
 	
@@ -47,6 +49,24 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var loopLabels:[UILabel]=[]
 	var layoutText:String = ""
 	var pickerData = ["2","3","4","5"]
+	var secondsToWait: Double = 3
+	
+	var saidInitialText = false{
+		didSet{
+			secondsToWait = 0.5
+		}
+	}
+	
+	var finishedTutorial: Bool = false {
+		didSet{
+			print("set")
+			sayLayout(text: layoutText, isInitialText: true)
+			//SSAccessibility.
+		}
+	}
+	
+	
+	
 	
 	var isFirstViewControllerOnStack = true
 	
@@ -79,6 +99,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			self.navigationController?.viewControllers = navArray!
 			isFirstViewControllerOnStack = true
 		}
+		voiceoverSynthesizer = SSSpeechSynthesizer()
+		voiceoverSynthesizer?.delegate = self
 		
 		self.view.backgroundColor = sceneColor
 		
@@ -190,7 +212,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			//alert.addAction(UIAlertAction(title: "Start level", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.drumPlayer.volume = 1}))
 			//self.present(alert, animated: true, completion: nil)
 			let tText = LevelTutorialViewController()
+			
 			tText.tutorialText = tutorialString
+			tText.planetViewController = self
 			tText.layoutText=layoutText
 			tText.modalPresentationStyle = .formSheet
 			tText.modalTransitionStyle = .coverVertical
@@ -252,6 +276,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		//super.viewDidLoad()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		print("appeared")
+	}
 	
 	
 	
@@ -488,7 +515,13 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				speechSynthesizer.stopSpeaking(at: .immediate)
 				myUtterance = AVSpeechUtterance(string: layoutText+","+hint)
 				myUtterance.rate = 0.5 //make this a slider like volume
-				speechSynthesizer.speak(myUtterance)
+				//speechSynthesizer.speak(myUtterance)
+				//SSAccessibility.speak(withVoiceOver: layoutText+","+hint)
+				//SSSpeechSynthesizer
+				voiceoverSynthesizer?.stopSpeaking()
+				//voiceoverSynthesizer.
+				voiceoverSynthesizer?.enqueueLine(forSpeaking: layoutText)
+				//voiceoverSynthesizer.
 			}
 			
 			else { // Command is to be executed immediately, deals with buttons that are not commands for the player (erase, queue, etc)
@@ -1165,6 +1198,31 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		print("numofloopsperloop: "+String(describing: numOfLoopsPerLoop))
 		print("loopcommands: "+String(describing: loopCommands))
 		print("__________________________END____________________________")
+	}
+	
+	func synthesizer(_ synthesizer: SSSpeechSynthesizer!, secondsToWaitBeforeSpeaking line: String!) -> TimeInterval {
+		return secondsToWait
+	}
+	
+	func synthesizer(_ synthesizer: SSSpeechSynthesizer!, willBeginSpeakingLine line: String!) {
+		
+	}
+	
+	func synthesizer(_ synthesizer: SSSpeechSynthesizer!, didSpeakLine line: String!) {
+		
+	}
+	
+	func synthesizerDidFinishQueue(_ synthesizer: SSSpeechSynthesizer!) {
+		if (!saidInitialText){
+			saidInitialText = true
+		}
+	}
+	
+	func sayLayout(text: String,isInitialText:Bool){
+		//UIAccessibilityAnnouncementNotification
+		//voiceoverSynthesizer?.stopSpeaking()
+		voiceoverSynthesizer?.enqueueLine(forSpeaking: text)
+		
 	}
 	
 }

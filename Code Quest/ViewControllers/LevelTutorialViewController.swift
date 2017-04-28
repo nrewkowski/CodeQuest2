@@ -8,9 +8,10 @@
 
 import UIKit
 import AVFoundation
+import SSAccessibility
 
 ///Displays tutorial text
-class LevelTutorialViewController: UIViewController {
+class LevelTutorialViewController: UIViewController, SSSpeechSynthesizerDelegate {
 
     //@IBOutlet weak var tutorialLabel: UITextView!
 	///The tutorial text to display
@@ -24,6 +25,10 @@ class LevelTutorialViewController: UIViewController {
 	
 	var speechSynthesizer = AVSpeechSynthesizer()
 	var myUtterance = AVSpeechUtterance(string: "")
+	
+	//var voiceSynthesizer: SSSpeechSynthesizer? = nil
+	
+	var planetViewController: PlanetLevelViewController? = nil
 	
 	
 	//init(tutorialText : String) {
@@ -39,6 +44,8 @@ class LevelTutorialViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		//voiceSynthesizer = SSSpeechSynthesizer()
+		//voiceSynthesizer?.delegate
 		self.preferredContentSize = CGSize(width: LevelViewController.scaleDims(input:1000, x: true), height: LevelViewController.scaleDims(input: 600, x: false))
 		let backgroundImage = UIImageView(frame:CGRect(x: LevelViewController.scaleDims(input: 0, x: true), y: LevelViewController.scaleDims(input: 0, x: false), width: LevelViewController.scaleDims(input: 1000, x: true), height: LevelViewController.scaleDims(input: 600, x: false)))
 		backgroundImage.image = UIImage(named: background)
@@ -83,7 +90,14 @@ class LevelTutorialViewController: UIViewController {
 		{
 			myUtterance.preUtteranceDelay = 6
 		}
-		speechSynthesizer.speak(myUtterance)
+		//speechSynthesizer.speak(myUtterance)
+		//SSAccessibility.speak(withVoiceOver: layoutText)
+		print("PRESSED")
+		
+		//voiceSynthesizer?.enqueueLine(forSpeaking: layoutText)
+		
+		//planetViewController?.sayLayout(text: layoutText)
+		planetViewController?.finishedTutorial = true
 		self.dismiss(animated: true, completion: {});
 		//myParent?.drumPlayer.volume = 1.0 * musicVolume
 	}
@@ -92,6 +106,22 @@ class LevelTutorialViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	func synthesizer(_ synthesizer: SSSpeechSynthesizer!, secondsToWaitBeforeSpeaking line: String!) -> TimeInterval {
+		return 0.5
+	}
+	
+	func synthesizer(_ synthesizer: SSSpeechSynthesizer!, willBeginSpeakingLine line: String!) {
+		
+	}
+	
+	func synthesizer(_ synthesizer: SSSpeechSynthesizer!, didSpeakLine line: String!) {
+		
+	}
+	
+	func synthesizerDidFinishQueue(_ synthesizer: SSSpeechSynthesizer!) {
+		
+	}
     
 
     /*

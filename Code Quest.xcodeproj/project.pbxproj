@@ -42,6 +42,8 @@
 		3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2531E6D1E2900E069B2 /* kaboom.wav */; };
 		3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2541E6D1E2900E069B2 /* lazar.wav */; };
 		3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */; };
+		428C7EF27FA5BC9C0C5457D9 /* Pods_Code_Quest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC18577D47B2D6AF37CE47A /* Pods_Code_Quest.framework */; };
+		8354CFE2E6B51F666C8F6D52 /* Pods_Code_QuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D265DED7E7BEBC97FD147FB /* Pods_Code_QuestTests.framework */; };
 		B17EA2241E948D6C000732D7 /* LevelSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */; };
 		B1FAABF01EAFEE9500A5AAD7 /* bump.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1FAABEB1EAFEE9500A5AAD7 /* bump.wav */; };
 		B1FAABF11EAFEE9500A5AAD7 /* down.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1FAABEC1EAFEE9500A5AAD7 /* down.wav */; };
@@ -61,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		087A23E96277D009F7A61F65 /* Pods-Code Quest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code Quest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Code Quest/Pods-Code Quest.debug.xcconfig"; sourceTree = "<group>"; };
 		10B20FCF1D909BD200142CAE /* Code Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B20FD21D909BD200142CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10B20FD71D909BD200142CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		10B20FE31D909BD200142CAE /* Code QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Code QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B20FE71D909BD200142CAE /* Code_QuestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code_QuestTests.swift; sourceTree = "<group>"; };
 		10B20FE91D909BD200142CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22FB371C1A6F7B4F25387066 /* Pods-Code Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Code Quest/Pods-Code Quest.release.xcconfig"; sourceTree = "<group>"; };
 		3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreakableWallCell.swift; path = Cells/BreakableWallCell.swift; sourceTree = "<group>"; };
 		3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AlienSound.wav; sourceTree = "<group>"; };
 		3D3086C11E85C22A005CB8B0 /* Demo.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Demo.aiff; sourceTree = "<group>"; };
@@ -100,12 +104,16 @@
 		3DB6D2531E6D1E2900E069B2 /* kaboom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kaboom.wav; path = audio/kaboom.wav; sourceTree = "<group>"; };
 		3DB6D2541E6D1E2900E069B2 /* lazar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = lazar.wav; path = audio/lazar.wav; sourceTree = "<group>"; };
 		3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetLevelViewController.swift; sourceTree = "<group>"; };
+		6D265DED7E7BEBC97FD147FB /* Pods_Code_QuestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_QuestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACC18577D47B2D6AF37CE47A /* Pods_Code_Quest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_Quest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = LevelSelect.mp3; path = audio/LevelSelect.mp3; sourceTree = "<group>"; };
 		B1FAABEB1EAFEE9500A5AAD7 /* bump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bump.wav; path = audio/bump.wav; sourceTree = "<group>"; };
 		B1FAABEC1EAFEE9500A5AAD7 /* down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = down.wav; path = audio/down.wav; sourceTree = "<group>"; };
 		B1FAABED1EAFEE9500A5AAD7 /* left.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = left.wav; path = audio/left.wav; sourceTree = "<group>"; };
 		B1FAABEE1EAFEE9500A5AAD7 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right.wav; path = audio/right.wav; sourceTree = "<group>"; };
 		B1FAABEF1EAFEE9500A5AAD7 /* up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = up.wav; path = audio/up.wav; sourceTree = "<group>"; };
+		B5C94F3F5C839AE2C95F6645 /* Pods-Code QuestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code QuestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Code QuestTests/Pods-Code QuestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C231503D4E4D19002987BEE9 /* Pods-Code QuestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Code QuestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Code QuestTests/Pods-Code QuestTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				428C7EF27FA5BC9C0C5457D9 /* Pods_Code_Quest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8354CFE2E6B51F666C8F6D52 /* Pods_Code_QuestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +142,8 @@
 				10B20FD11D909BD200142CAE /* Code Quest */,
 				10B20FE61D909BD200142CAE /* Code QuestTests */,
 				10B20FD01D909BD200142CAE /* Products */,
+				6A063B2C4A9FD0F3BA006535 /* Pods */,
+				BBB59CDD15A439643031DDE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -242,6 +254,26 @@
 			name = LogicalClasses;
 			sourceTree = "<group>";
 		};
+		6A063B2C4A9FD0F3BA006535 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				087A23E96277D009F7A61F65 /* Pods-Code Quest.debug.xcconfig */,
+				22FB371C1A6F7B4F25387066 /* Pods-Code Quest.release.xcconfig */,
+				B5C94F3F5C839AE2C95F6645 /* Pods-Code QuestTests.debug.xcconfig */,
+				C231503D4E4D19002987BEE9 /* Pods-Code QuestTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BBB59CDD15A439643031DDE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACC18577D47B2D6AF37CE47A /* Pods_Code_Quest.framework */,
+				6D265DED7E7BEBC97FD147FB /* Pods_Code_QuestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,9 +281,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10B20FEC1D909BD200142CAE /* Build configuration list for PBXNativeTarget "Code Quest" */;
 			buildPhases = (
+				ADF1BC5CB9AEB758708719AE /* [CP] Check Pods Manifest.lock */,
 				10B20FCB1D909BD100142CAE /* Sources */,
 				10B20FCC1D909BD100142CAE /* Frameworks */,
 				10B20FCD1D909BD100142CAE /* Resources */,
+				D13DD2D59EDA137D5AC976ED /* [CP] Embed Pods Frameworks */,
+				0E57B2B802EC4070A078C550 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,9 +301,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10B20FEF1D909BD200142CAE /* Build configuration list for PBXNativeTarget "Code QuestTests" */;
 			buildPhases = (
+				B71891B665B75C86A760255A /* [CP] Check Pods Manifest.lock */,
 				10B20FDF1D909BD200142CAE /* Sources */,
 				10B20FE01D909BD200142CAE /* Frameworks */,
 				10B20FE11D909BD200142CAE /* Resources */,
+				CB61F0F063466F9B070C556C /* [CP] Embed Pods Frameworks */,
+				0E2A5DB77A8F59492E0C2C2A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -354,6 +392,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E2A5DB77A8F59492E0C2C2A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Code QuestTests/Pods-Code QuestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0E57B2B802EC4070A078C550 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Code Quest/Pods-Code Quest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADF1BC5CB9AEB758708719AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B71891B665B75C86A760255A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CB61F0F063466F9B070C556C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Code QuestTests/Pods-Code QuestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D13DD2D59EDA137D5AC976ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Code Quest/Pods-Code Quest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		10B20FCB1D909BD100142CAE /* Sources */ = {
@@ -524,6 +655,7 @@
 		};
 		10B20FED1D909BD200142CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 087A23E96277D009F7A61F65 /* Pods-Code Quest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -541,6 +673,7 @@
 		};
 		10B20FEE1D909BD200142CAE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22FB371C1A6F7B4F25387066 /* Pods-Code Quest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -559,6 +692,7 @@
 		};
 		10B20FF01D909BD200142CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5C94F3F5C839AE2C95F6645 /* Pods-Code QuestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -576,6 +710,7 @@
 		};
 		10B20FF11D909BD200142CAE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C231503D4E4D19002987BEE9 /* Pods-Code QuestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
