@@ -40,6 +40,7 @@ class MasterPlanetViewController: UIViewController {
 	
 	var planetColors : [UIColor] = [UIColor(red: 0.0/256.0, green: 148.0/256.0, blue: 118.0/256.0, alpha: 1.0),UIColor(red: 207.0/256.0, green: 144.0/256.0, blue: 103.0/256.0, alpha: 1.0),UIColor(red: 245.0/256.0, green: 164.0/256.0, blue: 160.0/256.0, alpha: 1.0),UIColor(red: 193.0/256.0, green: 72.0/256.0, blue: 189.0/256.0, alpha: 1.0),UIColor(red: 37.0/256.0, green: 124.0/256.0, blue: 191.0/256.0, alpha: 1.0)]
 	
+	//var planetColors : [UIColor] = [UIColor(red: 0.0/256.0, green: 108.0/256.0, blue: 86.0/256.0, alpha: 1.0),UIColor(red: 164.0/256.0, green: 114.0/256.0, blue: 82.0/256.0, alpha: 1.0),UIColor(red: 163.0/256.0, green: 109.0/256.0, blue: 107.0/256.0, alpha: 1.0),UIColor(red: 128.0/256.0, green: 48.0/256.0, blue: 125.0/256.0, alpha: 1.0),UIColor(red: 25.0/256.0, green: 78.0/256.0, blue: 118.0/256.0, alpha: 1.0)]
 	
 	@IBOutlet weak var level1HighScore: UILabel!
 	@IBOutlet weak var level2HighScore: UILabel!

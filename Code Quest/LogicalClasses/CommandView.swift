@@ -31,17 +31,60 @@ class CommandView: UIView {
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		
+//		var queueFrame = UIView(frame: CGRect(x: 0, y: 100, width: Int(self.frame.width), height: Int(self.frame.height)*2))
+//		queueFrame.backgroundColor = UIColor.red
+//		self.addSubview(queueFrame)
+		
+//		for i in 0..<num_command_buttons {
+//			// Separate the first num_queue_buttons from the others with some empty space
+//			let xcoord = (i < num_queue_buttons) ? 84*i : 84*i + 50
+//			let command = Input(type: ButtonType(rawValue : i)!, frame: CGRect(x: min(xcoord+10, LevelViewController.scaleDims(input: xcoord, x: true))+10, y: 10, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))), isEnabled: true);
+//			//command.backgroundColor = UIColor.cyan
+////			if (i==5 && planetNumber < 4){
+////				command.isEnabled=false
+////			}
+////			if (i==4 && planetNumber < 2){
+////				command.isEnabled=false
+////			}
+//			if (i==5){
+//				loopButton = command
+//			}
+//			if (i==4){
+//				blastButton = command
+//			}
+//			
+//			//command.addTarget(self, action: #selector(CommandView.commandTapped(_:)), for: .Touchdown)
+//			command.addTarget(self, action: #selector(CommandView.commandTapped(commandButton:)), for: .touchDown)
+//			commandButtons += [command]
+//			self.addSubview(command)
+//			if i==5 {
+//				
+//				pickerView=UIPickerView(frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))))
+//				//pickerView.dataSource=self
+//				//pickerView.delegate=self
+////				if (planetNumber<5){
+////					pickerView?.isHidden=true
+////				}
+//				self.addSubview(pickerView!)
+//			}
+//			
+//			
+//		}
+
+	}
+	
+	func initializeButtons(){
 		for i in 0..<num_command_buttons {
 			// Separate the first num_queue_buttons from the others with some empty space
 			let xcoord = (i < num_queue_buttons) ? 84*i : 84*i + 50
-			let command = Input(type: ButtonType(rawValue : i)!, frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))), isEnabled: true);
+			let command = Input(type: ButtonType(rawValue : i)!, frame: CGRect(x: min(xcoord+10, LevelViewController.scaleDims(input: xcoord, x: true))+10, y: 10, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))), isEnabled: true);
 			//command.backgroundColor = UIColor.cyan
-//			if (i==5 && planetNumber < 4){
-//				command.isEnabled=false
-//			}
-//			if (i==4 && planetNumber < 2){
-//				command.isEnabled=false
-//			}
+			//			if (i==5 && planetNumber < 4){
+			//				command.isEnabled=false
+			//			}
+			//			if (i==4 && planetNumber < 2){
+			//				command.isEnabled=false
+			//			}
 			if (i==5){
 				loopButton = command
 			}
@@ -55,18 +98,17 @@ class CommandView: UIView {
 			self.addSubview(command)
 			if i==5 {
 				
-				pickerView=UIPickerView(frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true)), y: 0, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))))
+				pickerView=UIPickerView(frame: CGRect(x: min(xcoord, LevelViewController.scaleDims(input: xcoord, x: true))+10, y: 10, width: min(80, LevelViewController.scaleDims(input: 80, x: true)), height: min(80, LevelViewController.scaleDims(input: 80, x: false))))
 				//pickerView.dataSource=self
 				//pickerView.delegate=self
-//				if (planetNumber<5){
-//					pickerView?.isHidden=true
-//				}
+				//				if (planetNumber<5){
+				//					pickerView?.isHidden=true
+				//				}
 				self.addSubview(pickerView!)
 			}
 			
 			
 		}
-
 	}
 	
 	
