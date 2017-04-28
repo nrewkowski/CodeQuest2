@@ -35,6 +35,10 @@ class MasterPlanetViewController: UIViewController {
 	var nextLevelHint:String=""
     var segueType = 0
     var isFirstViewControllerOnStack = true
+	//var planetColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
+	//var planetColors : [UIColor] = [UIColor(red: 138.0/256.0, green: 255.0/256.0, blue: 196/256.0, alpha: 1.0),UIColor(red: 215.0/256.0, green: 164.0/256.0, blue: 127.0/256.0, alpha: 1.0),UIColor(red: 248.0/256.0, green: 182.0/256.0, blue: 195.0/256.0, alpha: 1.0),UIColor(red: 233.0/256.0, green: 95.0/256.0, blue: 250.0/256.0, alpha: 1.0),UIColor(red: 44.0/256.0, green: 148.0/256.0, blue: 229.0/256.0, alpha: 1.0)]
+	
+	var planetColors : [UIColor] = [UIColor(red: 0.0/256.0, green: 148.0/256.0, blue: 118.0/256.0, alpha: 1.0),UIColor(red: 207.0/256.0, green: 144.0/256.0, blue: 103.0/256.0, alpha: 1.0),UIColor(red: 245.0/256.0, green: 164.0/256.0, blue: 160.0/256.0, alpha: 1.0),UIColor(red: 193.0/256.0, green: 72.0/256.0, blue: 189.0/256.0, alpha: 1.0),UIColor(red: 37.0/256.0, green: 124.0/256.0, blue: 191.0/256.0, alpha: 1.0)]
 	
 	
 	@IBOutlet weak var level1HighScore: UILabel!
@@ -463,6 +467,7 @@ class MasterPlanetViewController: UIViewController {
 				levelViewController.levels=levels
 				levelViewController.levelsToUse=levelsToUse
 				levelViewController.isFirstViewControllerOnStack = true
+				levelViewController.sceneColor = planetColors[planetNumber-1]
 				//musicPlayer2.stop()
 			}
 		}

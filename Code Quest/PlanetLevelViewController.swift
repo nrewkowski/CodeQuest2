@@ -34,7 +34,6 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var devCmdHandler: CommandHandler? = nil
 	
 	var sceneColor = UIColor(red: 17.0/256.0, green: 132.0/256.0, blue: 99.0/256.0, alpha: 1.0)
-    
     var planetNumber = 0
     var levelNumber:Int = 0
     var bestScore=0;
