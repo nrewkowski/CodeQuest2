@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code Quest/ViewControllers/MainMenuSettingsViewController.swift"
-            timestampString = "513294671.623094"
+            timestampString = "515269622.797026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "MainMenuSettingsViewController"
             landmarkType = "3">
          </BreakpointContent>

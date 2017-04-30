@@ -15,6 +15,7 @@
 		3D1C7E531E98633F000D1681 /* BreakableWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */; };
 		3D1EBA211E8B8A1100F8EA04 /* AlienSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */; };
 		3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 3D3086C11E85C22A005CB8B0 /* Demo.aiff */; };
+		3D63F9CE1EB6686E007FE773 /* SettingsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63F9CD1EB6686E007FE773 /* SettingsHeaderCell.swift */; };
 		3D8A72E21E980C06007F57D4 /* GalaxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A72E11E980C06007F57D4 /* GalaxyViewController.swift */; };
 		3D8A72E41E980F06007F57D4 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A72E31E980F06007F57D4 /* MainMenuViewController.swift */; };
 		3D8A72E61E981058007F57D4 /* MainMenuSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A72E51E981058007F57D4 /* MainMenuSettingsViewController.swift */; };
@@ -77,6 +78,7 @@
 		3D1C7E521E98633F000D1681 /* BreakableWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreakableWallCell.swift; path = Cells/BreakableWallCell.swift; sourceTree = "<group>"; };
 		3D1EBA1F1E8B8A1100F8EA04 /* AlienSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AlienSound.wav; sourceTree = "<group>"; };
 		3D3086C11E85C22A005CB8B0 /* Demo.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Demo.aiff; sourceTree = "<group>"; };
+		3D63F9CD1EB6686E007FE773 /* SettingsHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsHeaderCell.swift; path = Cells/SettingsHeaderCell.swift; sourceTree = "<group>"; };
 		3D8A72E11E980C06007F57D4 /* GalaxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalaxyViewController.swift; path = ViewControllers/GalaxyViewController.swift; sourceTree = "<group>"; };
 		3D8A72E31E980F06007F57D4 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = ViewControllers/MainMenuViewController.swift; sourceTree = "<group>"; };
 		3D8A72E51E981058007F57D4 /* MainMenuSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuSettingsViewController.swift; path = ViewControllers/MainMenuSettingsViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				3DB6D2431E6D1E1500E069B2 /* LevelTableViewCell.swift */,
 				3DB6D2441E6D1E1500E069B2 /* playerCell.swift */,
 				3DB6D2451E6D1E1500E069B2 /* wallCell.swift */,
+				3D63F9CD1EB6686E007FE773 /* SettingsHeaderCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				3D8A72E81E981E3C007F57D4 /* MasterPlanetViewController.swift in Sources */,
 				3D8A72E41E980F06007F57D4 /* MainMenuViewController.swift in Sources */,
 				3DB6D23B1E6D1DE400E069B2 /* GameScene.swift in Sources */,
+				3D63F9CE1EB6686E007FE773 /* SettingsHeaderCell.swift in Sources */,
 				3DB6D2481E6D1E1500E069B2 /* goalCell.swift in Sources */,
 				3D8A72E61E981058007F57D4 /* MainMenuSettingsViewController.swift in Sources */,
 				3DB6D2491E6D1E1500E069B2 /* LevelTableViewCell.swift in Sources */,

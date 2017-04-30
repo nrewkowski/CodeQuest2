@@ -158,11 +158,11 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 4:
 						cell = floorCell(isWall: false, isFuel: true,row: y+1, column: x+1)
-						if (planetNumber == 2) {
-							cell.image = UIImage(named: "alien2tile")
-						}
-						else if (planetNumber == 3) {
+						if (planetNumber == 2 ) {
 							cell.image = UIImage(named: "alien3tile")
+						}
+						else if (planetNumber == 3 || planetNumber == 5) {
+							cell.image = UIImage(named: "alien2tile")
 						}
 						fuelCells.append(cell as! floorCell)
 					case 5:
@@ -450,10 +450,10 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		for cell in fuelCells {
 			cell.makeFuel()
 			if (planetNumber == 2) {
-				cell.image = UIImage(named: "alien2tile")
-			}
-			else if (planetNumber == 3) {
 				cell.image = UIImage(named: "alien3tile")
+			}
+			else if (planetNumber == 3 || planetNumber == 5) {
+				cell.image = UIImage(named: "alien2tile")
 			}
 		}
 		
@@ -589,7 +589,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				} else if (type == ButtonType.QUEUESOUND) {
 					takeInput = false
 					currentStep = 0
-					tickTimer = Timer.scheduledTimer(timeInterval: 0.25, target:self,
+					tickTimer = Timer.scheduledTimer(timeInterval: 0.6, target:self,
 					                                 selector:#selector(LevelViewController.runQueueSounds),
 					                                 userInfo:nil, repeats: true)
 				}
@@ -618,7 +618,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			//i believe that this limits the time for the player to do 1 action
 			//interval was 0.4054
 			print("real count="+String(realCommandQueue.count))
-			tickTimer = Timer.scheduledTimer(timeInterval: 0.4054, target:self, selector:#selector(LevelViewController.runCommands), userInfo:nil, repeats: true)
+			tickTimer = Timer.scheduledTimer(timeInterval: 0.6, target:self, selector:#selector(LevelViewController.runCommands), userInfo:nil, repeats: true)
 			return
 		}
 	}
@@ -1186,6 +1186,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	// Note that commands and queue sounds will never be running at the same time, so it
 	// should be safe to reuse tickTimer and currentStep here
 	override func runQueueSounds() {
+		print("current step: "+String(currentStep))
+		print("real count: "+String(realCommandQueue.count))
 		if (currentStep < realCommandQueue.count) {
 			playSound(sound: testCommandSounds[realCommandQueue[currentStep]])
 			currentStep += 1

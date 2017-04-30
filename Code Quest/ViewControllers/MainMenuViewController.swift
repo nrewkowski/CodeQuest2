@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
 
@@ -89,4 +90,30 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
+    
+    @IBAction func newGameButtonPressed(_ sender: Any) {
+        resetLevels()
+        
+    }
+    
+	///Saves levels to storage
+	func resetLevels () {
+		//let levels =
+		//let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(nil, toFile: Level.ArchiveURL.path)
+		do{
+			
+		try FileManager.default.removeItem(atPath: Level.ArchiveURL.path)
+			print("successfully deleted levels")
+		}
+		catch{
+			print("failed deletion")
+		}
+//		if !isSuccessfulSave {
+//			print("failed to save levels...")
+//		}
+//		else{
+//			print("reset levels successfully")
+//		}
+	}
+	
 }

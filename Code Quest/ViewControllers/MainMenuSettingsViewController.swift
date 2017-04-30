@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SSAccessibility
 
 class MainMenuSettingsViewController:settingsTableViewController, UIGestureRecognizerDelegate {
 
-    
+	var synthesizer : SSSpeechSynthesizer? = nil
 //    var tapBGGesture: UITapGestureRecognizer!
 //    override func viewDidAppear(_ animated: Bool) {
 //        tapBGGesture = UITapGestureRecognizer(target: self, action: Selector("settingsBGTapped"))
@@ -37,5 +38,37 @@ class MainMenuSettingsViewController:settingsTableViewController, UIGestureRecog
 //    override func viewWillDisappear(_ animated: Bool) {
 //        self.view.window!.removeGestureRecognizer(tapBGGesture)
 //    }
-
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		synthesizer = SSSpeechSynthesizer()
+        addCustomLevelButton.isEnabled = false
+        //addCustomLevelButton.isAccessibilityElement = false
+        //addCustomLevelButton.isHidden = true
+		
+		//synthesizer
+	}
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //self.accessibilityLabel = "test"
+        //self.accessibilityElements = [musicUISlider]
+		//synthesizer?.enqueueLine(forSpeaking: "test")
+        //self.title = "BABABABAB"
+		
+        //self.tableView.viewfor
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Settings"
+    }
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var overallView = UIView(frame: CGRect(x:0, y:0, width:320, height:15))
+        var lbl_header = UILabel()
+        lbl_header.frame = CGRect(x:10, y:0, width:320, height:15)
+        lbl_header.text = "Settings"
+        lbl_header.backgroundColor = UIColor.clear
+        lbl_header.accessibilityLabel = "Settings. Double tap to dismiss."
+        overallView.addSubview(lbl_header)
+        return overallView;
+	}
+    @IBOutlet weak var addCustomLevelButton: UIButton!
 }

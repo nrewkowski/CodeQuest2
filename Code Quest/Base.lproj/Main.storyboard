@@ -71,7 +71,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHO-Kx-gzC" id="GKs-zc-2t4">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAY-tN-RS5">
@@ -100,7 +100,7 @@
                                         <rect key="frame" x="0.0" y="44" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sNJ-gx-6Df" id="ThK-76-oql">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2i-OB-IJs">
@@ -181,7 +181,7 @@
                                 <rect key="frame" x="0.0" y="28" width="1024" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8W-TM-QD0" id="KHO-hp-JCT">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaf-Kn-Yuo">
@@ -243,16 +243,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CodeQuest 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipd-vz-dQL">
-                                <rect key="frame" x="225" y="72" width="574" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" label="CodeQuest 2"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <color key="textColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDf-VJ-q4x">
-                                <rect key="frame" x="376" y="314" width="291" height="48"/>
+                                <rect key="frame" x="376" y="558" width="291" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="CodeQuest 1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -264,7 +256,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-oY-Do5">
-                                <rect key="frame" x="435" y="404" width="173" height="48"/>
+                                <rect key="frame" x="435" y="648" width="173" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Dev Stuff"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -272,20 +264,20 @@
                                     <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBV-RA-Ji3">
-                                <rect key="frame" x="435" y="504" width="173" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo3-qQ-HAN">
+                                <rect key="frame" x="425" y="401" width="173" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Settings"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Settings">
+                                <state key="normal" title="New Game">
                                     <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cgb-2Q-YZh" kind="presentation" modalPresentationStyle="formSheet" id="re6-te-5L6"/>
+                                    <action selector="newGameButtonPressed:" destination="wQy-E2-g4g" eventType="touchUpInside" id="MOG-n4-RXO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h04-sN-TrN">
-                                <rect key="frame" x="434" y="237" width="175" height="48"/>
+                                <rect key="frame" x="425" y="324" width="175" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Solar System"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -296,14 +288,30 @@
                                     <segue destination="WiO-QK-YPD" kind="show" id="3D0-zF-fUj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="codequesttitle" translatesAutoresizingMaskIntoConstraints="NO" id="hkj-Ye-NeG">
+                                <rect key="frame" x="281" y="106" width="481" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBV-RA-Ji3">
+                                <rect key="frame" x="425" y="476" width="173" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Settings"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="cgb-2Q-YZh" kind="presentation" modalPresentationStyle="formSheet" id="re6-te-5L6"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.074509803920000006" green="0.074509803920000006" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qXC-3n-siE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ff-2N-bx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-976" y="-866"/>
+            <point key="canvasLocation" x="-976.17187499999989" y="-866.40625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RzW-uM-hm1">
@@ -495,10 +503,10 @@
                         <outlet property="planet3" destination="0FO-jc-4QY" id="leC-3t-NBk"/>
                         <outlet property="planet3Completed" destination="Juj-aV-G7A" id="S4I-tW-60k"/>
                         <outlet property="planet3Stars" destination="VJi-tR-qQP" id="P72-ZK-TX7"/>
-                        <outlet property="planet4" destination="ZJJ-sN-m2L" id="dIR-56-ftz"/>
+                        <outlet property="planet4" destination="ZJJ-sN-m2L" id="JMJ-sO-dIt"/>
                         <outlet property="planet4Completed" destination="uQN-z8-RvQ" id="kbC-tq-mSP"/>
                         <outlet property="planet4Stars" destination="qC0-Rz-hcG" id="4fI-6R-uMc"/>
-                        <outlet property="planet5" destination="ZJJ-sN-m2L" id="N2Z-nV-C3Q"/>
+                        <outlet property="planet5" destination="fjd-lh-LoD" id="Gge-8W-ln3"/>
                         <outlet property="planet5Completed" destination="mBQ-bw-XjG" id="wng-Ek-DEq"/>
                         <outlet property="planet5Stars" destination="STV-w5-c3j" id="KTS-gf-gAz"/>
                         <segue destination="huC-7H-vsg" kind="show" identifier="toPlanetView" id="mwK-dU-wy6"/>
@@ -869,7 +877,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="mainsettings" id="cgb-2Q-YZh" userLabel="settings" customClass="MainMenuSettingsViewController" customModule="Code_Quest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uml-j2-2aG">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -879,7 +887,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uM0-is-Pgx" id="rvt-JM-WNE">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5b9-pi-CZa">
@@ -908,7 +916,7 @@
                                         <rect key="frame" x="0.0" y="44" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="86C-JB-AYq" id="Miu-lo-n1J">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoN-Pe-sYD">
@@ -935,8 +943,9 @@
                         </connections>
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="500" height="80"/>
+                    <size key="freeformSize" width="500" height="200"/>
                     <connections>
+                        <outlet property="addCustomLevelButton" destination="DoN-Pe-sYD" id="I3B-dp-ULE"/>
                         <outlet property="musicUISlider" destination="2qJ-N8-uvZ" id="h5G-LQ-uAf"/>
                     </connections>
                 </tableViewController>
@@ -1241,6 +1250,7 @@
     <resources>
         <image name="alien" width="91" height="128"/>
         <image name="cartoon-moon" width="700" height="700"/>
+        <image name="codequesttitle" width="671" height="210"/>
         <image name="fuel_grid" width="128" height="128"/>
         <image name="planet1" width="1476" height="1476"/>
         <image name="planet2" width="1478" height="1479"/>

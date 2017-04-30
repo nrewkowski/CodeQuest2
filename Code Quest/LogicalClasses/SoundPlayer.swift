@@ -35,8 +35,8 @@ func playSound(sound: URL) {
 	do {
 		try audioPlayer = AVAudioPlayer(contentsOf: sound)
 		
-		audioPlayer.volume = 0.4
-		audioPlayer.prepareToPlay()
+		audioPlayer.volume = 1.0
+		//audioPlayer.prepareToPlay()
 		audioPlayer.play()
 
 	} catch{

@@ -89,15 +89,15 @@ class MasterPlanetViewController: UIViewController {
             
         }
         
-        if (planetNumber == 2){
-            level1Button.setImage(UIImage(named: "alien2"), for: .normal)
-            level2Button.setImage(UIImage(named: "alien2"), for: .normal)
-            level3Button.setImage(UIImage(named: "alien2"), for: .normal)
-        }
-        else if (planetNumber == 3){
+        if (planetNumber == 2 ){
             level1Button.setImage(UIImage(named: "alien3"), for: .normal)
             level2Button.setImage(UIImage(named: "alien3"), for: .normal)
             level3Button.setImage(UIImage(named: "alien3"), for: .normal)
+        }
+        else if (planetNumber == 3 || planetNumber == 5){
+            level1Button.setImage(UIImage(named: "alien2"), for: .normal)
+            level2Button.setImage(UIImage(named: "alien2"), for: .normal)
+            level3Button.setImage(UIImage(named: "alien2"), for: .normal)
         }
 		
 		planetImage.image=UIImage(named: "planet"+String(planetNumber))
@@ -110,6 +110,68 @@ class MasterPlanetViewController: UIViewController {
 		level1stars=[level1star1, level1star2, level1star3]
         level2stars=[level2star1, level2star2, level2star3]
         level3stars=[level3star1, level3star2, level3star3]
+        
+        if let savedLevels = loadLevels() {
+            levels += savedLevels
+        } else {
+            loadDefaultLevels()
+        }
+        if defaults.object(forKey: "musicVolume") != nil {
+            musicVolume = defaults.float(forKey: "musicVolume")
+        }
+        
+        if levels[levelsToUse[0]].cleared {
+            level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
+            level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+            if levels[levelsToUse[0]].highscore == 1 {
+                level1HighScore.accessibilityLabel = level1HighScore.accessibilityLabel?.replacingOccurrences(of: "moves", with: "move")
+            }
+        } else {
+            level1HighScore.text = "Not Yet Cleared"
+            level1HighScore.accessibilityLabel="Level 1 not yet cleared"
+        }
+        
+        if levels[levelsToUse[1]].cleared {
+            level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
+            level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+            if levels[levelsToUse[1]].highscore == 1 {
+                level2HighScore.accessibilityLabel = level2HighScore.accessibilityLabel?.replacingOccurrences(of: "moves", with: "move")
+            }
+        } else {
+            level2HighScore.text = "Not Yet Cleared"
+            level2HighScore.accessibilityLabel="Level 2 not yet cleared"
+        }
+        
+        if levels[levelsToUse[2]].cleared {
+            level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
+            level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+            if levels[levelsToUse[2]].highscore == 1 {
+                level3HighScore.accessibilityLabel = level3HighScore.accessibilityLabel?.replacingOccurrences(of: "moves", with: "move")
+            }
+        } else {
+            level3HighScore.text = "Not Yet Cleared"
+            level3HighScore.accessibilityLabel="Level 3 not yet cleared"
+        }
+        
+        level1Button.accessibilityLabel = "Level 1, your best score is " + String(levels[levelsToUse[0]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[0]].starsGotten)
+        
+        level2Button.accessibilityLabel = "Level 2, your best score is " + String(levels[levelsToUse[1]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[1]].starsGotten)
+        
+        level3Button.accessibilityLabel = "Level 3, your best score is " + String(levels[levelsToUse[2]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[2]].starsGotten)
+        
+        for i in 0 ..< ((levels[levelsToUse[0]].starsGotten as Int)) {
+            level1stars[i].isEnabled=true
+        }
+        
+        for i in 0 ..< ((levels[levelsToUse[1]].starsGotten as Int)) {
+            level2stars[i].isEnabled=true
+        }
+        
+        for i in 0 ..< ((levels[levelsToUse[2]].starsGotten as Int)) {
+            level3stars[i].isEnabled=true
+        }
+        
+        view.accessibilityElements = [level1Button, level2Button, level3Button, moon1Button, nextPlanetArrow]
         
         
 		//let MrMaze = Maze(width:11, height:7)
@@ -175,6 +237,9 @@ class MasterPlanetViewController: UIViewController {
         if levels[levelsToUse[0]].cleared {
             level1HighScore.text = "Best: \(levels[levelsToUse[0]].highscore) moves"
             level1HighScore.accessibilityLabel="Best: \(levels[levelsToUse[0]].highscore) moves"
+            if levels[levelsToUse[0]].highscore == 1 {
+                level1HighScore.accessibilityLabel = level1HighScore.accessibilityLabel?.replacingOccurrences(of: "moves", with: "move")
+            }
         } else {
             level1HighScore.text = "Not Yet Cleared"
             level1HighScore.accessibilityLabel="Level 1 not yet cleared"
@@ -183,6 +248,9 @@ class MasterPlanetViewController: UIViewController {
         if levels[levelsToUse[1]].cleared {
             level2HighScore.text = "Best: \(levels[levelsToUse[1]].highscore) moves"
             level2HighScore.accessibilityLabel="Best: \(levels[levelsToUse[1]].highscore) moves"
+            if levels[levelsToUse[1]].highscore == 1 {
+                level2HighScore.accessibilityLabel = level2HighScore.accessibilityLabel?.replacingOccurrences(of: "moves", with: "move")
+            }
         } else {
             level2HighScore.text = "Not Yet Cleared"
             level2HighScore.accessibilityLabel="Level 2 not yet cleared"
@@ -191,16 +259,19 @@ class MasterPlanetViewController: UIViewController {
         if levels[levelsToUse[2]].cleared {
             level3HighScore.text = "Best: \(levels[levelsToUse[2]].highscore) moves"
             level3HighScore.accessibilityLabel="Best: \(levels[levelsToUse[2]].highscore) moves"
+            if levels[levelsToUse[2]].highscore == 1 {
+                level3HighScore.accessibilityLabel = level3HighScore.accessibilityLabel?.replacingOccurrences(of: "moves", with: "move")
+            }
         } else {
             level3HighScore.text = "Not Yet Cleared"
             level3HighScore.accessibilityLabel="Level 3 not yet cleared"
         }
         
-        level1Button.accessibilityLabel = "Level 1, best score = " + String(levels[levelsToUse[0]].highscore) + "moves"
+        level1Button.accessibilityLabel = "Level 1, your best score is " + String(levels[levelsToUse[0]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[0]].starsGotten)
         
-        level2Button.accessibilityLabel = "Level 2, best score = " + String(levels[levelsToUse[1]].highscore) + "moves"
+        level2Button.accessibilityLabel = "Level 2, your best score is " + String(levels[levelsToUse[1]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[1]].starsGotten)
         
-        level3Button.accessibilityLabel = "Level 3, best score = " + String(levels[levelsToUse[2]].highscore) + "moves"
+        level3Button.accessibilityLabel = "Level 3, your best score is " + String(levels[levelsToUse[2]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[2]].starsGotten)
         
         for i in 0 ..< ((levels[levelsToUse[0]].starsGotten as Int)) {
             level1stars[i].isEnabled=true
@@ -229,6 +300,8 @@ class MasterPlanetViewController: UIViewController {
 			print("failed to save levels...")
 		}
 	}
+	
+	
 	
 	///Loads levels from storage
 	func loadLevels() -> [Level]? {
