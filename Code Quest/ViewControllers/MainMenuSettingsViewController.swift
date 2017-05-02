@@ -61,7 +61,7 @@ class MainMenuSettingsViewController:settingsTableViewController, UIGestureRecog
         return "Settings"
     }
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var overallView = UIView(frame: CGRect(x:0, y:0, width:320, height:50))
+        var overallView = UIView(frame: CGRect(x:0, y:0, width:320, height:44))
         var lbl_header = UILabel()
         lbl_header.frame = CGRect(x:10, y:5, width:320, height:30)
         lbl_header.text = "Settings"

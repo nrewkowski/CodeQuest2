@@ -31,6 +31,8 @@ class MasterPlanetViewController: UIViewController {
 	
 	var planetNumber:Int = -1
 	
+	//var planetName = ""
+	
 	var levelNumber:Int = -1
 	var nextLevelHint:String=""
     var segueType = 0
@@ -101,12 +103,13 @@ class MasterPlanetViewController: UIViewController {
         }
 		
 		planetImage.image=UIImage(named: "planet"+String(planetNumber))
-		self.navigationItem.title="Planet "+String(planetNumber)
+		self.navigationItem.title="Planet "+planetNames[planetNumber-1]
+		
+		if (planetNumber != 5){
+			nextPlanetLabel.text = "Planet "+planetNames[planetNumber]
         
-        nextPlanetLabel.text = "Planet "+String(planetNumber+1)
-        
-        nextPlanetArrow.accessibilityLabel = "Go to planet "+String(planetNumber+1)
-
+			nextPlanetArrow.accessibilityLabel = "Go to planet "+planetNames[planetNumber]
+		}
 		level1stars=[level1star1, level1star2, level1star3]
         level2stars=[level2star1, level2star2, level2star3]
         level3stars=[level3star1, level3star2, level3star3]

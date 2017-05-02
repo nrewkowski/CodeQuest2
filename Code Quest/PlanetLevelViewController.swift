@@ -50,6 +50,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	var pickerData = ["2","3","4","5"]
 	var secondsToWait: Double = 3
 	
+	
 	var saidInitialText = false{
 		didSet{
 			secondsToWait = 0.5
@@ -105,8 +106,8 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		//super.viewDidLoad() //this breaks it for some reason
 		
-		self.navigationItem.title = "Planet "+String(planetNumber)+", Level "+String(levelNumber+1)
-        self.navigationItem.accessibilityLabel="Planet "+String(planetNumber)+", Level "+String(levelNumber+1)
+		self.navigationItem.title = "Planet "+planetNames[planetNumber-1]+", Level "+String(levelNumber+1)
+        self.navigationItem.accessibilityLabel="Planet "+planetNames[planetNumber-1]+", Level "+String(levelNumber+1)
         var scoreButton=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
         scoreButton.tintColor = UIColor.black
         scoreButton.isEnabled=false
@@ -1077,10 +1078,15 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		self.musicPlayer.volume = 1.0 * musicVolume
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		
-		if (levelNumber==2){ //last level on planet. go back to planet screen
-			//this needs some reimplementation so that too many viewcontrollers don't get pushed onto the stack
+		if (levelNumber==2){
 			//let vc = storyboard.instantiateViewController(withIdentifier: "Galaxy")
 			//self.navigationController?.pushViewController(vc, animated: true)
+			
+				var navArray = self.navigationController?.viewControllers
+				navArray?.remove(at: (navArray?.count)! - 2) //should remove planet screen
+				self.navigationController?.viewControllers = navArray!
+				//isFirstViewControllerOnStack = true
+			
 			self.navigationController?.popViewController(animated: true)
 		}
 		else{

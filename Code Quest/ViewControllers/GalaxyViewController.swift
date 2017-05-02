@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+var planetNames:[String] = ["Lagoona", "Oberon", "Yoix", "Wermel", "Numpy"]
+
 class GalaxyViewController: UIViewController {
     
     var planetNumber:Int = -1
@@ -31,6 +33,13 @@ class GalaxyViewController: UIViewController {
     @IBOutlet weak var planet5Completed: UILabel!
     @IBOutlet weak var planet5Stars: UILabel!
     
+    @IBOutlet weak var planet1Name: UILabel!
+    @IBOutlet weak var planet2Name: UILabel!
+    @IBOutlet weak var planet3Name: UILabel!
+    @IBOutlet weak var planet4Name: UILabel!
+    @IBOutlet weak var planet5Name: UILabel!
+    
+    //var planetNames:[String] = ["Lagoona", "Oberon", "Yoix", "Wermel", "Numpy"]
     
 	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"mp3")!);
 	var musicPlayer2 = AVAudioPlayer()
@@ -39,6 +48,11 @@ class GalaxyViewController: UIViewController {
         super.viewDidLoad()
 
             navigationItem.title = "Solar System 1"
+        planet1Name.text = planetNames[0]
+        planet2Name.text = planetNames[1]
+        planet3Name.text = planetNames[2]
+        planet4Name.text = planetNames[3]
+        planet5Name.text = planetNames[4]
         
         if let savedLevels = loadLevels() {
             levels += savedLevels

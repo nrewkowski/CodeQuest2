@@ -32,7 +32,7 @@ class settingsTableViewController: UITableViewController, UIPopoverPresentationC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.preferredContentSize = CGSize(width: 500, height: 150)
+		self.preferredContentSize = CGSize(width: 500, height: 120)
 		musicUISlider.setValue(musicVolume, animated: false)
 		
 			// Uncomment the following line to preserve selection between presentations
