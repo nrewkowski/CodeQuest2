@@ -314,7 +314,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 		
 		pickerLabel.text = pickerData[row]
 		pickerLabel.sizeToFit()
-		pickerLabel.accessibilityLabel = "Loop "+String(pickerData[row])+" times."
+		pickerLabel.accessibilityLabel = "Loop "+String(pickerData[row])+" times. Double tap to loop the previously entered command this many times."
 		return pickerLabel
 	}
 	

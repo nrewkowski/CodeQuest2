@@ -71,7 +71,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHO-Kx-gzC" id="GKs-zc-2t4">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAY-tN-RS5">
@@ -100,7 +100,7 @@
                                         <rect key="frame" x="0.0" y="44" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sNJ-gx-6Df" id="ThK-76-oql">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2i-OB-IJs">
@@ -181,7 +181,7 @@
                                 <rect key="frame" x="0.0" y="28" width="1024" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8W-TM-QD0" id="KHO-hp-JCT">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="127"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaf-Kn-Yuo">
@@ -251,7 +251,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fo3-qQ-HAN">
                                 <rect key="frame" x="359" y="446" width="306" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" hint="New Game" label="New Game"/>
+                                <accessibility key="accessibilityConfiguration" hint="New Game. Double tap to erase your data and start the game!" label="New Game. Double tap to erase your data and start the game!"/>
                                 <state key="normal" image="Asset 22">
                                     <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -262,7 +262,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h04-sN-TrN">
                                 <rect key="frame" x="324" y="331" width="377" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" hint="Solar System" label="Solar System"/>
+                                <accessibility key="accessibilityConfiguration" hint="Solar System. Double tap to start the game!" label="Solar System. Double tap to start the game!"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="Asset 20">
                                     <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -281,7 +281,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBV-RA-Ji3">
                                 <rect key="frame" x="394" y="558" width="236" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" hint="Settings" label="Settings"/>
+                                <accessibility key="accessibilityConfiguration" hint="Settings. Double tap to change the volume!" label="Settings. Double tap to change the volume!"/>
                                 <state key="normal" image="Asset 23">
                                     <color key="titleColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -931,7 +931,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uM0-is-Pgx" id="rvt-JM-WNE">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5b9-pi-CZa">
@@ -960,7 +960,7 @@
                                         <rect key="frame" x="0.0" y="44" width="500" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="86C-JB-AYq" id="Miu-lo-n1J">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoN-Pe-sYD">
@@ -1273,7 +1273,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKB-uw-q27">
                                         <rect key="frame" x="924" y="0.0" width="96" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration" label="Play"/>
+                                        <accessibility key="accessibilityConfiguration" label="Play button. Double tap to play your commands."/>
                                         <fontDescription key="fontDescription" type="system" pointSize="1"/>
                                         <state key="normal" title=" " image="play.png"/>
                                         <connections>
@@ -1301,7 +1301,7 @@
         <image name="Asset 20" width="592" height="112"/>
         <image name="Asset 22" width="484" height="112"/>
         <image name="Asset 23" width="377" height="112"/>
-        <image name="CodeQuestWordsAsset 19" width="484" height="81"/>
+        <image name="CodeQuestWordsAsset 19" width="1981" height="329"/>
         <image name="StarfieldAsset 18" width="2048" height="1536"/>
         <image name="alien" width="91" height="128"/>
         <image name="cartoon-moon" width="700" height="700"/>

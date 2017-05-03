@@ -171,11 +171,11 @@ class MasterPlanetViewController: UIViewController {
             level3HighScore.accessibilityLabel="Level 3 not yet cleared"
         }
         
-        level1Button.accessibilityLabel = "Level 1, your best score is " + String(levels[levelsToUse[0]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[0]].starsGotten)
+        level1Button.accessibilityLabel = "Level 1, your best score is " + String(levels[levelsToUse[0]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[0]].starsGotten)+". Double tap to go to this level."
         
-        level2Button.accessibilityLabel = "Level 2, your best score is " + String(levels[levelsToUse[1]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[1]].starsGotten)
+        level2Button.accessibilityLabel = "Level 2, your best score is " + String(levels[levelsToUse[1]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[1]].starsGotten)+". Double tap to go to this level."
         
-        level3Button.accessibilityLabel = "Level 3, your best score is " + String(levels[levelsToUse[2]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[2]].starsGotten)
+        level3Button.accessibilityLabel = "Level 3, your best score is " + String(levels[levelsToUse[2]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[2]].starsGotten)+". Double tap to go to this level."
         
         for i in 0 ..< ((levels[levelsToUse[0]].starsGotten as Int)) {
             level1stars[i].isEnabled=true
@@ -285,12 +285,12 @@ class MasterPlanetViewController: UIViewController {
             level3HighScore.accessibilityLabel="Level 3 not yet cleared"
         }
         
-        level1Button.accessibilityLabel = "Level 1, your best score is " + String(levels[levelsToUse[0]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[0]].starsGotten)
-        
-        level2Button.accessibilityLabel = "Level 2, your best score is " + String(levels[levelsToUse[1]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[1]].starsGotten)
-        
-        level3Button.accessibilityLabel = "Level 3, your best score is " + String(levels[levelsToUse[2]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[2]].starsGotten)
-        
+		level1Button.accessibilityLabel = "Level 1, your best score is " + String(levels[levelsToUse[0]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[0]].starsGotten)+". Double tap to go to this level."
+		
+		level2Button.accessibilityLabel = "Level 2, your best score is " + String(levels[levelsToUse[1]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[1]].starsGotten)+". Double tap to go to this level."
+		
+		level3Button.accessibilityLabel = "Level 3, your best score is " + String(levels[levelsToUse[2]].highscore) + "moves, "+"Stars received: "+String(levels[levelsToUse[2]].starsGotten)+". Double tap to go to this level."
+		
         for i in 0 ..< ((levels[levelsToUse[0]].starsGotten as Int)) {
             level1stars[i].isEnabled=true
         }

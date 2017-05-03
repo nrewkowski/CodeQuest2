@@ -113,11 +113,11 @@ class GalaxyViewController: UIViewController {
             planet4Stars.text = "Stars Received: "+String(planet4StarsGotten)
             planet5Stars.text = "Stars Received: "+String(planet5StarsGotten)
             
-            planet1.accessibilityLabel = "Planet " + planetNames[0]+", "+planet1Completed.text!+", "+planet1Stars.text!
-            planet2.accessibilityLabel = "Planet " + planetNames[1]+", "+planet2Completed.text!+", "+planet2Stars.text!
-            planet3.accessibilityLabel = "Planet " + planetNames[2]+", "+planet3Completed.text!+", "+planet3Stars.text!
-            planet4.accessibilityLabel = "Planet " + planetNames[3]+", "+planet4Completed.text!+", "+planet4Stars.text!
-            planet5.accessibilityLabel = "Planet " + planetNames[4]+", "+planet5Completed.text!+", "+planet5Stars.text!
+            planet1.accessibilityLabel = "Planet " + planetNames[0]+", "+planet1Completed.text!+", "+planet1Stars.text!+". Double tap to go to this planet."
+            planet2.accessibilityLabel = "Planet " + planetNames[1]+", "+planet2Completed.text!+", "+planet2Stars.text!+". Double tap to go to this planet."
+            planet3.accessibilityLabel = "Planet " + planetNames[2]+", "+planet3Completed.text!+", "+planet3Stars.text!+". Double tap to go to this planet."
+            planet4.accessibilityLabel = "Planet " + planetNames[3]+", "+planet4Completed.text!+", "+planet4Stars.text!+". Double tap to go to this planet."
+            planet5.accessibilityLabel = "Planet " + planetNames[4]+", "+planet5Completed.text!+", "+planet5Stars.text!+". Double tap to go to this planet."
         }
 
         // Do any additional setup after loading the view.
@@ -283,11 +283,11 @@ class GalaxyViewController: UIViewController {
 			planet4Stars.text = "Stars Received: "+String(planet4StarsGotten)
 			planet5Stars.text = "Stars Received: "+String(planet5StarsGotten)
 			
-			planet1.accessibilityLabel = "Planet 1, "+planet1Completed.text!+", "+planet1Stars.text!
-			planet2.accessibilityLabel = "Planet 2, "+planet2Completed.text!+", "+planet2Stars.text!
-			planet3.accessibilityLabel = "Planet 3, "+planet3Completed.text!+", "+planet3Stars.text!
-			planet4.accessibilityLabel = "Planet 4, "+planet4Completed.text!+", "+planet4Stars.text!
-			planet5.accessibilityLabel = "Planet 5, "+planet5Completed.text!+", "+planet5Stars.text!
+			planet1.accessibilityLabel = "Planet " + planetNames[0]+", "+planet1Completed.text!+", "+planet1Stars.text!+". Double tap to go to this planet."
+			planet2.accessibilityLabel = "Planet " + planetNames[1]+", "+planet2Completed.text!+", "+planet2Stars.text!+". Double tap to go to this planet."
+			planet3.accessibilityLabel = "Planet " + planetNames[2]+", "+planet3Completed.text!+", "+planet3Stars.text!+". Double tap to go to this planet."
+			planet4.accessibilityLabel = "Planet " + planetNames[3]+", "+planet4Completed.text!+", "+planet4Stars.text!+". Double tap to go to this planet."
+			planet5.accessibilityLabel = "Planet " + planetNames[4]+", "+planet5Completed.text!+", "+planet5Stars.text!+". Double tap to go to this planet."
 		}
 	}
 
