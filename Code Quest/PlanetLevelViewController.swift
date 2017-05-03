@@ -159,10 +159,16 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 						breakBlocks.append(cell as! BreakableWallCell)
 					case 4:
 						cell = floorCell(isWall: false, isFuel: true,row: y+1, column: x+1)
-						if (planetNumber == 2 ) {
+						if (planetNumber == 1 ) {
 							cell.image = UIImage(named: "alien3tile")
 						}
-						else if (planetNumber == 3 || planetNumber == 5) {
+						else if (planetNumber == 3) {
+							cell.image = UIImage(named: "alien4tile")
+						}
+						else if (planetNumber == 4) {
+							cell.image = UIImage(named: "alien5tile")
+						}
+						else if (planetNumber == 5) {
 							cell.image = UIImage(named: "alien2tile")
 						}
 						fuelCells.append(cell as! floorCell)
