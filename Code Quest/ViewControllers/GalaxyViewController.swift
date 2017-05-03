@@ -47,7 +47,7 @@ class GalaxyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-            navigationItem.title = "Solar System 1"
+            navigationItem.title = "Solar System"
         planet1Name.text = planetNames[0]
         planet2Name.text = planetNames[1]
         planet3Name.text = planetNames[2]
@@ -113,11 +113,11 @@ class GalaxyViewController: UIViewController {
             planet4Stars.text = "Stars Received: "+String(planet4StarsGotten)
             planet5Stars.text = "Stars Received: "+String(planet5StarsGotten)
             
-            planet1.accessibilityLabel = "Planet 1, "+planet1Completed.text!+", "+planet1Stars.text!
-            planet2.accessibilityLabel = "Planet 2, "+planet2Completed.text!+", "+planet2Stars.text!
-            planet3.accessibilityLabel = "Planet 3, "+planet3Completed.text!+", "+planet3Stars.text!
-            planet4.accessibilityLabel = "Planet 4, "+planet4Completed.text!+", "+planet4Stars.text!
-            planet5.accessibilityLabel = "Planet 5, "+planet5Completed.text!+", "+planet5Stars.text!
+            planet1.accessibilityLabel = "Planet " + planetNames[0]+", "+planet1Completed.text!+", "+planet1Stars.text!
+            planet2.accessibilityLabel = "Planet " + planetNames[1]+", "+planet2Completed.text!+", "+planet2Stars.text!
+            planet3.accessibilityLabel = "Planet " + planetNames[2]+", "+planet3Completed.text!+", "+planet3Stars.text!
+            planet4.accessibilityLabel = "Planet " + planetNames[3]+", "+planet4Completed.text!+", "+planet4Stars.text!
+            planet5.accessibilityLabel = "Planet " + planetNames[4]+", "+planet5Completed.text!+", "+planet5Stars.text!
         }
 
         // Do any additional setup after loading the view.

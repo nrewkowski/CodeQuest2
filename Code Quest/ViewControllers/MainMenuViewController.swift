@@ -93,7 +93,7 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func newGameButtonPressed(_ sender: Any) {
         resetLevels()
-        
+        performSegue(withIdentifier: "toSolarSystem", sender: nil)
     }
     
 	///Saves levels to storage

@@ -91,16 +91,31 @@ class MasterPlanetViewController: UIViewController {
             
         }
         
-        if (planetNumber == 2 ){
+        if (planetNumber == 1 ){
             level1Button.setImage(UIImage(named: "alien3"), for: .normal)
             level2Button.setImage(UIImage(named: "alien3"), for: .normal)
             level3Button.setImage(UIImage(named: "alien3"), for: .normal)
         }
-        else if (planetNumber == 3 || planetNumber == 5){
-            level1Button.setImage(UIImage(named: "alien2"), for: .normal)
-            level2Button.setImage(UIImage(named: "alien2"), for: .normal)
-            level3Button.setImage(UIImage(named: "alien2"), for: .normal)
+        else if (planetNumber == 2){
+            level1Button.setImage(UIImage(named: "alien"), for: .normal)
+            level2Button.setImage(UIImage(named: "alien"), for: .normal)
+            level3Button.setImage(UIImage(named: "alien"), for: .normal)
         }
+		else if (planetNumber == 3){
+			level1Button.setImage(UIImage(named: "alien4"), for: .normal)
+			level2Button.setImage(UIImage(named: "alien4"), for: .normal)
+			level3Button.setImage(UIImage(named: "alien4"), for: .normal)
+		}
+		else if (planetNumber == 4){
+			level1Button.setImage(UIImage(named: "alien5"), for: .normal)
+			level2Button.setImage(UIImage(named: "alien5"), for: .normal)
+			level3Button.setImage(UIImage(named: "alien5"), for: .normal)
+		}
+		else if (planetNumber == 5){
+			level1Button.setImage(UIImage(named: "alien2"), for: .normal)
+			level2Button.setImage(UIImage(named: "alien2"), for: .normal)
+			level3Button.setImage(UIImage(named: "alien2"), for: .normal)
+		}
 		
 		planetImage.image=UIImage(named: "planet"+String(planetNumber))
 		self.navigationItem.title="Planet "+planetNames[planetNumber-1]
