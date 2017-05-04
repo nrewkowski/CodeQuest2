@@ -8,6 +8,7 @@
 
 
 import UIKit
+import AVFoundation
 
 
 ///Floor cells, which current can be empty or contain the player
@@ -28,6 +29,7 @@ class BreakableWallCell: gameCell {
 	
 	var row:Int = -1
 	var column:Int = -1
+	var audioPlayer3 = AVAudioPlayer()
 	
 	//var imagesToUse:[UIImage] = []
 	
@@ -90,9 +92,31 @@ class BreakableWallCell: gameCell {
 		self.health = self.health - 1
 		//super.init(image: UIImage(named:"break_wall.png"))
 		
-		
+		do{
+			print("played blast")
+			try audioPlayer3 = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "kaboom", ofType:"wav")!))
+			
+			audioPlayer3.volume = 1.0
+			//audioPlayer.play
+			audioPlayer3.prepareToPlay()
+			audioPlayer3.play()
+		}catch{
+			print("sound failed")
+		}
 		if (health == 0) {
 			makeNotWall()
+			
+//			do{
+//				print("played blast")
+//			try audioPlayer3 = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "kaboom", ofType:"wav")!))
+//			
+//			audioPlayer3.volume = 1.0
+//			//audioPlayer.play
+//			audioPlayer3.prepareToPlay()
+//			audioPlayer3.play()
+//			}catch{
+//				print("sound failed")
+//			}
 		}
 		else{
 			self.image = UIImage(named:"wall"+String(initialHealth)+"health"+String(health)+".png")
