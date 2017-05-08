@@ -41,7 +41,7 @@ class GalaxyViewController: UIViewController {
     
     //var planetNames:[String] = ["Lagoona", "Oberon", "Yoix", "Wermel", "Numpy"]
     
-	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "LevelSelect", ofType:"mp3")!);
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "galaxysong", ofType:"wav")!);
 	var musicPlayer2 = AVAudioPlayer()
 	
     override func viewDidLoad() {
@@ -129,6 +129,18 @@ class GalaxyViewController: UIViewController {
 	}
     
     override func viewWillAppear(_ animated: Bool) {
+		do {
+			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
+			musicPlayer2.numberOfLoops = -1
+			musicPlayer2.volume = 1.0 * musicVolume
+			
+			
+			let sdelay : TimeInterval = 0.1
+			let now = musicPlayer2.deviceCurrentTime
+			musicPlayer2.play(atTime: now+sdelay)
+		} catch {
+			print ("music failed")
+		}
         /*
         if let savedLevels = loadLevels() {
             levels += savedLevels
@@ -212,18 +224,18 @@ class GalaxyViewController: UIViewController {
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
-		do {
-			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
-			musicPlayer2.numberOfLoops = -1
-			musicPlayer2.volume = 1.0 * musicVolume
-			
-			
-			let sdelay : TimeInterval = 0.1
-			let now = musicPlayer2.deviceCurrentTime
-			//musicPlayer2.play(atTime: now+sdelay)
-		} catch {
-			print ("music failed")
-		}
+//		do {
+//			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
+//			musicPlayer2.numberOfLoops = -1
+//			musicPlayer2.volume = 1.0 * musicVolume
+//			
+//			
+//			let sdelay : TimeInterval = 0.1
+//			let now = musicPlayer2.deviceCurrentTime
+//			//musicPlayer2.play(atTime: now+sdelay)
+//		} catch {
+//			print ("music failed")
+//		}
 		if let savedLevels = loadLevels() {
 			levels += savedLevels
 			var planet1LevelsCompleted=0
@@ -334,6 +346,10 @@ class GalaxyViewController: UIViewController {
         planetNumber=4
         performSegue(withIdentifier: "toPlanetView", sender: nil)
     }
-    
-    
+	override func viewWillDisappear(_ animated : Bool) {
+		//super.viewWillDisappear(animated)
+		musicPlayer2.stop()
+		//drumPlayer.stop()
+	}
+	
 }

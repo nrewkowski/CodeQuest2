@@ -20,6 +20,10 @@
 		3D8A72E41E980F06007F57D4 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A72E31E980F06007F57D4 /* MainMenuViewController.swift */; };
 		3D8A72E61E981058007F57D4 /* MainMenuSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A72E51E981058007F57D4 /* MainMenuSettingsViewController.swift */; };
 		3D8A72E81E981E3C007F57D4 /* MasterPlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8A72E71E981E3C007F57D4 /* MasterPlanetViewController.swift */; };
+		3D8F95401EC0F91B00D45C6B /* galaxysong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D8F953F1EC0F91B00D45C6B /* galaxysong.wav */; };
+		3D8F95451EC0FBB700D45C6B /* kaboom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D8F95431EC0FBB700D45C6B /* kaboom.wav */; };
+		3D8F95481EC0FC2400D45C6B /* lazar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D8F95471EC0FC2400D45C6B /* lazar.wav */; };
+		3D8F954A1EC100B800D45C6B /* mainmenusong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D8F95491EC100B800D45C6B /* mainmenusong.wav */; };
 		3D8FA6B91EB01C79004A65E1 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8FA6B81EB01C79004A65E1 /* LevelViewController.swift */; };
 		3DB6D22C1E6D1D7A00E069B2 /* LevelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */; };
 		3DB6D2301E6D1D8600E069B2 /* LevelTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */; };
@@ -40,8 +44,6 @@
 		3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */; };
 		3DB6D25C1E6D1E2900E069B2 /* cheer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */; };
 		3DB6D25D1E6D1E2900E069B2 /* cheer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D24F1E6D1E2900E069B2 /* cheer.wav */; };
-		3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2531E6D1E2900E069B2 /* kaboom.wav */; };
-		3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6D2541E6D1E2900E069B2 /* lazar.wav */; };
 		3DB723AF1E8B2BBA00921D62 /* PlanetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */; };
 		428C7EF27FA5BC9C0C5457D9 /* Pods_Code_Quest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC18577D47B2D6AF37CE47A /* Pods_Code_Quest.framework */; };
 		8354CFE2E6B51F666C8F6D52 /* Pods_Code_QuestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D265DED7E7BEBC97FD147FB /* Pods_Code_QuestTests.framework */; };
@@ -83,6 +85,10 @@
 		3D8A72E31E980F06007F57D4 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = ViewControllers/MainMenuViewController.swift; sourceTree = "<group>"; };
 		3D8A72E51E981058007F57D4 /* MainMenuSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuSettingsViewController.swift; path = ViewControllers/MainMenuSettingsViewController.swift; sourceTree = "<group>"; };
 		3D8A72E71E981E3C007F57D4 /* MasterPlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterPlanetViewController.swift; path = ViewControllers/MasterPlanetViewController.swift; sourceTree = "<group>"; };
+		3D8F953F1EC0F91B00D45C6B /* galaxysong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = galaxysong.wav; sourceTree = "<group>"; };
+		3D8F95431EC0FBB700D45C6B /* kaboom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kaboom.wav; sourceTree = "<group>"; };
+		3D8F95471EC0FC2400D45C6B /* lazar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lazar.wav; sourceTree = "<group>"; };
+		3D8F95491EC100B800D45C6B /* mainmenusong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mainmenusong.wav; sourceTree = "<group>"; };
 		3D8FA6B81EB01C79004A65E1 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		3DB6D22A1E6D1D7A00E069B2 /* LevelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelTableViewController.swift; path = ViewControllers/LevelTableViewController.swift; sourceTree = "<group>"; };
 		3DB6D22E1E6D1D8600E069B2 /* LevelTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelTutorialViewController.swift; path = ViewControllers/LevelTutorialViewController.swift; sourceTree = "<group>"; };
@@ -103,8 +109,6 @@
 		3DB6D24D1E6D1E2900E069B2 /* bumpo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bumpo.wav; path = audio/bumpo.wav; sourceTree = "<group>"; };
 		3DB6D24E1E6D1E2900E069B2 /* cheer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cheer.mp3; path = audio/cheer.mp3; sourceTree = "<group>"; };
 		3DB6D24F1E6D1E2900E069B2 /* cheer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cheer.wav; path = audio/cheer.wav; sourceTree = "<group>"; };
-		3DB6D2531E6D1E2900E069B2 /* kaboom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kaboom.wav; path = audio/kaboom.wav; sourceTree = "<group>"; };
-		3DB6D2541E6D1E2900E069B2 /* lazar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = lazar.wav; path = audio/lazar.wav; sourceTree = "<group>"; };
 		3DB723AE1E8B2BBA00921D62 /* PlanetLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetLevelViewController.swift; sourceTree = "<group>"; };
 		6D265DED7E7BEBC97FD147FB /* Pods_Code_QuestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_QuestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC18577D47B2D6AF37CE47A /* Pods_Code_Quest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Code_Quest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,8 +207,10 @@
 				3DB6D24F1E6D1E2900E069B2 /* cheer.wav */,
 				3D3086C11E85C22A005CB8B0 /* Demo.aiff */,
 				B1FAABEC1EAFEE9500A5AAD7 /* down.wav */,
-				3DB6D2531E6D1E2900E069B2 /* kaboom.wav */,
-				3DB6D2541E6D1E2900E069B2 /* lazar.wav */,
+				3D8F95491EC100B800D45C6B /* mainmenusong.wav */,
+				3D8F953F1EC0F91B00D45C6B /* galaxysong.wav */,
+				3D8F95471EC0FC2400D45C6B /* lazar.wav */,
+				3D8F95431EC0FBB700D45C6B /* kaboom.wav */,
 				B1FAABED1EAFEE9500A5AAD7 /* left.wav */,
 				B17EA2231E948D6C000732D7 /* LevelSelect.mp3 */,
 				B1FAABEE1EAFEE9500A5AAD7 /* right.wav */,
@@ -370,20 +376,22 @@
 			files = (
 				B1FAABF11EAFEE9500A5AAD7 /* down.wav in Resources */,
 				3DB6D25C1E6D1E2900E069B2 /* cheer.mp3 in Resources */,
-				3DB6D2611E6D1E2900E069B2 /* kaboom.wav in Resources */,
 				3DB6D25D1E6D1E2900E069B2 /* cheer.wav in Resources */,
 				10B20FDD1D909BD200142CAE /* LaunchScreen.storyboard in Resources */,
 				B17EA2241E948D6C000732D7 /* LevelSelect.mp3 in Resources */,
+				3D8F954A1EC100B800D45C6B /* mainmenusong.wav in Resources */,
 				B1FAABF31EAFEE9500A5AAD7 /* right.wav in Resources */,
 				B1FAABF01EAFEE9500A5AAD7 /* bump.wav in Resources */,
 				3DB6D25B1E6D1E2900E069B2 /* bumpo.wav in Resources */,
+				3D8F95401EC0F91B00D45C6B /* galaxysong.wav in Resources */,
 				10B20FDA1D909BD200142CAE /* Assets.xcassets in Resources */,
 				3D3086C21E85C22A005CB8B0 /* Demo.aiff in Resources */,
 				B1FAABF41EAFEE9500A5AAD7 /* up.wav in Resources */,
+				3D8F95481EC0FC2400D45C6B /* lazar.wav in Resources */,
 				3D1EBA211E8B8A1100F8EA04 /* AlienSound.wav in Resources */,
 				B1FAABF21EAFEE9500A5AAD7 /* left.wav in Resources */,
 				10B20FD81D909BD200142CAE /* Main.storyboard in Resources */,
-				3DB6D2621E6D1E2900E069B2 /* lazar.wav in Resources */,
+				3D8F95451EC0FBB700D45C6B /* kaboom.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -383,15 +383,21 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 				tempCell.accessibilityTraits = UIAccessibilityTraitImage
 				//tempCell.accessibilityTraits = UIAccessibilityTraitNone
 				tempCell.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
-				
+				if (testImageNames[commandToLoop] == "blast_button"){
+					tempCell.accessibilityLabel = "Loop blast button "+String(numOfLoops)+" times"
+				}
 				self.view.addSubview(tempCell)
 				
 				
 				var loopLabel=UILabel(frame: CGRect(x: LevelViewController.scaleDims(input: (84*commandQueue.count) % 921, x: true) + 40, y: LevelViewController.scaleDims(input: 480 + 90*(commandQueue.count/11), x: false), width: LevelViewController.scaleDims(input:80, x: true), height: LevelViewController.scaleDims(input: 80, x: false)))
 				loopLabel.textAlignment = .center
 				loopLabel.text=String(numOfLoops)
+				loopLabel.isAccessibilityElement=false
 				loopLabel.font = loopLabel.font.withSize(60)
 				loopLabel.accessibilityLabel = "Loop "+testImageNames[commandToLoop]+" "+String(numOfLoops)+" times"
+				if (testImageNames[commandToLoop] == "blast_button"){
+					loopLabel.accessibilityLabel = "Loop blast button "+String(numOfLoops)+" times"
+				}
 				self.view.addSubview(loopLabel)
 				loopLabels.append(loopLabel)
 				
@@ -439,12 +445,12 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 	//reset everything
 	override func tapReset(_ sender: UITapGestureRecognizer) {
 		if (takeInput) {
-			resetLevelState()
+			resetLevelState(addPenalty: true)
 		}
 	}
 	
 	//change everything to default values
-	override func resetLevelState() {
+	func resetLevelState(addPenalty:Bool) {
 		scene?.setPlayerPos(newPos: level!.startingLoc)
 		cmdHandler?.setPlayerLoc(newCoords: level!.startingLoc)
 		cmdHandler?.resetGoal(coords: level!.goalLoc)
@@ -471,8 +477,9 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			}
 		}
 		
+		if (addPenalty){
 		penalties += 1
-		
+		}
 		var scoreButton=UIBarButtonItem(title: "Best Score = " + String(bestScore), style: .plain, target: nil, action: nil)
 		scoreButton.tintColor = UIColor.black
 		scoreButton.isEnabled=false
@@ -584,7 +591,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 					
 					
 				} else if (type == ButtonType.ERASEALL) {
-					resetLevelState()
+					resetLevelState(addPenalty: true)
 					for view in commandQueueViews {
 						view.removeFromSuperview()
 					}
@@ -619,7 +626,7 @@ class PlanetLevelViewController: LevelViewController, UIPickerViewDelegate, UIPi
 			
 			
 			//this is done because if the previous attempt was not successful, we don't want the previously broken blocks and other things to remain!
-			resetLevelState()
+			resetLevelState(addPenalty: false)
 			
 			currentStep = 0
 			loopIndex=0

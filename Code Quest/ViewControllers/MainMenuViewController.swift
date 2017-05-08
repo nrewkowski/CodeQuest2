@@ -8,15 +8,31 @@
 
 import UIKit
 import Foundation
+import AVFoundation
 
 class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
 
+	let music2: URL = URL(fileURLWithPath: Bundle.main.path(forResource: "mainmenusong", ofType:"wav")!);
+	var musicPlayer2 = AVAudioPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
 		navigationController?.navigationBar.isHidden=true
+		
+		do {
+			try musicPlayer2 = AVAudioPlayer(contentsOf: music2)
+			musicPlayer2.numberOfLoops = -1
+			musicPlayer2.volume = 1.0 * musicVolume
+			
+			
+			let sdelay : TimeInterval = 0.1
+			let now = musicPlayer2.deviceCurrentTime
+			musicPlayer2.play(atTime: now+sdelay)
+		} catch {
+			print ("music failed")
+		}
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +41,8 @@ class MainMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+		
+		musicPlayer2.stop()
 		navigationController?.navigationBar.isHidden=false
         self.view.window!.removeGestureRecognizer(tapBGGesture)
     }

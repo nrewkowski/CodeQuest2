@@ -96,7 +96,7 @@ class BreakableWallCell: gameCell {
 			print("played blast")
 			try audioPlayer3 = AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "kaboom", ofType:"wav")!))
 			
-			audioPlayer3.volume = 1.0
+			audioPlayer3.volume = 5.0
 			//audioPlayer.play
 			audioPlayer3.prepareToPlay()
 			audioPlayer3.play()
